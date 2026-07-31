@@ -545,8 +545,8 @@ function maybeShowScoreboardBtn() {
 function buildHome() {
   var today = todayISO(), html = "";
   var sections = [
-    { label:"Week 1 — Zone 2 (10–13 Aug)", items:SCHEDULE.slice(0,4) },
-    { label:"Week 1 — Zone 1 (17–20 Aug)", items:SCHEDULE.slice(4,8) },
+    { label:"Week 1 &#8212; Zone 2 (10&#8211;13 Aug)", items:SCHEDULE.slice(0,4) },
+    { label:"Week 1 &#8212; Zone 1 (17&#8211;20 Aug)", items:SCHEDULE.slice(4,8) },
     { label:"Week 2 (24 Aug + 2 Sep)",      items:SCHEDULE.slice(8)  }
   ];
   sections.forEach(function(sec){
@@ -568,7 +568,7 @@ function buildHome() {
         html += '<div class="rc-bar"><div class="rc-fill" style="width:'+pct+'%;background:'+col+'"></div>'
               + '<span class="rc-pct">'+pct+'%</span></div>';
         html += '<div class="rc-done'+(allDone?" done-all":"")+'">'+
-                (allDone?"? Complete":done>0?done+"/"+stops+" done":"Not started")+'</div>';
+                (allDone?"&#10003; Complete":done>0?done+"/"+stops+" done":"Not started")+'</div>';
         html += '</div>';
       });
     });
@@ -592,7 +592,7 @@ function pickRun(el) {
   var sched = null;
   SCHEDULE.forEach(function(s){ if(s.day===cDay && s.zone===cZone && s.week===cWeek) sched=s; });
   var routeLbl = "Route " + (cCrew==="1"?"A":"B");
-  document.getElementById("driver-run-lbl").textContent = (sched?sched.label:cDay) + " — Zone "+cZone+" — "+routeLbl;
+  document.getElementById("driver-run-lbl").textContent = (sched?sched.label:cDay) + " - Zone "+cZone+" - "+routeLbl;
   buildPersonGrid();
   showScreen("s-driver");
 }
@@ -672,7 +672,7 @@ function selectPassenger(el) {
   var passenger = cPassengerId ? getPersonById(cPassengerId) : null;
   var label = "Start - " + (person?person.name:"");
   if (passenger) label += " + " + passenger.name;
-  label += " in " + (v?v.short:"") + " ?";
+  label += " in " + (v?v.short:"") + " >";
   btn.textContent = label;
 }
 
@@ -953,7 +953,7 @@ function render(){
   var realTotal=realStops(stops).length, done=cnt(d,z,wk,c), pct=realTotal?Math.round(done/realTotal*100):0;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
   var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  var runName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" · "+v.short:"");
+  var runName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
   document.getElementById("run-badge-title").textContent=d+" Zone "+z+" - "+runName;
   document.getElementById("run-badge-sub").textContent=(realTotal-done)+" stops remaining";
   document.getElementById("prog-bar").style.width=pct+"%";
@@ -1027,7 +1027,7 @@ function buildList(){
            +'<div class="sl-n" style="color:'+col+'">&#9679;</div>'
            +'<div class="sl-body"><div class="sl-addr" style="color:'+col+'">Council Office</div><div class="sl-sub">44 Station St, Cobram</div></div>'
            +'<span class="sl-bins" style="background:rgba(192,223,22,.15);color:'+col+'">START</span>'
-           +'<div class="sl-chk">'+(isDep?"?":"")+'</div></div>';
+           +'<div class="sl-chk">'+(isDep?"&#10003;":"")+'</div></div>';
       return;
     }
     var isDone=!!doneSet[sk(d,z,wk,c,i)], isCF=!!cfSet[sk(d,z,wk,c,i)], isCur=(i===cIdx);
@@ -1036,7 +1036,7 @@ function buildList(){
     var btxt=stop.bins>=3?"var(--danger)":stop.bins===2?"var(--warn)":"var(--green)";
     var note=notes[sk(d,z,wk,c,i)]||"";
     html+='<div class="'+cls+'" data-idx="'+i+'" onclick="jumpTo(this)">'
-        +'<div class="sl-n" style="color:'+(isCur?col:"")+'">'+( isDone||isCF?"?":i)+'</div>'
+        +'<div class="sl-n" style="color:'+(isCur?col:"")+'">'+( isDone||isCF?"&#10003;":i)+'</div>'
         +'<div class="sl-body"><div class="sl-addr">'+esc(stop.address)+'</div><div class="sl-sub">'+esc(stop.suburb)+(note?" &#128221;":stop.note?" &#9888;":"")+'</div></div>'
         +'<span class="sl-bins" style="background:'+bclr+';color:'+btxt+'">'+stop.bins+'x</span>'
         +'<div class="sl-chk">'+(isDone||isCF?"&#10003;":"")+'</div></div>';
@@ -1173,14 +1173,14 @@ function buildRptTxt(){
   var d=cDay, z=cZone, wk=cWeek, c=cCrew, stops=cStops, lines=[];
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
   var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" · "+v.short:"");
+  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
   // Find the scheduled run date from SCHEDULE
   var schedDate="";
   SCHEDULE.forEach(function(e){ if(e.day===d&&e.zone===z&&e.week===wk){ schedDate=e.date; } });
   var runDateStr=schedDate?new Date(schedDate).toLocaleDateString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric"}):"";
   var reportedAt=new Date().toLocaleString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric",hour:"2-digit",minute:"2-digit"});
-  lines.push("=== MOIRA LIDSWAP — RUN REPORT ===");
-  lines.push("Run:    "+d+" Zone "+z+(runDateStr?" — "+runDateStr:""));
+  lines.push("=== MOIRA LIDSWAP - RUN REPORT ===");
+  lines.push("Run:    "+d+" Zone "+z+(runDateStr?" - "+runDateStr:""));
   lines.push("Crew:   "+dName);
   lines.push("Reported: "+reportedAt);
   lines.push("");
@@ -1210,13 +1210,13 @@ function buildRptTxt(){
     subKeys.forEach(function(sb){ lines.push("  "+sb+": "+suburbBins[sb]); });
   }
   var cfs=[],sks=[],nts=[];
-  stops.forEach(function(s,i){ if(isDepot(s))return; var k=sk(d,z,wk,c,i),n=notes[k]||""; if(cfSet[k])cfs.push(s.address+", "+s.suburb+(n?" — "+n:"")); else if(!doneSet[k])sks.push(s.address+", "+s.suburb); });
-  donedStops.forEach(function(r){ if(r.n)nts.push(r.s.address+", "+r.s.suburb+" — "+r.n); });
-  if(cfs.length){ lines.push(""); lines.push("CANNOT FIND ("+cfs.length+")"); lines.push("-------------------"); cfs.forEach(function(l){ lines.push("  • "+l); }); }
-  if(sks.length){ lines.push(""); lines.push("SKIPPED ("+sks.length+")"); lines.push("----------"); sks.forEach(function(l){ lines.push("  • "+l); }); }
-  if(nts.length){ lines.push(""); lines.push("NOTES"); lines.push("-----"); nts.forEach(function(l){ lines.push("  • "+l); }); }
+  stops.forEach(function(s,i){ if(isDepot(s))return; var k=sk(d,z,wk,c,i),n=notes[k]||""; if(cfSet[k])cfs.push(s.address+", "+s.suburb+(n?" - "+n:"")); else if(!doneSet[k])sks.push(s.address+", "+s.suburb); });
+  donedStops.forEach(function(r){ if(r.n)nts.push(r.s.address+", "+r.s.suburb+" - "+r.n); });
+  if(cfs.length){ lines.push(""); lines.push("CANNOT FIND ("+cfs.length+")"); lines.push("-------------------"); cfs.forEach(function(l){ lines.push("  - "+l); }); }
+  if(sks.length){ lines.push(""); lines.push("SKIPPED ("+sks.length+")"); lines.push("----------"); sks.forEach(function(l){ lines.push("  - "+l); }); }
+  if(nts.length){ lines.push(""); lines.push("NOTES"); lines.push("-----"); nts.forEach(function(l){ lines.push("  - "+l); }); }
   lines.push(""); lines.push("--- ALL COMPLETED STOPS ("+dc+") ---");
-  donedStops.forEach(function(r,i){ lines.push("  "+(i+1)+". "+r.s.address+", "+r.s.suburb+(r.s.bins>1?" ("+r.s.bins+" bins)":"")+(r.n?" — "+r.n:"")); });
+  donedStops.forEach(function(r,i){ lines.push("  "+(i+1)+". "+r.s.address+", "+r.s.suburb+(r.s.bins>1?" ("+r.s.bins+" bins)":"")+(r.n?" - "+r.n:"")); });
   return lines.join("\n");
 }
 function showReport(){
@@ -1234,7 +1234,7 @@ function showReport(){
   var pct=total>0?Math.round(dc/total*100):0;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
   var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" · "+v.short:"");
+  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
   // Scheduled run date
   var schedDate="";
   SCHEDULE.forEach(function(e){ if(e.day===d&&e.zone===z&&e.week===wk){ schedDate=e.date; } });
@@ -1303,7 +1303,7 @@ function shareReport(){
     navigator.share({ title:"LidSwap Run Report", text:t }).catch(function(){});
   } else {
     // Fallback: copy + notify
-    if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){ alert("Share not available — copied to clipboard instead!"); }); }
+    if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){ alert("Share not available - copied to clipboard instead!"); }); }
     else { alert("Share not available on this device."); }
   }
 }
@@ -1313,7 +1313,7 @@ function exportReportExcel(){
   var d=cDay,z=cZone,wk=cWeek,c=cCrew,stops=cStops;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
   var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" · "+v.short:"");
+  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
   var schedDate="";
   SCHEDULE.forEach(function(e){ if(e.day===d&&e.zone===z&&e.week===wk){ schedDate=e.date; } });
   var runDateStr=schedDate?new Date(schedDate).toLocaleDateString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric"}):"";
@@ -1361,12 +1361,12 @@ function exportReportExcel(){
     +'<table>';
 
   // ?? Title banner ??
-  html+='<tr><td colspan="6" style="background:'+NAVY+';color:'+WHITE+';font-size:15pt;font-weight:700;padding:12px 14px;border:none;letter-spacing:0.5px">Moira Shire Council — LidSwap Run Report</td></tr>';
+  html+='<tr><td colspan="6" style="background:'+NAVY+';color:'+WHITE+';font-size:15pt;font-weight:700;padding:12px 14px;border:none;letter-spacing:0.5px">Moira Shire Council &#8212; LidSwap Run Report</td></tr>';
 
   // ?? Info block ??
   var infoRows=[
     ["Run", d+" Zone "+z],
-    ["Scheduled Date", runDateStr||"—"],
+    ["Scheduled Date", runDateStr||"&#8212;"],
     ["Crew", dName],
     ["Exported", reportedAt]
   ];
@@ -1422,7 +1422,7 @@ function exportReportExcel(){
   });
 
   // ?? Footer ??
-  html+='<tr><td colspan="6" style="background:'+NAVY+';color:rgba(255,255,255,0.5);font-size:9pt;padding:6px 14px;border:none;text-align:right">Moira Shire Council · LidSwap · '+esc(reportedAt)+'</td></tr>';
+  html+='<tr><td colspan="6" style="background:'+NAVY+';color:rgba(255,255,255,0.5);font-size:9pt;padding:6px 14px;border:none;text-align:right">Moira Shire Council &middot; LidSwap &middot; '+esc(reportedAt)+'</td></tr>';
 
   html+='</table></body></html>';
 
@@ -1444,13 +1444,13 @@ function resetAll() {
 }
 
 /* ?? Scoreboard ?? */
-var SB_TAUNTS=["Who's got the most bins today?","The gap is growing — step it up!","Every bin counts on the leaderboard.","Top spot is earned, not given.","Fuel up and get back out there!","That distance isn't going to drive itself.","Neck and neck — who blinks first?","The bins are watching. Don't let them down."];
+var SB_TAUNTS=["Who's got the most bins today?","The gap is growing &#8212; step it up!","Every bin counts on the leaderboard.","Top spot is earned, not given.","Fuel up and get back out there!","That distance isn't going to drive itself.","Neck and neck &#8212; who blinks first?","The bins are watching. Don't let them down."];
 function openScoreboard(){
   var rows=CREW.map(function(p){
     var st=driverStats[p.id]||{bins:0,stops:0};
     return { id:p.id, name:p.name, bins:st.bins, stops:st.stops };
   }).sort(function(a,b){ return b.bins!==a.bins?b.bins-a.bins:b.stops-a.stops; });
-  var medals=["?","?","?"];
+  var medals=["&#129351;","&#129352;","&#129353;"];
   var anyActivity=rows.some(function(r){ return r.bins>0||r.stops>0; });
   var html="";
   rows.forEach(function(r,idx){
@@ -1462,7 +1462,7 @@ function openScoreboard(){
         +'<div><div class="sb-score">'+r.bins+'</div><div class="sb-score-lbl">lids</div></div>'
         +'</div>';
   });
-  if(anyActivity){ var taunt=SB_TAUNTS[Math.floor(Math.random()*SB_TAUNTS.length)]; html+='<div class="sb-taunt">? '+taunt+'</div>'; }
+  if(anyActivity){ var taunt=SB_TAUNTS[Math.floor(Math.random()*SB_TAUNTS.length)]; html+='<div class="sb-taunt">&#129300; '+taunt+'</div>'; }
   else { html+='<div class="sb-taunt" style="color:var(--muted)">No runs recorded yet. Get out there!</div>'; }
   document.getElementById("m-sb-body").innerHTML=html; openM("m-sb");
 }
@@ -1663,7 +1663,7 @@ function updateOverviewMap(){
   var bounds = [];
   cStops.forEach(function(s,i){
     if(isDepot(s)){
-      var m = L.marker([s.lat,s.lng],{icon:_iconDepot}).addTo(_ovMap).bindPopup('Council Depot — Start');
+      var m = L.marker([s.lat,s.lng],{icon:_iconDepot}).addTo(_ovMap).bindPopup('Council Depot - Start');
       _ovMarkers.push(m); bounds.push([s.lat,s.lng]); return;
     }
     var isDone = !!doneSet[sk(cDay,cZone,cWeek,cCrew,i)];
