@@ -1456,7 +1456,7 @@ function shareReport(){
   }
 }
 
-/* ── Export Report to Excel (SpreadsheetML XML — proper .xlsx-compatible format) ── */
+/* ── Export Report to Excel (.xlsx — iPad/Excel compatible) ── */
 function exportReportExcel(){
   var d=cDay,z=cZone,wk=cWeek,c=cCrew,stops=cStops;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
@@ -1467,237 +1467,262 @@ function exportReportExcel(){
   var runDateStr=schedDate?new Date(schedDate).toLocaleDateString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric"}):"";
   var reportedAt=new Date().toLocaleString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric",hour:"2-digit",minute:"2-digit"});
 
-  var dc=0,cf=0,sk2=0,bDone=0,bTotal=0;
-  var stopRows=[];
+  var dc=0,cf=0,sk2=0,bDone=0,bTotal=0,stopRows=[];
   stops.forEach(function(s,i){
     if(isDepot(s))return;
-    var k=sk(d,z,wk,c,i), n=notes[k]||"";
+    var k=sk(d,z,wk,c,i),n=notes[k]||"";
     bTotal+=(s.bins||1);
     var status;
-    if(doneSet[k]){ dc++; bDone+=(s.bins||1); status="Completed"; }
-    else if(cfSet[k]){ cf++; status="Cannot Find"; }
-    else { sk2++; status="Not Done"; }
-    stopRows.push({num:i, addr:s.address, suburb:s.suburb, bins:s.bins||1, status:status, note:n});
+    if(doneSet[k]){dc++;bDone+=(s.bins||1);status="Completed";}
+    else if(cfSet[k]){cf++;status="Cannot Find";}
+    else{sk2++;status="Not Done";}
+    stopRows.push({num:i,addr:s.address,suburb:s.suburb,bins:s.bins||1,status:status,note:n});
   });
-  var total=dc+cf+sk2;
-  var pct=total>0?Math.round(dc/total*100):0;
+  var total=dc+cf+sk2,pct=total>0?Math.round(dc/total*100):0;
+  var _rt=getRunTimes(),_dur=fmtDuration(_rt.depart,_rt.finish);
 
-  var _rt=getRunTimes();
-  var _dur=fmtDuration(_rt.depart,_rt.finish);
+  /* helpers */
+  function xe(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+  function enc(s){return new TextEncoder().encode(s);}
 
-  // XML-escape helper (no HTML entities — SpreadsheetML is pure XML)
-  function x(s){
-    return String(s==null?"":s)
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&apos;");
+  /* CRC32 */
+  var _ct=null;
+  function crc32b(buf){
+    if(!_ct){_ct=new Uint32Array(256);for(var i=0;i<256;i++){var c=i;for(var j=0;j<8;j++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);_ct[i]=c;}}
+    var r=0xFFFFFFFF;
+    for(var i=0;i<buf.length;i++)r=_ct[(r^buf[i])&0xFF]^(r>>>8);
+    return(r^0xFFFFFFFF)>>>0;
   }
 
-  // Build SpreadsheetML 2003 XML
-  // Styles are defined once and referenced by ID — this is what Excel actually reads natively
-  var xml='<?xml version="1.0" encoding="UTF-8"?>\n'
-    +'<?mso-application progid="Excel.Sheet"?>\n'
-    +'<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n'
-    +' xmlns:o="urn:schemas-microsoft-com:office:office"\n'
-    +' xmlns:x="urn:schemas-microsoft-com:office:excel"\n'
-    +' xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n'
-    +'<Styles>\n'
-    // sHdr — navy bg, white bold text, 14pt
-    +'<Style ss:ID="sHdr"><Alignment ss:Vertical="Center" ss:WrapText="0"/>'
-    +'<Font ss:Bold="1" ss:Color="#FFFFFF" ss:Size="14" ss:FontName="Calibri"/>'
-    +'<Interior ss:Color="#003349" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2" ss:Color="#00A3E0"/></Borders></Style>\n'
-    // sInfoKey — blue bg, white bold
-    +'<Style ss:ID="sInfoKey"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#FFFFFF" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#00A3E0" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#0086BA"/></Borders></Style>\n'
-    // sInfoVal — light blue bg, navy text
-    +'<Style ss:ID="sInfoVal"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#EAF5FB" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
-    // sSectionHdr — navy bg, lime text
-    +'<Style ss:ID="sSectionHdr"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#C0DF16" ss:FontName="Calibri" ss:Size="11"/>'
-    +'<Interior ss:Color="#003349" ss:Pattern="Solid"/></Style>\n'
-    // sSumKey0/1 — alternating blue tint, navy bold
-    +'<Style ss:ID="sSumKey0"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#DCEEF6" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
-    +'<Style ss:ID="sSumKey1"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
-    +'<Style ss:ID="sSumVal0"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="11"/>'
-    +'<Interior ss:Color="#DCEEF6" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
-    +'<Style ss:ID="sSumVal1"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="11"/>'
-    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
-    // sColHdr — lime bg, navy bold
-    +'<Style ss:ID="sColHdr"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#C0DF16" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#8FA000"/></Borders></Style>\n'
-    // sCell0/1 — alternating white/light rows
-    +'<Style ss:ID="sCell0"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
-    +'<Style ss:ID="sCell1"><Alignment ss:Vertical="Center"/>'
-    +'<Font ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#E8F4FA" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
-    // sCellC — centred variant (for # and Bins cols)
-    +'<Style ss:ID="sCellC0"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
-    +'<Style ss:ID="sCellC1"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#E8F4FA" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
-    // Status styles
-    +'<Style ss:ID="sOK"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#155724" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#D4EDDA" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4B8"/></Borders></Style>\n'
-    +'<Style ss:ID="sCF"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#721C24" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#F8D7DA" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#D0A0A4"/></Borders></Style>\n'
-    +'<Style ss:ID="sND"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
-    +'<Font ss:Bold="1" ss:Color="#856404" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#FFF3CD" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#D0C070"/></Borders></Style>\n'
-    // sNote — muted text
-    +'<Style ss:ID="sNote"><Alignment ss:Vertical="Center" ss:WrapText="1"/>'
-    +'<Font ss:Color="#555555" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
-    +'<Style ss:ID="sNote1"><Alignment ss:Vertical="Center" ss:WrapText="1"/>'
-    +'<Font ss:Color="#555555" ss:FontName="Calibri" ss:Size="10"/>'
-    +'<Interior ss:Color="#E8F4FA" ss:Pattern="Solid"/>'
-    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
-    // sFooter
-    +'<Style ss:ID="sFooter"><Alignment ss:Vertical="Center" ss:Horizontal="Right"/>'
-    +'<Font ss:Color="#7AB8CC" ss:FontName="Calibri" ss:Size="9"/>'
-    +'<Interior ss:Color="#003349" ss:Pattern="Solid"/></Style>\n'
-    // sBlank
-    +'<Style ss:ID="sBlank"><Interior ss:Color="#F5F8FA" ss:Pattern="Solid"/></Style>\n'
-    +'</Styles>\n'
-    +'<Worksheet ss:Name="LidSwap Report">\n'
-    +'<Table ss:DefaultColumnWidth="80">\n'
-    // Column widths
-    +'<Column ss:Width="40"/>'    // # (col 1)
-    +'<Column ss:Width="200"/>'   // Address
-    +'<Column ss:Width="120"/>'   // Suburb
-    +'<Column ss:Width="50"/>'    // Bins
-    +'<Column ss:Width="110"/>'   // Status
-    +'<Column ss:Width="180"/>\n' // Note
+  /* minimal ZIP builder (STORE / no compression) */
+  function makeZip(files){
+    function u16(n){return[(n)&0xFF,(n>>8)&0xFF];}
+    function u32(n){return[(n)&0xFF,(n>>8)&0xFF,(n>>16)&0xFF,(n>>24)&0xFF];}
+    var parts=[],cds=[],off=0;
+    files.forEach(function(f){
+      var nb=enc(f.name),crc=crc32b(f.data),sz=f.data.length;
+      var lh=[0x50,0x4B,0x03,0x04].concat(u16(20),u16(0),u16(0),u16(0),u16(0),u32(crc),u32(sz),u32(sz),u16(nb.length),u16(0));
+      parts.push(new Uint8Array(lh));parts.push(nb);parts.push(f.data);
+      var cd=[0x50,0x4B,0x01,0x02].concat(u16(20),u16(20),u16(0),u16(0),u16(0),u16(0),u32(crc),u32(sz),u32(sz),u16(nb.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(off));
+      cds.push({h:cd,nb:nb});
+      off+=lh.length+nb.length+sz;
+    });
+    var cdOff=off,cdSz=0;
+    cds.forEach(function(e){var a=new Uint8Array(e.h.concat(Array.from(e.nb)));parts.push(a);cdSz+=a.length;});
+    var eocd=[0x50,0x4B,0x05,0x06].concat(u16(0),u16(0),u16(files.length),u16(files.length),u32(cdSz),u32(cdOff),u16(0));
+    parts.push(new Uint8Array(eocd));
+    var tot=0;parts.forEach(function(p){tot+=p.length;});
+    var out=new Uint8Array(tot),pos=0;
+    parts.forEach(function(p){out.set(p,pos);pos+=p.length;});
+    return out;
+  }
 
-    // Row 1: Title
-    +'<Row ss:Height="30">'
-    +'<Cell ss:MergeAcross="5" ss:StyleID="sHdr"><Data ss:Type="String">Moira Shire Council - LidSwap Run Report</Data></Cell>'
-    +'</Row>\n';
+  /* xlsx file contents */
+  var CT='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+    +'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+    +'<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+    +'<Default Extension="xml" ContentType="application/xml"/>'
+    +'<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'
+    +'<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>'
+    +'<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>'
+    +'</Types>';
 
-  // Info rows
+  var RELS='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+    +'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+    +'<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>'
+    +'</Relationships>';
+
+  var WB='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+    +'<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+    +'<sheets><sheet name="LidSwap Report" sheetId="1" r:id="rId1"/></sheets>'
+    +'</workbook>';
+
+  var WB_RELS='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+    +'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+    +'<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>'
+    +'<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>'
+    +'</Relationships>';
+
+  /* styles.xml
+     fonts:  0=def  1=wh14b  2=wh10b  3=nv10  4=lime11b  5=nv10b  6=nv11b  7=grn10b  8=red10b  9=amb10b  10=gry10  11=lbl9
+     fills:  0=none 1=gray125 2=navy 3=blue 4=lblue 5=dceef6 6=white 7=lime 8=e8f4fa 9=d4edda 10=f8d7da 11=fff3cd
+     borders:0=none 1=thin#C8D8E4  2=thin#8FA000
+     xfs:    0=def 1=hdr 2=iKey 3=iVal 4=secHdr 5=sumK0 6=sumK1 7=sumV0 8=sumV1 9=colHdr
+             10=cell0 11=cell1 12=cellC0 13=cellC1 14=ok 15=cf 16=nd 17=note0 18=note1 19=footer */
+  var STYLES='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+    +'<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+    +'<fonts count="12">'
+    +'<font><sz val="10"/><name val="Calibri"/></font>'
+    +'<font><b/><sz val="14"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>'
+    +'<font><b/><sz val="10"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font>'
+    +'<font><sz val="10"/><color rgb="FF003349"/><name val="Calibri"/></font>'
+    +'<font><b/><sz val="11"/><color rgb="FFC0DF16"/><name val="Calibri"/></font>'
+    +'<font><b/><sz val="10"/><color rgb="FF003349"/><name val="Calibri"/></font>'
+    +'<font><b/><sz val="11"/><color rgb="FF003349"/><name val="Calibri"/></font>'
+    +'<font><b/><sz val="10"/><color rgb="FF155724"/><name val="Calibri"/></font>'
+    +'<font><b/><sz val="10"/><color rgb="FF721C24"/><name val="Calibri"/></font>'
+    +'<font><b/><sz val="10"/><color rgb="FF856404"/><name val="Calibri"/></font>'
+    +'<font><sz val="10"/><color rgb="FF555555"/><name val="Calibri"/></font>'
+    +'<font><sz val="9"/><color rgb="FF7AB8CC"/><name val="Calibri"/></font>'
+    +'</fonts>'
+    +'<fills count="12">'
+    +'<fill><patternFill patternType="none"/></fill>'
+    +'<fill><patternFill patternType="gray125"/></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FF003349"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FF00A3E0"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FFEAF5FB"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FFDCEEF6"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FFFFFFFF"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FFC0DF16"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FFE8F4FA"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FFD4EDDA"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FFF8D7DA"/></patternFill></fill>'
+    +'<fill><patternFill patternType="solid"><fgColor rgb="FFFFF3CD"/></patternFill></fill>'
+    +'</fills>'
+    +'<borders count="3">'
+    +'<border><left/><right/><top/><bottom/><diagonal/></border>'
+    +'<border><left style="thin"><color rgb="FFC8D8E4"/></left><right style="thin"><color rgb="FFC8D8E4"/></right><top style="thin"><color rgb="FFC8D8E4"/></top><bottom style="thin"><color rgb="FFC8D8E4"/></bottom><diagonal/></border>'
+    +'<border><left style="thin"><color rgb="FF8FA000"/></left><right style="thin"><color rgb="FF8FA000"/></right><top style="thin"><color rgb="FF8FA000"/></top><bottom style="thin"><color rgb="FF8FA000"/></bottom><diagonal/></border>'
+    +'</borders>'
+    +'<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>'
+    +'<cellXfs count="20">'
+    +'<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'
+    +'<xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="2" fillId="3" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="3" fillId="4" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="4" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="5" fillId="5" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="5" fillId="6" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="6" fillId="5" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="6" fillId="6" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="5" fillId="7" borderId="2" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment horizontal="center" vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="3" fillId="6" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="3" fillId="8" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="5" fillId="6" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment horizontal="center" vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="5" fillId="8" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment horizontal="center" vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="7" fillId="9" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment horizontal="center" vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="8" fillId="10" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment horizontal="center" vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="9" fillId="11" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment horizontal="center" vertical="center"/></xf>'
+    +'<xf numFmtId="0" fontId="10" fillId="6" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center" wrapText="1"/></xf>'
+    +'<xf numFmtId="0" fontId="10" fillId="8" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1"><alignment vertical="center" wrapText="1"/></xf>'
+    +'<xf numFmtId="0" fontId="11" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"><alignment horizontal="right" vertical="center"/></xf>'
+    +'</cellXfs>'
+    +'</styleSheet>';
+
+  /* sheet1.xml */
+  function iStr(ref,s,style){return '<c r="'+ref+'" s="'+style+'" t="inlineStr"><is><t>'+xe(s)+'</t></is></c>';}
+  function iNum(ref,n,style){return '<c r="'+ref+'" s="'+style+'"><v>'+n+'</v></c>';}
+
+  var merges=[],rowN=0,shRows='';
+  function nr(){rowN++;return rowN;}
+
+  /* Row 1: title */
+  var r=nr();
+  shRows+='<row r="'+r+'" ht="30" customHeight="1">'+iStr('A'+r,'Moira Shire Council — LidSwap Run Report',1)+'</row>';
+  merges.push('A'+r+':F'+r);
+
+  /* Info rows */
   var infoRows=[
-    ["Run", d+" Zone "+z],
-    ["Scheduled Date", runDateStr||"-"],
-    ["Crew", dName],
-    ["Departed", fmtTime(_rt.depart)||"-"],
-    ["Finished", fmtTime(_rt.finish)||"-"],
-    ["Duration", _dur||"-"],
-    ["Exported", reportedAt]
+    ["Run",d+" Zone "+z],
+    ["Scheduled Date",runDateStr||"—"],
+    ["Crew",dName],
+    ["Departed",fmtTime(_rt.depart)||"—"],
+    ["Finished",fmtTime(_rt.finish)||"—"],
+    ["Duration",_dur||"—"],
+    ["Exported",reportedAt]
   ];
-  infoRows.forEach(function(r){
-    xml+='<Row ss:Height="18">'
-      +'<Cell ss:MergeAcross="1" ss:StyleID="sInfoKey"><Data ss:Type="String">'+x(r[0])+'</Data></Cell>'
-      +'<Cell ss:Index="3" ss:MergeAcross="3" ss:StyleID="sInfoVal"><Data ss:Type="String">'+x(r[1])+'</Data></Cell>'
-      +'</Row>\n';
+  infoRows.forEach(function(ir){
+    r=nr();
+    shRows+='<row r="'+r+'" ht="18" customHeight="1">'+iStr('A'+r,ir[0],2)+iStr('C'+r,ir[1],3)+'</row>';
+    merges.push('A'+r+':B'+r);merges.push('C'+r+':F'+r);
   });
 
-  // Blank spacer
-  xml+='<Row ss:Height="8"><Cell ss:MergeAcross="5" ss:StyleID="sBlank"><Data ss:Type="String"></Data></Cell></Row>\n';
+  /* blank */
+  r=nr();shRows+='<row r="'+r+'" ht="8" customHeight="1"></row>';
 
-  // Summary header
-  xml+='<Row ss:Height="22">'
-    +'<Cell ss:MergeAcross="5" ss:StyleID="sSectionHdr"><Data ss:Type="String">SUMMARY</Data></Cell>'
-    +'</Row>\n';
+  /* SUMMARY header */
+  r=nr();
+  shRows+='<row r="'+r+'" ht="22" customHeight="1">'+iStr('A'+r,'SUMMARY',4)+'</row>';
+  merges.push('A'+r+':F'+r);
 
   var summaryRows=[
-    ["Stops Completed", dc+" of "+total+" ("+pct+"%)"],
-    ["Lids Swapped", bDone+" of "+bTotal],
-    ["Cannot Find", String(cf)],
-    ["Skipped / Not Done", String(sk2)]
+    ["Stops Completed",dc+" of "+total+" ("+pct+"%)"],
+    ["Lids Swapped",bDone+" of "+bTotal],
+    ["Cannot Find",String(cf)],
+    ["Skipped / Not Done",String(sk2)]
   ];
-  summaryRows.forEach(function(r,idx){
-    var alt=idx%2;
-    xml+='<Row ss:Height="18">'
-      +'<Cell ss:MergeAcross="1" ss:StyleID="sSumKey'+alt+'"><Data ss:Type="String">'+x(r[0])+'</Data></Cell>'
-      +'<Cell ss:Index="3" ss:MergeAcross="3" ss:StyleID="sSumVal'+alt+'"><Data ss:Type="String">'+x(r[1])+'</Data></Cell>'
-      +'</Row>\n';
+  summaryRows.forEach(function(sr,idx){
+    var alt=idx%2;r=nr();
+    shRows+='<row r="'+r+'" ht="18" customHeight="1">'+iStr('A'+r,sr[0],5+alt)+iStr('C'+r,sr[1],7+alt)+'</row>';
+    merges.push('A'+r+':B'+r);merges.push('C'+r+':F'+r);
   });
 
-  // Blank spacer
-  xml+='<Row ss:Height="8"><Cell ss:MergeAcross="5" ss:StyleID="sBlank"><Data ss:Type="String"></Data></Cell></Row>\n';
+  /* blank */
+  r=nr();shRows+='<row r="'+r+'" ht="8" customHeight="1"></row>';
 
-  // Stop detail header
-  xml+='<Row ss:Height="22">'
-    +'<Cell ss:MergeAcross="5" ss:StyleID="sSectionHdr"><Data ss:Type="String">STOP DETAIL</Data></Cell>'
-    +'</Row>\n';
+  /* STOP DETAIL header */
+  r=nr();
+  shRows+='<row r="'+r+'" ht="22" customHeight="1">'+iStr('A'+r,'STOP DETAIL',4)+'</row>';
+  merges.push('A'+r+':F'+r);
 
-  // Column header row
-  xml+='<Row ss:Height="20">'
-    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">#</Data></Cell>'
-    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Address</Data></Cell>'
-    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Suburb</Data></Cell>'
-    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Bins</Data></Cell>'
-    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Status</Data></Cell>'
-    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Note</Data></Cell>'
-    +'</Row>\n';
+  /* column header row */
+  r=nr();
+  shRows+='<row r="'+r+'" ht="20" customHeight="1">'
+    +iStr('A'+r,'#',9)+iStr('B'+r,'Address',9)+iStr('C'+r,'Suburb',9)
+    +iStr('D'+r,'Bins',9)+iStr('E'+r,'Status',9)+iStr('F'+r,'Note',9)
+    +'</row>';
 
-  // Data rows
-  stopRows.forEach(function(r,idx){
+  /* data rows */
+  stopRows.forEach(function(sr,idx){
     var alt=idx%2;
-    var stStyle = r.status==="Completed"?"sOK":(r.status==="Cannot Find"?"sCF":"sND");
-    var noteStyle = alt===0?"sNote":"sNote1";
-    xml+='<Row ss:Height="18">'
-      +'<Cell ss:StyleID="sCellC'+alt+'"><Data ss:Type="Number">'+r.num+'</Data></Cell>'
-      +'<Cell ss:StyleID="sCell'+alt+'"><Data ss:Type="String">'+x(r.addr)+'</Data></Cell>'
-      +'<Cell ss:StyleID="sCell'+alt+'"><Data ss:Type="String">'+x(r.suburb)+'</Data></Cell>'
-      +'<Cell ss:StyleID="sCellC'+alt+'"><Data ss:Type="Number">'+r.bins+'</Data></Cell>'
-      +'<Cell ss:StyleID="'+stStyle+'"><Data ss:Type="String">'+x(r.status)+'</Data></Cell>'
-      +'<Cell ss:StyleID="'+noteStyle+'"><Data ss:Type="String">'+x(r.note)+'</Data></Cell>'
-      +'</Row>\n';
+    var stS=sr.status==="Completed"?14:(sr.status==="Cannot Find"?15:16);
+    r=nr();
+    shRows+='<row r="'+r+'" ht="18" customHeight="1">'
+      +iNum('A'+r,sr.num,12+alt)
+      +iStr('B'+r,sr.addr,10+alt)
+      +iStr('C'+r,sr.suburb,10+alt)
+      +iNum('D'+r,sr.bins,12+alt)
+      +iStr('E'+r,sr.status,stS)
+      +iStr('F'+r,sr.note,17+alt)
+      +'</row>';
   });
 
-  // Footer
-  xml+='<Row ss:Height="16">'
-    +'<Cell ss:MergeAcross="5" ss:StyleID="sFooter"><Data ss:Type="String">Moira Shire Council  |  LidSwap  |  '+x(reportedAt)+'</Data></Cell>'
-    +'</Row>\n';
+  /* footer */
+  r=nr();
+  shRows+='<row r="'+r+'" ht="16" customHeight="1">'+iStr('A'+r,'Moira Shire Council  |  LidSwap  |  '+reportedAt,19)+'</row>';
+  merges.push('A'+r+':F'+r);
 
-  xml+='</Table>'
-    +'<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">'
-    +'<FreezePanes/><FrozenNoSplit/><SplitHorizontal>1</SplitHorizontal><TopRowBottomPane>1</TopRowBottomPane>'
-    +'<ActivePane>2</ActivePane>'
-    +'</WorksheetOptions>'
-    +'</Worksheet></Workbook>';
+  var SHEET='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+    +'<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+    +'<cols>'
+    +'<col min="1" max="1" width="6" customWidth="1"/>'
+    +'<col min="2" max="2" width="30" customWidth="1"/>'
+    +'<col min="3" max="3" width="18" customWidth="1"/>'
+    +'<col min="4" max="4" width="8" customWidth="1"/>'
+    +'<col min="5" max="5" width="16" customWidth="1"/>'
+    +'<col min="6" max="6" width="28" customWidth="1"/>'
+    +'</cols>'
+    +'<sheetData>'+shRows+'</sheetData>'
+    +'<mergeCells count="'+merges.length+'">'
+    +merges.map(function(m){return'<mergeCell ref="'+m+'"/>';}).join('')
+    +'</mergeCells>'
+    +'</worksheet>';
 
-  var BOM="﻿"; // UTF-8 BOM — required for Excel to read UTF-8 correctly
-  var blob=new Blob([BOM+xml],{type:"application/vnd.ms-excel;charset=utf-8;"});
+  /* assemble and download */
+  var zip=makeZip([
+    {name:'[Content_Types].xml',       data:enc(CT)},
+    {name:'_rels/.rels',               data:enc(RELS)},
+    {name:'xl/workbook.xml',           data:enc(WB)},
+    {name:'xl/_rels/workbook.xml.rels',data:enc(WB_RELS)},
+    {name:'xl/styles.xml',             data:enc(STYLES)},
+    {name:'xl/worksheets/sheet1.xml',  data:enc(SHEET)}
+  ]);
+  var blob=new Blob([zip],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
   var url=URL.createObjectURL(blob);
-  var a=document.createElement("a");
-  var fileName="LidSwap_"+d.replace(/\s+/g,"")+"_Zone"+z+"_"+new Date().toISOString().slice(0,10)+".xls";
-  a.href=url; a.download=fileName; document.body.appendChild(a); a.click();
-  document.body.removeChild(a); URL.revokeObjectURL(url);
+  var a=document.createElement('a');
+  var fileName='LidSwap_'+d.replace(/\s+/g,'_')+'_Zone'+z+'_'+new Date().toISOString().slice(0,10)+'.xlsx';
+  a.href=url;a.download=fileName;document.body.appendChild(a);a.click();
+  document.body.removeChild(a);URL.revokeObjectURL(url);
 }
 
 /* ── Reset all progress ── */
