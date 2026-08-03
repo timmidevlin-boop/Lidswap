@@ -79,39 +79,39 @@ input,textarea,select{font-size:16px!important}
 
 /* DRIVER PICKER */
 #s-driver{background:var(--bg);overflow-y:auto}
-.picker-wrap{padding:48px 14px 40px;max-width:500px;margin:0 auto}
-.picker-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer;margin-bottom:12px;padding:5px 11px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
+.picker-wrap{padding:52px 18px 50px;max-width:500px;margin:0 auto}
+.picker-back{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:22px;padding:7px 13px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
 .picker-back:active{opacity:.7}
-.picker-h{font-size:20px;font-weight:900;letter-spacing:-.5px;margin-bottom:1px}
-.picker-sub{font-size:12px;color:var(--muted);margin-bottom:10px}
+.picker-h{font-size:26px;font-weight:900;letter-spacing:-1px;margin-bottom:4px}
+.picker-sub{font-size:13px;color:var(--muted);margin-bottom:20px}
 
-/* Person grid — compact pill style */
-.person-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
-.driver-card{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:8px 4px 6px;cursor:pointer;transition:border-color .15s,transform .1s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;touch-action:manipulation}
+/* 7-person grid */
+.person-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:20px}
+.driver-card{background:var(--surface);border:2px solid var(--border);border-radius:14px;padding:12px 6px;cursor:pointer;transition:border-color .15s,transform .1s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px}
 .driver-card:active{transform:scale(.96)}
 .driver-card.selected{border-color:var(--lime);background:rgba(192,223,22,.07)}
-.dc-avatar{width:48px;height:48px;border-radius:50%;background:var(--surface2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--lime)}
-.dc-avatar-name{font-size:10px;font-weight:900;text-align:center;line-height:1.2;padding:2px}
-.dc-name{font-size:11px;font-weight:800}
-.dc-stats{font-size:9px;color:var(--lime);font-weight:700}
+.dc-avatar{width:72px;height:72px;border-radius:50%;background:var(--surface2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:var(--lime)}
+.dc-avatar-name{font-size:11px;font-weight:900;text-align:center;line-height:1.2;padding:4px}
+.dc-name{font-size:12px;font-weight:800}
+.dc-stats{font-size:10px;color:var(--lime);font-weight:700}
 
-/* Vehicle picker */
-#vehicle-pick-wrap{display:none;margin-top:6px}
-.vehicle-who{font-size:12px;font-weight:800;margin-bottom:7px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.vehicle-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:10px}
-.vehicle-card{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:8px 6px 7px;cursor:pointer;transition:border-color .15s,transform .1s;text-align:center;touch-action:manipulation}
+/* Vehicle picker (shown after person selected) */
+#vehicle-pick-wrap{display:none;margin-top:4px}
+.vehicle-who{font-size:15px;font-weight:800;margin-bottom:14px;color:var(--text)}
+.vehicle-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+.vehicle-card{background:var(--surface);border:2px solid var(--border);border-radius:14px;padding:12px 8px 10px;cursor:pointer;transition:border-color .15s,transform .1s;text-align:center}
 .vehicle-card:active{transform:scale(.96)}
 .vehicle-card.selected{border-color:var(--lime);background:rgba(192,223,22,.06)}
-.vc-img{width:100%;max-height:48px;object-fit:contain;display:block;margin-bottom:4px;filter:drop-shadow(0 2px 5px rgba(0,0,0,.35))}
-.vc-name{font-size:11px;font-weight:800}
+.vc-img{width:100%;max-height:75px;object-fit:contain;display:block;margin-bottom:7px;filter:drop-shadow(0 3px 8px rgba(0,0,0,.35))}
+.vc-name{font-size:12px;font-weight:800}
 /* Passenger picker */
-#passenger-pick-wrap{display:none;margin-top:10px}
-.passenger-hdr{font-size:12px;font-weight:800;margin-bottom:7px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.passenger-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
-.passenger-card{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:8px 4px 6px;cursor:pointer;transition:border-color .15s,transform .1s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;touch-action:manipulation}
+#passenger-pick-wrap{display:none;margin-top:18px}
+.passenger-hdr{font-size:15px;font-weight:800;margin-bottom:12px;color:var(--text)}
+.passenger-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.passenger-card{background:var(--surface);border:2px solid var(--border);border-radius:13px;padding:10px 5px;cursor:pointer;transition:border-color .15s,transform .1s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
 .passenger-card:active{transform:scale(.96)}
 .passenger-card.selected{border-color:var(--lime);background:rgba(192,223,22,.07)}
-#start-run-btn{display:none;width:100%;padding:14px;background:var(--lime);color:#001e2e;border:none;border-radius:12px;font-size:16px;font-weight:900;cursor:pointer;touch-action:manipulation}
+#start-run-btn{display:none;width:100%;padding:16px;background:var(--lime);color:#001e2e;border:none;border-radius:14px;font-size:16px;font-weight:900;cursor:pointer}
 #start-run-btn:active{filter:brightness(.85)}
 
 /* ROUTE */
@@ -1456,7 +1456,7 @@ function shareReport(){
   }
 }
 
-/* ── Export Report to Excel (CSV) ── */
+/* ── Export Report to Excel (SpreadsheetML XML — proper .xlsx-compatible format) ── */
 function exportReportExcel(){
   var d=cDay,z=cZone,wk=cWeek,c=cCrew,stops=cStops;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
@@ -1482,104 +1482,217 @@ function exportReportExcel(){
   var total=dc+cf+sk2;
   var pct=total>0?Math.round(dc/total*100):0;
 
-  // Moira brand colours
-  var NAVY="#003349", BLUE="#00A3E0", LIME="#C0DF16", WHITE="#ffffff";
-  var LIME_DARK="#8fa000"; // readable text on lime
-  var ROW_ALT="#e8f4fa";
-
-  function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-
-  function statusStyle(st){
-    if(st==="Completed")   return "background:#d4edda;color:#155724;font-weight:700";
-    if(st==="Cannot Find") return "background:#f8d7da;color:#721c24;font-weight:700";
-    return "background:#fff3cd;color:#856404;font-weight:700";
-  }
-
-  var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">'
-    +'<head><meta charset="UTF-8">'
-    +'<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>'
-    +'<x:Name>LidSwap Report</x:Name>'
-    +'<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>'
-    +'</x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->'
-    +'<style>'
-    +'body{font-family:Calibri,Arial,sans-serif;font-size:11pt}'
-    +'table{border-collapse:collapse;width:100%}'
-    +'td,th{padding:5px 9px;border:1px solid #c8d8e4}'
-    +'</style></head><body>'
-    +'<table>';
-
-  // ── Title banner ──
-  html+='<tr><td colspan="6" style="background:'+NAVY+';color:'+WHITE+';font-size:15pt;font-weight:700;padding:12px 14px;border:none;letter-spacing:0.5px">Moira Shire Council &#8212; LidSwap Run Report</td></tr>';
-
-  // ── Info block ──
   var _rt=getRunTimes();
   var _dur=fmtDuration(_rt.depart,_rt.finish);
+
+  // XML-escape helper (no HTML entities — SpreadsheetML is pure XML)
+  function x(s){
+    return String(s==null?"":s)
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&apos;");
+  }
+
+  // Build SpreadsheetML 2003 XML
+  // Styles are defined once and referenced by ID — this is what Excel actually reads natively
+  var xml='<?xml version="1.0" encoding="UTF-8"?>\n'
+    +'<?mso-application progid="Excel.Sheet"?>\n'
+    +'<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"\n'
+    +' xmlns:o="urn:schemas-microsoft-com:office:office"\n'
+    +' xmlns:x="urn:schemas-microsoft-com:office:excel"\n'
+    +' xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n'
+    +'<Styles>\n'
+    // sHdr — navy bg, white bold text, 14pt
+    +'<Style ss:ID="sHdr"><Alignment ss:Vertical="Center" ss:WrapText="0"/>'
+    +'<Font ss:Bold="1" ss:Color="#FFFFFF" ss:Size="14" ss:FontName="Calibri"/>'
+    +'<Interior ss:Color="#003349" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2" ss:Color="#00A3E0"/></Borders></Style>\n'
+    // sInfoKey — blue bg, white bold
+    +'<Style ss:ID="sInfoKey"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#FFFFFF" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#00A3E0" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#0086BA"/></Borders></Style>\n'
+    // sInfoVal — light blue bg, navy text
+    +'<Style ss:ID="sInfoVal"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#EAF5FB" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
+    // sSectionHdr — navy bg, lime text
+    +'<Style ss:ID="sSectionHdr"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#C0DF16" ss:FontName="Calibri" ss:Size="11"/>'
+    +'<Interior ss:Color="#003349" ss:Pattern="Solid"/></Style>\n'
+    // sSumKey0/1 — alternating blue tint, navy bold
+    +'<Style ss:ID="sSumKey0"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#DCEEF6" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
+    +'<Style ss:ID="sSumKey1"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
+    +'<Style ss:ID="sSumVal0"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="11"/>'
+    +'<Interior ss:Color="#DCEEF6" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
+    +'<Style ss:ID="sSumVal1"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="11"/>'
+    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4E8"/></Borders></Style>\n'
+    // sColHdr — lime bg, navy bold
+    +'<Style ss:ID="sColHdr"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#C0DF16" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#8FA000"/></Borders></Style>\n'
+    // sCell0/1 — alternating white/light rows
+    +'<Style ss:ID="sCell0"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
+    +'<Style ss:ID="sCell1"><Alignment ss:Vertical="Center"/>'
+    +'<Font ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#E8F4FA" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
+    // sCellC — centred variant (for # and Bins cols)
+    +'<Style ss:ID="sCellC0"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
+    +'<Style ss:ID="sCellC1"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#003349" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#E8F4FA" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
+    // Status styles
+    +'<Style ss:ID="sOK"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#155724" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#D4EDDA" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#B0D4B8"/></Borders></Style>\n'
+    +'<Style ss:ID="sCF"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#721C24" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#F8D7DA" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#D0A0A4"/></Borders></Style>\n'
+    +'<Style ss:ID="sND"><Alignment ss:Vertical="Center" ss:Horizontal="Center"/>'
+    +'<Font ss:Bold="1" ss:Color="#856404" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#FFF3CD" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#D0C070"/></Borders></Style>\n'
+    // sNote — muted text
+    +'<Style ss:ID="sNote"><Alignment ss:Vertical="Center" ss:WrapText="1"/>'
+    +'<Font ss:Color="#555555" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
+    +'<Style ss:ID="sNote1"><Alignment ss:Vertical="Center" ss:WrapText="1"/>'
+    +'<Font ss:Color="#555555" ss:FontName="Calibri" ss:Size="10"/>'
+    +'<Interior ss:Color="#E8F4FA" ss:Pattern="Solid"/>'
+    +'<Borders><Border ss:Position="All" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#C8D8E4"/></Borders></Style>\n'
+    // sFooter
+    +'<Style ss:ID="sFooter"><Alignment ss:Vertical="Center" ss:Horizontal="Right"/>'
+    +'<Font ss:Color="#7AB8CC" ss:FontName="Calibri" ss:Size="9"/>'
+    +'<Interior ss:Color="#003349" ss:Pattern="Solid"/></Style>\n'
+    // sBlank
+    +'<Style ss:ID="sBlank"><Interior ss:Color="#F5F8FA" ss:Pattern="Solid"/></Style>\n'
+    +'</Styles>\n'
+    +'<Worksheet ss:Name="LidSwap Report">\n'
+    +'<Table ss:DefaultColumnWidth="80">\n'
+    // Column widths
+    +'<Column ss:Width="40"/>'    // # (col 1)
+    +'<Column ss:Width="200"/>'   // Address
+    +'<Column ss:Width="120"/>'   // Suburb
+    +'<Column ss:Width="50"/>'    // Bins
+    +'<Column ss:Width="110"/>'   // Status
+    +'<Column ss:Width="180"/>\n' // Note
+
+    // Row 1: Title
+    +'<Row ss:Height="30">'
+    +'<Cell ss:MergeAcross="5" ss:StyleID="sHdr"><Data ss:Type="String">Moira Shire Council - LidSwap Run Report</Data></Cell>'
+    +'</Row>\n';
+
+  // Info rows
   var infoRows=[
     ["Run", d+" Zone "+z],
-    ["Scheduled Date", runDateStr||"&#8212;"],
+    ["Scheduled Date", runDateStr||"-"],
     ["Crew", dName],
-    ["Departed", fmtTime(_rt.depart)],
-    ["Finished", fmtTime(_rt.finish)],
-    ["Duration", _dur||"&#8212;"],
+    ["Departed", fmtTime(_rt.depart)||"-"],
+    ["Finished", fmtTime(_rt.finish)||"-"],
+    ["Duration", _dur||"-"],
     ["Exported", reportedAt]
   ];
   infoRows.forEach(function(r){
-    html+='<tr>'
-      +'<td colspan="2" style="background:'+BLUE+';color:'+WHITE+';font-weight:700;border-color:#0086ba">'+esc(r[0])+'</td>'
-      +'<td colspan="4" style="background:#f0f8fd;color:'+NAVY+';font-weight:600;border-color:#b0d4e8">'+esc(r[1])+'</td>'
-      +'</tr>';
+    xml+='<Row ss:Height="18">'
+      +'<Cell ss:MergeAcross="1" ss:StyleID="sInfoKey"><Data ss:Type="String">'+x(r[0])+'</Data></Cell>'
+      +'<Cell ss:Index="3" ss:MergeAcross="3" ss:StyleID="sInfoVal"><Data ss:Type="String">'+x(r[1])+'</Data></Cell>'
+      +'</Row>\n';
   });
 
-  // ── Spacer ──
-  html+='<tr><td colspan="6" style="border:none;padding:4px"></td></tr>';
+  // Blank spacer
+  xml+='<Row ss:Height="8"><Cell ss:MergeAcross="5" ss:StyleID="sBlank"><Data ss:Type="String"></Data></Cell></Row>\n';
 
-  // ── Summary block ──
-  html+='<tr><td colspan="6" style="background:'+NAVY+';color:'+LIME+';font-size:11pt;font-weight:700;padding:7px 14px;border:none;letter-spacing:0.5px">SUMMARY</td></tr>';
+  // Summary header
+  xml+='<Row ss:Height="22">'
+    +'<Cell ss:MergeAcross="5" ss:StyleID="sSectionHdr"><Data ss:Type="String">SUMMARY</Data></Cell>'
+    +'</Row>\n';
+
   var summaryRows=[
     ["Stops Completed", dc+" of "+total+" ("+pct+"%)"],
-    ["Lids Swapped",   bDone+" of "+bTotal],
-    ["Cannot Find",     cf],
-    ["Skipped / Not Done", sk2]
+    ["Lids Swapped", bDone+" of "+bTotal],
+    ["Cannot Find", String(cf)],
+    ["Skipped / Not Done", String(sk2)]
   ];
   summaryRows.forEach(function(r,idx){
-    html+='<tr>'
-      +'<td colspan="2" style="background:'+(idx%2===0?'#dceef6':WHITE)+';color:'+NAVY+';font-weight:700;border-color:#b0d4e8">'+esc(r[0])+'</td>'
-      +'<td colspan="4" style="background:'+(idx%2===0?'#dceef6':WHITE)+';color:'+NAVY+';font-size:12pt;font-weight:700;border-color:#b0d4e8">'+esc(r[1])+'</td>'
-      +'</tr>';
+    var alt=idx%2;
+    xml+='<Row ss:Height="18">'
+      +'<Cell ss:MergeAcross="1" ss:StyleID="sSumKey'+alt+'"><Data ss:Type="String">'+x(r[0])+'</Data></Cell>'
+      +'<Cell ss:Index="3" ss:MergeAcross="3" ss:StyleID="sSumVal'+alt+'"><Data ss:Type="String">'+x(r[1])+'</Data></Cell>'
+      +'</Row>\n';
   });
 
-  // ── Spacer ──
-  html+='<tr><td colspan="6" style="border:none;padding:4px"></td></tr>';
+  // Blank spacer
+  xml+='<Row ss:Height="8"><Cell ss:MergeAcross="5" ss:StyleID="sBlank"><Data ss:Type="String"></Data></Cell></Row>\n';
 
-  // ── Stop list header ──
-  html+='<tr><td colspan="6" style="background:'+NAVY+';color:'+LIME+';font-size:11pt;font-weight:700;padding:7px 14px;border:none;letter-spacing:0.5px">STOP DETAIL</td></tr>';
-  html+='<tr>'
-    +'<th style="background:'+LIME+';color:'+NAVY+';width:40px">#</th>'
-    +'<th style="background:'+LIME+';color:'+NAVY+'">Address</th>'
-    +'<th style="background:'+LIME+';color:'+NAVY+'">Suburb</th>'
-    +'<th style="background:'+LIME+';color:'+NAVY+';width:50px">Bins</th>'
-    +'<th style="background:'+LIME+';color:'+NAVY+';width:110px">Status</th>'
-    +'<th style="background:'+LIME+';color:'+NAVY+'">Note</th>'
-    +'</tr>';
+  // Stop detail header
+  xml+='<Row ss:Height="22">'
+    +'<Cell ss:MergeAcross="5" ss:StyleID="sSectionHdr"><Data ss:Type="String">STOP DETAIL</Data></Cell>'
+    +'</Row>\n';
 
+  // Column header row
+  xml+='<Row ss:Height="20">'
+    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">#</Data></Cell>'
+    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Address</Data></Cell>'
+    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Suburb</Data></Cell>'
+    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Bins</Data></Cell>'
+    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Status</Data></Cell>'
+    +'<Cell ss:StyleID="sColHdr"><Data ss:Type="String">Note</Data></Cell>'
+    +'</Row>\n';
+
+  // Data rows
   stopRows.forEach(function(r,idx){
-    var rowBg=idx%2===0?WHITE:ROW_ALT;
-    html+='<tr>'
-      +'<td style="background:'+rowBg+';color:'+NAVY+';text-align:center;font-weight:700">'+esc(r.num)+'</td>'
-      +'<td style="background:'+rowBg+';color:'+NAVY+'">'+esc(r.addr)+'</td>'
-      +'<td style="background:'+rowBg+';color:'+NAVY+'">'+esc(r.suburb)+'</td>'
-      +'<td style="background:'+rowBg+';color:'+NAVY+';text-align:center">'+esc(r.bins)+'</td>'
-      +'<td style="'+statusStyle(r.status)+';text-align:center">'+esc(r.status)+'</td>'
-      +'<td style="background:'+rowBg+';color:#555">'+esc(r.note)+'</td>'
-      +'</tr>';
+    var alt=idx%2;
+    var stStyle = r.status==="Completed"?"sOK":(r.status==="Cannot Find"?"sCF":"sND");
+    var noteStyle = alt===0?"sNote":"sNote1";
+    xml+='<Row ss:Height="18">'
+      +'<Cell ss:StyleID="sCellC'+alt+'"><Data ss:Type="Number">'+r.num+'</Data></Cell>'
+      +'<Cell ss:StyleID="sCell'+alt+'"><Data ss:Type="String">'+x(r.addr)+'</Data></Cell>'
+      +'<Cell ss:StyleID="sCell'+alt+'"><Data ss:Type="String">'+x(r.suburb)+'</Data></Cell>'
+      +'<Cell ss:StyleID="sCellC'+alt+'"><Data ss:Type="Number">'+r.bins+'</Data></Cell>'
+      +'<Cell ss:StyleID="'+stStyle+'"><Data ss:Type="String">'+x(r.status)+'</Data></Cell>'
+      +'<Cell ss:StyleID="'+noteStyle+'"><Data ss:Type="String">'+x(r.note)+'</Data></Cell>'
+      +'</Row>\n';
   });
 
-  // ── Footer ──
-  html+='<tr><td colspan="6" style="background:'+NAVY+';color:rgba(255,255,255,0.5);font-size:9pt;padding:6px 14px;border:none;text-align:right">Moira Shire Council &middot; LidSwap &middot; '+esc(reportedAt)+'</td></tr>';
+  // Footer
+  xml+='<Row ss:Height="16">'
+    +'<Cell ss:MergeAcross="5" ss:StyleID="sFooter"><Data ss:Type="String">Moira Shire Council  |  LidSwap  |  '+x(reportedAt)+'</Data></Cell>'
+    +'</Row>\n';
 
-  html+='</table></body></html>';
+  xml+='</Table>'
+    +'<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">'
+    +'<FreezePanes/><FrozenNoSplit/><SplitHorizontal>1</SplitHorizontal><TopRowBottomPane>1</TopRowBottomPane>'
+    +'<ActivePane>2</ActivePane>'
+    +'</WorksheetOptions>'
+    +'</Worksheet></Workbook>';
 
-  var blob=new Blob([html],{type:"application/vnd.ms-excel;charset=utf-8;"});
+  var BOM="﻿"; // UTF-8 BOM — required for Excel to read UTF-8 correctly
+  var blob=new Blob([BOM+xml],{type:"application/vnd.ms-excel;charset=utf-8;"});
   var url=URL.createObjectURL(blob);
   var a=document.createElement("a");
   var fileName="LidSwap_"+d.replace(/\s+/g,"")+"_Zone"+z+"_"+new Date().toISOString().slice(0,10)+".xls";
@@ -1821,9 +1934,7 @@ window.addEventListener("load", function(){
   var _lastTap=0;
   document.addEventListener("touchend", function(e){
     if(e.target && e.target.tagName==="CANVAS") return;
-    var now=Date.now();
-    if(now-_lastTap<300){ e.preventDefault(); }
-    _lastTap=now;
+    var now=Date.now(); if(now-_lastTap<300){ e.preventDefault(); } _lastTap=now;
   },{passive:false});
   document.addEventListener("touchmove", function(e){
     if(e.touches.length>1){ e.preventDefault(); }
