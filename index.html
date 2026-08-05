@@ -568,8 +568,8 @@ function getPersonById(id) { for(var i=0;i<CREW.length;i++) if(CREW[i].id===id) 
 function showScreen(id) {
   document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("on"); });
   document.getElementById(id).classList.add("on");
-  if (id === "s-route") { setTimeout(resizeMap,50); setTimeout(resizeMap,200); setTimeout(resizeMap,600); setTimeout(resizeMap,1200); }
-  if (id === "s-home") { buildHome(); }
+  if (id === "s-route") { setTimeout(resizeMap,50); setTimeout(resizeMap,200); setTimeout(resizeMap,600); setTimeout(resizeMap,1200); requestWakeLock(); }
+  if (id === "s-home") { buildHome(); releaseWakeLock(); }
 }
 
 /* ── Theme ── */
@@ -1071,7 +1071,7 @@ function render(){
   document.getElementById("cur-suburb").textContent=s.suburb;
 
   var dn=notes[sk(d,z,wk,c,cIdx)]||"", al=document.getElementById("stop-alert");
-  if(dn||s.note){ document.getElementById("alert-txt").textContent=dn||s.note; al.style.display="flex"; al.className="stop-alert "+(dn?"info":"warn"); }
+  if(dn||s.note){ var alertParts=[]; if(s.note) alertParts.push(s.note); if(dn) alertParts.push(dn); document.getElementById("alert-txt").textContent=alertParts.join(" — "); al.style.display="flex"; al.className="stop-alert "+(dn&&s.note?"warn":dn?"info":"warn"); }
   else{ al.style.display="none"; }
 
   var bp=document.getElementById("bins-pill");
@@ -1730,7 +1730,7 @@ function exportReportExcel(){
 /* ── Reset all progress ── */
 function resetAll() {
   if (!confirm("Reset ALL progress? This cannot be undone.")) return;
-  doneSet={}; cfSet={}; notes={}; undoStack={}; driverStats={}; runTimes={};
+  doneSet={}; cfSet={}; notes={}; undoStack=[]; driverStats={}; runTimes={};
   try { localStorage.removeItem(SK); } catch(e) {}
   buildHome();
   alert("All progress cleared.");
@@ -1945,6 +1945,23 @@ function updateETABadge(){
     badge.style.display="none";
   }
 }
+
+/* ── Wake Lock — keep screen on during active run ── */
+var _wakeLock = null;
+async function requestWakeLock() {
+  if (!('wakeLock' in navigator)) return;
+  try { _wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
+}
+function releaseWakeLock() {
+  if (_wakeLock) { _wakeLock.release().catch(function(){}); _wakeLock = null; }
+}
+// Re-acquire after tab becomes visible again (iOS releases it on tab switch)
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible' && _wakeLock === null) {
+    var routeActive = document.getElementById('s-route').classList.contains('on');
+    if (routeActive) requestWakeLock();
+  }
+});
 
 /* ── Boot ── */
 window.addEventListener("load", function(){
