@@ -473,7 +473,7 @@ input,textarea,select{font-size:16px!important}
 <!-- DRIVER + VEHICLE PICKER -->
 <div id="s-driver" class="screen">
   <div class="picker-wrap">
-    <div class="picker-back" onclick="goHome()">&#8592; Home</div>
+    <div class="picker-back" onclick="driverPickerBack()">&#8592; Back</div>
     <div class="picker-h">Who&rsquo;s Driving?</div>
     <div class="picker-sub" id="driver-run-lbl">Select run</div>
     <div class="person-grid" id="person-list"></div>
@@ -507,6 +507,7 @@ input,textarea,select{font-size:16px!important}
         <button id="btn-back" onclick="goHome()">&#8592;</button>
         <div id="run-badge"><div id="run-badge-title">Route</div><div id="run-badge-sub"></div></div>
         <button id="btn-load" onclick="showBinLoad()">&#128722; Load</button>
+        <button id="btn-change-crew" onclick="changeCrewMidRun()" title="Change driver / vehicle" style="background:var(--map-overlay);backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--muted);border-radius:12px;padding:7px 10px;font-size:12px;font-weight:800;cursor:pointer;flex-shrink:0">&#128101;</button>
         <button id="btn-mode-route" onclick="toggleMode()"><span id="mode-icon-r">&#9788;</span></button>
         <button id="btn-locate" onclick="toggleLocate()" title="Toggle GPS tracking">&#127757;</button>
         <button id="btn-findme" onclick="findMe()" title="Centre map on my location">&#128205;</button>
@@ -570,6 +571,7 @@ input,textarea,select{font-size:16px!important}
     <div class="comp-bins-lbl">That&rsquo;s a great day&rsquo;s work</div>
     <button class="comp-btn" style="background:var(--lime);color:#001e2e" onclick="showReport()">&#128196; View Report</button>
     <button class="comp-btn" style="background:var(--surface);color:var(--muted);border:1px solid var(--border)" onclick="goHome()">&#8592; Home</button>
+    <button class="comp-btn" style="background:transparent;color:var(--danger);border:1px solid var(--danger);margin-top:4px" onclick="resetCurrentRun()">&#128465; Reset This Run</button>
   </div>
 </div>
 
@@ -647,6 +649,9 @@ var _navUrl="#", _navFallback=null;
 function sv() {
   try { localStorage.setItem(SK, JSON.stringify({ doneSet:doneSet, cfSet:cfSet, notes:notes, driverStats:driverStats, runTimes:runTimes })); } catch(e) {}
 }
+function svCrew() {
+  try { localStorage.setItem("moira_last_crew", JSON.stringify({ personId:cPersonId, vehicleId:cVehicleId, passengerId:cPassengerId })); } catch(e) {}
+}
 function ld() {
   try {
     var s = localStorage.getItem(SK);
@@ -657,6 +662,10 @@ function ld() {
     notes   = d.notes   || {};
     driverStats = d.driverStats || {};
     runTimes    = d.runTimes    || {};
+  } catch(e) {}
+  try {
+    var c = localStorage.getItem("moira_last_crew");
+    if (c) { var lc = JSON.parse(c); cPersonId=lc.personId||null; cVehicleId=lc.vehicleId||null; cPassengerId=lc.passengerId||null; }
   } catch(e) {}
   try { if (localStorage.getItem("moira_mode") === "light") applyMode(true); } catch(e) {}
 }
@@ -780,10 +789,13 @@ function pickRun(el) {
   cZone = el.dataset.zone;
   cWeek = el.dataset.week;
   cCrew = el.dataset.crew;
-  cPersonId    = null;
-  cVehicleId   = null;
-  cPassengerId = null;
-  // Update heading
+  // If we already have a remembered crew, skip the picker
+  if (cPersonId && cVehicleId) {
+    startRun(cDay, cZone, cWeek, cCrew);
+    return;
+  }
+  _driverPickerFromRoute = false;
+  // Otherwise show the driver/vehicle picker
   var sched = null;
   SCHEDULE.forEach(function(s){ if(s.day===cDay && s.zone===cZone && s.week===cWeek) sched=s; });
   var routeLbl = "Route " + (cCrew==="1"?"A":"B");
@@ -876,6 +888,52 @@ function confirmAndStart() {
   startRun(cDay, cZone, cWeek, cCrew);
 }
 
+function changeCrewMidRun() {
+  _driverPickerFromRoute = true;
+  // Open the driver picker without resetting progress
+  var sched = null;
+  SCHEDULE.forEach(function(s){ if(s.day===cDay && s.zone===cZone && s.week===cWeek) sched=s; });
+  var routeLbl = "Route " + (cCrew==="1"?"A":"B");
+  document.getElementById("driver-run-lbl").textContent = (sched?sched.label:cDay) + " - Zone "+cZone+" - "+routeLbl;
+  // Reset selections so picker shows fresh but preserve current as pre-selected
+  buildPersonGrid();
+  // Pre-highlight existing selections
+  if (cPersonId) {
+    var pc = document.querySelector('.driver-card[data-pid="'+cPersonId+'"]');
+    if (pc) {
+      pc.classList.add("selected");
+      document.getElementById("vehicle-pick-wrap").style.display = "block";
+      document.getElementById("vehicle-who").textContent = (getPersonById(cPersonId)||{name:""}).name + ", which vehicle today?";
+      buildVehicleGrid();
+      if (cVehicleId) {
+        var vc = document.querySelector('.vehicle-card[data-vid="'+cVehicleId+'"]');
+        if (vc) {
+          vc.classList.add("selected");
+          document.getElementById("passenger-pick-wrap").style.display = "block";
+          buildPassengerGrid();
+          if (cPassengerId) {
+            var pasc = document.querySelector('.passenger-card[data-pid="'+cPassengerId+'"]');
+            if (pasc) pasc.classList.add("selected");
+          } else {
+            var solo = document.querySelector('.passenger-card[data-pid="none"]');
+            if (solo) solo.classList.add("selected");
+          }
+          var btn = document.getElementById("start-run-btn");
+          btn.style.display = "block";
+          var person = getPersonById(cPersonId);
+          var v = VEHICLES[cVehicleId];
+          var passenger = cPassengerId ? getPersonById(cPassengerId) : null;
+          var label = "Start - " + (person?person.name:"");
+          if (passenger) label += " + " + passenger.name;
+          label += " in " + (v?v.short:"") + " >";
+          btn.textContent = label;
+        }
+      }
+    }
+  }
+  showScreen("s-driver");
+}
+
 /* ── Start run ── */
 function startRun(day, zone, week, crew) {
   var stops = ROUTES[day] && ROUTES[day][zone] && ROUTES[day][zone][week] && ROUTES[day][zone][week][crew];
@@ -883,6 +941,7 @@ function startRun(day, zone, week, crew) {
   cDay=day; cZone=zone; cWeek=week; cCrew=crew;
   cStops=stops; undoStack=[]; _curRouteCoords=null;
   cIdx=0; panelOpen=false;
+  svCrew(); // remember driver/vehicle/passenger for next time
   document.getElementById("panel").classList.remove("expanded");
   initMap();
   showScreen("s-route");
@@ -892,6 +951,16 @@ function startRun(day, zone, week, crew) {
 function goHome() {
   stopLocate();
   showScreen("s-home");
+}
+
+var _driverPickerFromRoute = false;
+function driverPickerBack() {
+  if (_driverPickerFromRoute) {
+    _driverPickerFromRoute = false;
+    showScreen("s-route");
+  } else {
+    goHome();
+  }
 }
 
 /* ── Canvas map ── */
@@ -2198,6 +2267,19 @@ function admResetRun(d,z,wk,c){
   Object.keys(cfSet).forEach(function(k){   if(k.indexOf(prefix+"|")===0) delete cfSet[k]; });
   Object.keys(notes).forEach(function(k){   if(k.indexOf(prefix+"|")===0) delete notes[k]; });
   delete runTimes[prefix]; sv(); buildAdmin();
+}
+function resetCurrentRun(){
+  if(!confirm("Reset all progress for this run and start again? This cannot be undone.")) return;
+  var prefix=sk(cDay,cZone,cWeek,cCrew,"").replace(/\|$/,"");
+  Object.keys(doneSet).forEach(function(k){ if(k.indexOf(prefix+"|")===0) delete doneSet[k]; });
+  Object.keys(cfSet).forEach(function(k){   if(k.indexOf(prefix+"|")===0) delete cfSet[k]; });
+  Object.keys(notes).forEach(function(k){   if(k.indexOf(prefix+"|")===0) delete notes[k]; });
+  delete runTimes[prefix]; undoStack=[]; sv();
+  cIdx=0; panelOpen=false;
+  document.getElementById("panel").classList.remove("expanded");
+  initMap();
+  showScreen("s-route");
+  render();
 }
 function admResetAll(){
   if(!confirm("RESET ALL RUNS? All progress, notes and times will be deleted. This cannot be undone.")) return;
