@@ -594,7 +594,7 @@ var LOGO_B64="iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAAtGVYSWZJSSoACAAAAA
 /* ── Vehicles ── */
 var VEHICLES = {
   ranger:        { name: "Tim's Ranger",             short: "Tim's Ranger",        img: null },
-  ranger_amy:    { name: "Amy's Ranger",             short: "Amy's Ranger",        img: null },
+  ranger_amy:    { name: "Amy's Triton",             short: "Amy's Triton",        img: null },
   xtrail:        { name: "Molly's X-Trail",          short: "Molly's X-Trail",     img: null },
   triton_manual: { name: "Landfill Triton (Manual)", short: "Landfill Triton",     img: null }
 };
@@ -650,7 +650,23 @@ function sv() {
   try { localStorage.setItem(SK, JSON.stringify({ doneSet:doneSet, cfSet:cfSet, notes:notes, driverStats:driverStats, runTimes:runTimes })); } catch(e) {}
 }
 function svCrew() {
-  try { localStorage.setItem("moira_last_crew", JSON.stringify({ personId:cPersonId, vehicleId:cVehicleId, passengerId:cPassengerId })); } catch(e) {}
+  // Save crew keyed per-run so different runs remember their own crew independently
+  var runKey = "moira_crew_" + sk(cDay, cZone, cWeek, cCrew, "").replace(/\|$/, "");
+  try { localStorage.setItem(runKey, JSON.stringify({ personId:cPersonId, vehicleId:cVehicleId, passengerId:cPassengerId })); } catch(e) {}
+}
+function ldCrew(day, zone, week, crew) {
+  // Load the saved crew for a specific run (returns true if found)
+  var runKey = "moira_crew_" + sk(day, zone, week, crew, "").replace(/\|$/, "");
+  try {
+    var c = localStorage.getItem(runKey);
+    if (c) { var lc = JSON.parse(c); cPersonId=lc.personId||null; cVehicleId=lc.vehicleId||null; cPassengerId=lc.passengerId||null; return true; }
+  } catch(e) {}
+  return false;
+}
+function clearCrew(day, zone, week, crew) {
+  // Remove saved crew for a specific run
+  var runKey = "moira_crew_" + sk(day, zone, week, crew, "").replace(/\|$/, "");
+  try { localStorage.removeItem(runKey); } catch(e) {}
 }
 function ld() {
   try {
@@ -663,10 +679,7 @@ function ld() {
     driverStats = d.driverStats || {};
     runTimes    = d.runTimes    || {};
   } catch(e) {}
-  try {
-    var c = localStorage.getItem("moira_last_crew");
-    if (c) { var lc = JSON.parse(c); cPersonId=lc.personId||null; cVehicleId=lc.vehicleId||null; cPassengerId=lc.passengerId||null; }
-  } catch(e) {}
+  // Per-run crew is loaded in pickRun(), not globally at boot
   try { if (localStorage.getItem("moira_mode") === "light") applyMode(true); } catch(e) {}
 }
 
@@ -789,8 +802,14 @@ function pickRun(el) {
   cZone = el.dataset.zone;
   cWeek = el.dataset.week;
   cCrew = el.dataset.crew;
-  // If we already have a remembered crew, skip the picker
-  if (cPersonId && cVehicleId) {
+  // Load this specific run's saved crew (clears any previous run's crew from memory)
+  cPersonId = null; cVehicleId = null; cPassengerId = null;
+  ldCrew(cDay, cZone, cWeek, cCrew);
+  // Only skip picker if this run is already in progress (has at least one stop done)
+  var prefix = sk(cDay, cZone, cWeek, cCrew, "").replace(/\|$/, "");
+  var runInProgress = cPersonId && cVehicleId &&
+    Object.keys(doneSet).some(function(k){ return k.indexOf(prefix+"|")===0; });
+  if (runInProgress) {
     startRun(cDay, cZone, cWeek, cCrew);
     return;
   }
@@ -2266,7 +2285,9 @@ function admResetRun(d,z,wk,c){
   Object.keys(doneSet).forEach(function(k){ if(k.indexOf(prefix+"|")===0) delete doneSet[k]; });
   Object.keys(cfSet).forEach(function(k){   if(k.indexOf(prefix+"|")===0) delete cfSet[k]; });
   Object.keys(notes).forEach(function(k){   if(k.indexOf(prefix+"|")===0) delete notes[k]; });
-  delete runTimes[prefix]; sv(); buildAdmin();
+  delete runTimes[prefix]; sv();
+  clearCrew(d, z, wk, c);
+  buildAdmin();
 }
 function resetCurrentRun(){
   if(!confirm("Reset all progress for this run and start again? This cannot be undone.")) return;
@@ -2275,11 +2296,10 @@ function resetCurrentRun(){
   Object.keys(cfSet).forEach(function(k){   if(k.indexOf(prefix+"|")===0) delete cfSet[k]; });
   Object.keys(notes).forEach(function(k){   if(k.indexOf(prefix+"|")===0) delete notes[k]; });
   delete runTimes[prefix]; undoStack=[]; sv();
-  cIdx=0; panelOpen=false;
-  document.getElementById("panel").classList.remove("expanded");
-  initMap();
-  showScreen("s-route");
-  render();
+  // Clear this run's crew so picker shows fresh when tapped again
+  clearCrew(cDay, cZone, cWeek, cCrew);
+  cPersonId=null; cVehicleId=null; cPassengerId=null;
+  goHome();
 }
 function admResetAll(){
   if(!confirm("RESET ALL RUNS? All progress, notes and times will be deleted. This cannot be undone.")) return;
