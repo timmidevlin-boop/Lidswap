@@ -709,6 +709,7 @@ input,textarea,select{font-size:18px!important}
       <button class="sum-btn sum-btn-lime" onclick="showReport()">&#128196; View Report</button>
     </div>
     <button class="sum-btn sum-btn-sec" style="width:100%;margin-top:0" onclick="goHome()">&#8592; Done</button>
+    <button class="sum-btn sum-btn-sec" style="width:100%;margin-top:8px;color:var(--danger);border-color:var(--danger)" onclick="resetCurrentRun()">&#8635; Restart Run</button>
   </div>
 </div>
 
@@ -1089,7 +1090,7 @@ function buildPersonGrid() {
     var stats = driverStats[p.id] || { bins:0, distance:0, stops:0 };
     html += '<div class="driver-card" data-pid="'+p.id+'" onclick="selectPerson(this)">'
           + '<div class="dc-avatar dc-avatar-name">'+p.name+'</div>'
-          + (stats.stops>0 ? '<div class="dc-stats">'+stats.bins+' bins</div>' : '')
+
           + '</div>';
   });
   document.getElementById("person-list").innerHTML = html;
@@ -2172,7 +2173,7 @@ function showReport(){
     donedStops.forEach(function(r,i){
       html+='<div class="rpt-e" style="background:rgba(192,223,22,.07);border-left:3px solid var(--lime)">';
       html+=(i+1)+'. <b>'+esc(r.s.address)+'</b>, '+esc(r.s.suburb);
-      if(r.s.bins>1) html+=' <span style="opacity:.6">('+r.s.bins+' bins)</span>';
+      if(r.s.bins>1) html+=' <span style="opacity:.6">('+r.s.bins+' lids)</span>';
       if(r.n) html+='<br><span style="opacity:.7">'+esc(r.n)+'</span>';
       html+='</div>';
     });
@@ -2837,7 +2838,7 @@ function admBuildDrill(panel,d,z,wk,c){
       +'<div class="adm-stop-info">'
         +'<div class="adm-stop-addr">'+esc(s.address)+', '+esc(s.suburb)+'</div>'
         +(note?'<div class="adm-stop-meta">'+esc(note)+'</div>':'')
-        +(s.bins&&s.bins>1?'<div class="adm-stop-meta">'+s.bins+' bins</div>':'')
+        +(s.bins&&s.bins>1?'<div class="adm-stop-meta">'+s.bins+' lids</div>':'')
       +'</div>'
       +'<div class="adm-stop-actions">'
         +(!isDone&&!isCF?'<button class="adm-stop-act ok" onclick="admMarkDone(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+',\''+panel.parentElement.id+'\')">Done</button>':'')
