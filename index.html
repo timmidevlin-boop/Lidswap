@@ -291,6 +291,71 @@ input,textarea,select{font-size:18px!important}
 .cf-chip:active{transform:scale(.95)}
 .cf-chip.sel{background:rgba(255,90,90,.15);border-color:var(--danger);color:var(--danger)}
 
+/* Outcome pillars */
+/* Outcome flow screen */
+#s-outcome{background:var(--bg);overflow-y:auto}
+.oc-wrap{padding:max(52px,calc(16px + env(safe-area-inset-top))) 16px max(32px,calc(16px + env(safe-area-inset-bottom)));max-width:480px;margin:0 auto}
+.oc-back{display:inline-flex;align-items:center;gap:6px;font-size:16px;color:var(--muted);cursor:pointer;margin-bottom:16px;padding:7px 12px;background:var(--surface);border:1px solid var(--border);border-radius:10px}
+.oc-back:active{opacity:.7}
+.oc-breadcrumb{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:12px;min-height:22px}
+.oc-bc{font-size:13px;color:var(--muted);font-weight:600}
+.oc-bc.cur{color:var(--text)}
+.oc-bc-sep{font-size:12px;color:var(--border)}
+.oc-addr{font-size:15px;color:var(--muted);margin-bottom:4px}
+.oc-q{font-size:19px;font-weight:900;letter-spacing:-.3px;line-height:1.25;margin-bottom:14px;word-wrap:break-word}
+.oc-hint{font-size:14px;color:var(--muted);margin:-8px 0 12px;line-height:1.45;word-wrap:break-word}
+.oc-choices{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.oc-btn{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:12px 14px;font-size:16px;font-weight:800;cursor:pointer;text-align:left;color:var(--text);display:flex;align-items:center;gap:10px;line-height:1.3;transition:transform .1s;width:100%;box-sizing:border-box}
+.oc-btn:active{transform:scale(.97)}
+.oc-btn .ob-icon{font-size:20px;flex-shrink:0;width:26px;text-align:center}
+.oc-btn .ob-body{flex:1;min-width:0}
+.oc-btn .ob-lbl{font-size:16px;font-weight:800;display:block;word-wrap:break-word;overflow-wrap:break-word}
+.oc-btn .ob-sub{font-size:13px;color:var(--muted);font-weight:600;display:block;margin-top:2px;word-wrap:break-word;overflow-wrap:break-word}
+.oc-btn.lime{background:var(--lime);border-color:var(--lime);color:#001e2e}
+.oc-btn.lime .ob-sub{color:rgba(0,30,46,.6)}
+.oc-btn.green{border-color:rgba(61,220,132,.4);color:var(--green)}
+.oc-btn.green:active{background:rgba(61,220,132,.07)}
+.oc-btn.amber{border-color:rgba(255,179,71,.4);color:var(--warn)}
+.oc-btn.amber:active{background:rgba(255,179,71,.07)}
+.oc-btn.danger{border-color:rgba(255,90,90,.4);color:var(--danger)}
+.oc-btn.danger:active{background:rgba(255,90,90,.07)}
+.oc-btn.blue{border-color:rgba(0,163,224,.4);color:var(--blue)}
+.oc-btn.blue:active{background:rgba(0,163,224,.07)}
+.oc-btn.muted{color:var(--muted)}
+.oc-chip-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.oc-chip{padding:7px 13px;border-radius:20px;background:var(--surface2);border:1.5px solid var(--border);color:var(--muted);font-size:15px;font-weight:700;cursor:pointer;transition:all .15s}
+.oc-chip:active{transform:scale(.95)}
+.oc-chip.sel{background:rgba(255,179,71,.12);border-color:var(--warn);color:var(--warn)}
+.oc-note-lbl{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:7px}
+.oc-ta{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:12px;padding:12px;font-size:17px;min-height:80px;resize:none;outline:none;color:var(--text);font-family:inherit;margin-bottom:12px;box-sizing:border-box}
+.oc-ta:focus{border-color:var(--lime)}
+.oc-outcome{border-radius:16px;padding:18px 16px;margin-bottom:14px;text-align:center}
+.oc-outcome.done{background:rgba(61,220,132,.1);border:1.5px solid rgba(61,220,132,.3)}
+.oc-outcome.issue{background:rgba(255,90,90,.08);border:1.5px solid rgba(255,90,90,.25)}
+.oc-outcome.already{background:rgba(0,163,224,.08);border:1.5px solid rgba(0,163,224,.25)}
+.oc-outcome .oo-ico{font-size:36px;margin-bottom:6px}
+.oc-outcome .oo-lbl{font-size:19px;font-weight:900;margin-bottom:4px}
+.oc-outcome .oo-sub{font-size:15px;color:var(--muted);line-height:1.5}
+.oc-divider{height:1px;background:var(--border);margin:14px 0}
+.oc-choice-wrap{display:flex;flex-direction:column;gap:8px}
+.oc-note-panel{padding:8px 0 0;display:flex;flex-direction:column;gap:8px}
+.oc-btn.oc-confirm{margin-top:0}
+.oc-panel-q{font-size:16px;font-weight:800;color:var(--text);margin-bottom:8px}
+.oc-panel-row{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.oc-panel-row:last-child{margin-bottom:0}
+.outcome-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:8px}
+.btn-outcome{background:var(--surface2);border:1.5px solid var(--border);border-radius:14px;padding:10px 6px;font-size:20px;font-weight:800;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:64px;transition:transform .1s;color:var(--text);line-height:1}
+.btn-outcome span{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;line-height:1.2;text-align:center}
+.btn-outcome:active{transform:scale(.94)}
+.btn-outcome.blue{border-color:rgba(0,163,224,.4);color:var(--blue)}
+.btn-outcome.blue:active{background:rgba(0,163,224,.08)}
+.btn-outcome.danger{border-color:rgba(255,90,90,.4);color:var(--danger)}
+.btn-outcome.danger:active{background:rgba(255,90,90,.08)}
+.btn-outcome.amber{border-color:rgba(255,179,71,.4);color:var(--warn)}
+.btn-outcome.amber:active{background:rgba(255,179,71,.08)}
+.btn-not-done{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;font-size:16px;font-weight:800;color:var(--muted);cursor:pointer;text-align:center;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-not-done:active{opacity:.7}
+
 /* Admin screen */
 #s-admin{background:var(--bg);overflow-y:auto}
 .adm-wrap{padding:max(52px,calc(16px + env(safe-area-inset-top))) 18px 60px;max-width:560px;margin:0 auto}
@@ -342,6 +407,8 @@ input,textarea,select{font-size:18px!important}
 .adm-stop-act{font-size:14px;padding:4px 8px;border-radius:7px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;font-weight:700;white-space:nowrap}
 .adm-stop-act:active{opacity:.7}
 .adm-stop-act.ok{border-color:var(--lime);color:var(--lime)}
+.adm-stop-act.blue{border-color:rgba(0,163,224,.5);color:var(--blue)}
+.adm-stop-act.amber{border-color:rgba(255,179,71,.5);color:var(--warn)}
 .adm-stop-act.danger{border-color:var(--danger);color:var(--danger)}
 .adm-reset-btn{margin-top:10px;width:100%;padding:8px;background:transparent;border:1px solid var(--danger);border-radius:9px;font-size:16px;font-weight:700;color:var(--danger);cursor:pointer}
 .adm-reset-btn:active{opacity:.6}
@@ -464,6 +531,82 @@ input,textarea,select{font-size:18px!important}
   </div>
 </div>
 
+<!-- DONE CONFIRM MODAL -->
+<div id="m-done-confirm" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="msheet">
+    <h3>&#10003;&nbsp; Lid Swapped</h3>
+    <div class="m-sub" id="m-done-addr"></div>
+    <div style="font-size:16px;font-weight:800;color:var(--text);margin:14px 0 10px">Was this the correct address?</div>
+    <div class="mbtns" style="flex-direction:column;gap:8px">
+      <button class="mbtn-ok" style="background:var(--lime);color:#001e2e" onclick="markDoneAddrOk()">&#10003;&nbsp; Yes, correct address</button>
+      <button class="mbtn-c" style="color:var(--warn);border-color:rgba(255,179,71,.4)" onclick="openDoneAddrNote()">Address was different — add note</button>
+    </div>
+  </div>
+</div>
+
+<!-- DONE ADDR NOTE MODAL -->
+<div id="m-done-addr-note" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="msheet">
+    <h3>&#10003;&nbsp; Lid Swapped — Address Note</h3>
+    <div class="m-sub">Note the actual address where the bin was found</div>
+    <textarea class="mta" id="m-done-addr-ta" placeholder="e.g. Bin was at No. 16, not No. 14"></textarea>
+    <div class="mbtns">
+      <button class="mbtn-c" onclick="this.closest('.modal').style.display='none';document.getElementById('m-done-confirm').style.display='flex'">Back</button>
+      <button class="mbtn-ok" style="background:var(--lime);color:#001e2e" onclick="markDoneAddrNote()">&#10003;&nbsp; Save &amp; Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- ALREADY SWAPPED MODAL -->
+<div id="m-already" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="msheet">
+    <h3 style="color:var(--blue)">&#10003;&#10003;&nbsp; Lid Already Swapped</h3>
+    <div class="m-sub" id="m-already-addr"></div>
+    <textarea class="mta" id="m-already-ta" placeholder="Optional note…"></textarea>
+    <div class="mbtns">
+      <button class="mbtn-c" onclick="this.closest('.modal').style.display='none'">Cancel</button>
+      <button class="mbtn-ok" style="background:var(--blue);color:#fff" onclick="saveAlreadySwapped()">Mark &amp; Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- NO ACCESS MODAL -->
+<div id="m-noaccess2" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="msheet">
+    <h3 style="color:var(--danger)">&#128683;&nbsp; Bin Not Accessible</h3>
+    <div class="m-sub" id="m-noaccess2-addr"></div>
+    <div class="cf-reasons" style="margin:12px 0 10px">
+      <button class="cf-chip" onclick="this.classList.toggle('sel')">No bin on kerb</button>
+      <button class="cf-chip" onclick="this.classList.toggle('sel')">Gated / locked</button>
+      <button class="cf-chip" onclick="this.classList.toggle('sel')">Dog</button>
+      <button class="cf-chip" onclick="this.classList.toggle('sel')">Blocked by vehicle</button>
+      <button class="cf-chip" onclick="this.classList.toggle('sel')">Private road</button>
+    </div>
+    <textarea class="mta" id="m-noaccess2-ta" placeholder="Optional — any extra detail"></textarea>
+    <div class="mbtns">
+      <button class="mbtn-c" onclick="this.closest('.modal').style.display='none'">Cancel</button>
+      <button class="mbtn-ok" style="background:var(--danger);color:#fff" onclick="saveNoAccess2()">Mark &amp; Continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- CANT SWAP MODAL -->
+<div id="m-cantswap" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="msheet">
+    <h3 style="color:var(--warn)">&#9888;&nbsp; Lid Can&#39;t Be Swapped</h3>
+    <div class="m-sub" id="m-cantswap-addr"></div>
+    <div class="cf-reasons" style="margin:12px 0 10px">
+      <button class="cf-chip" id="cs-chip-pins" onclick="csClearChips();this.classList.toggle('sel')">Pins won&#39;t come out</button>
+      <button class="cf-chip" id="cs-chip-bolt" onclick="csClearChips();this.classList.toggle('sel')">Lid bolted on</button>
+    </div>
+    <textarea class="mta" id="m-cantswap-ta" placeholder="Optional — any extra detail"></textarea>
+    <div class="mbtns">
+      <button class="mbtn-c" onclick="this.closest('.modal').style.display='none'">Cancel</button>
+      <button class="mbtn-ok" style="background:var(--warn);color:#001e2e" onclick="saveCantSwap()">Mark &amp; Continue</button>
+    </div>
+  </div>
+</div>
+
 <!-- MULTI-LID CONFIRM MODAL -->
 <div id="m-multi-lid" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
   <div class="msheet">
@@ -528,7 +671,7 @@ input,textarea,select{font-size:18px!important}
     <div class="adm-tabs">
       <button class="adm-tab active" onclick="admTab(this,'adm-tab-runs')">Runs</button>
       <button class="adm-tab" onclick="admTab(this,'adm-tab-crew')">Crew</button>
-      <button class="adm-tab" onclick="admTab(this,'adm-tab-cf')">Not Found</button>
+      <button class="adm-tab" onclick="admTab(this,'adm-tab-cf')">Issues</button>
       <button class="adm-tab" onclick="admTab(this,'adm-tab-tools')">Tools</button>
     </div>
 
@@ -640,17 +783,16 @@ input,textarea,select{font-size:18px!important}
         <div id="stop-actions">
           <div class="action-row">
             <button class="btn-nav-dark" id="btn-nav" onclick="launchNav()"><span class="btn-icon">&#128205;</span><span class="btn-lbl">Navigate</span></button>
-            <button class="btn-done-lime" onclick="markDone()">&#10003;&nbsp;&nbsp;Done</button>
+            <button class="btn-done-lime" onclick="openDoneConfirm()">&#10003;&nbsp;&nbsp;Done</button>
           </div>
-          <div class="sub-row">
-            <button class="btn-sub" onclick="skipStop()">&#8594; Skip</button>
-            <button class="btn-sub danger" onclick="openCF()">? Cannot Find</button>
+          <div class="outcome-row">
+            <button class="btn-outcome blue"   onclick="markAlreadySwapped()">&#10003;&#10003;<span>Already<br>Swapped</span></button>
+            <button class="btn-outcome danger"  onclick="markNoAccess()">&#128683;<span>Not<br>Accessible</span></button>
+            <button class="btn-outcome amber"   onclick="markCantSwap()">&#9888;<span>Can&#39;t<br>Swap</span></button>
+          </div>
+          <div class="sub-row" style="margin-top:7px">
             <button class="btn-sub warn" id="btn-undo" onclick="undoLast()" style="display:none">&#8630; Undo</button>
             <button class="btn-sub danger" id="btn-undo-run" onclick="undoRun()" style="display:none">&#8630; Undo All</button>
-          </div>
-          <div id="fix-pin-bar" style="margin-top:8px;display:none">
-            <button id="btn-fix-pin" class="btn-sub" style="width:100%;color:var(--blue);border-color:rgba(0,163,224,.35)" onclick="toggleFixPinMode()">&#128204; Fix Pin Location</button>
-            <div id="fix-pin-hint" style="display:none;font-size:15px;color:var(--blue);margin-top:5px;padding:6px 10px;background:rgba(0,163,224,.1);border-radius:8px;border:1px solid rgba(0,163,224,.25)">Tap the correct location on the map &#8593;</div>
           </div>
         </div>
         <div class="next-row" id="nx-row">
@@ -672,7 +814,7 @@ input,textarea,select{font-size:18px!important}
       <div class="ov-leg-row"><div class="ov-dot" style="width:14px;height:14px;background:#E91E8C"></div><span class="ov-leg-lbl">Current</span><span class="ov-leg-count" id="ovl-cur">—</span></div>
       <div class="ov-leg-row"><div class="ov-dot" style="width:10px;height:10px;background:#FF6D00"></div><span class="ov-leg-lbl">Pending</span><span class="ov-leg-count" id="ovl-pend">—</span></div>
       <div class="ov-leg-row"><div class="ov-dot" style="width:10px;height:10px;background:#3ddc84"></div><span class="ov-leg-lbl">Done</span><span class="ov-leg-count" id="ovl-done">—</span></div>
-      <div class="ov-leg-row" id="ovl-cf-row"><div class="ov-dot" style="width:10px;height:10px;background:#ff5a5a"></div><span class="ov-leg-lbl">Cannot Find</span><span class="ov-leg-count" id="ovl-cf">—</span></div>
+      <div class="ov-leg-row" id="ovl-cf-row"><div class="ov-dot" style="width:10px;height:10px;background:#ff5a5a"></div><span class="ov-leg-lbl">Issues</span><span class="ov-leg-count" id="ovl-cf">—</span></div>
       <div class="ov-leg-row"><div class="ov-dot" style="width:12px;height:12px;background:#c0df16"></div><span class="ov-leg-lbl">Depot</span><span class="ov-leg-count" id="ovl-dep">—</span></div>
     </div>
   </div>
@@ -715,7 +857,8 @@ input,textarea,select{font-size:18px!important}
 
 <!-- MODALS -->
 <div id="m-note" class="modal"><div class="msheet"><h3>&#128221; Note</h3><div class="m-sub" id="m-note-sub"></div><textarea class="mta" id="m-note-ta" placeholder="e.g. bin not out, gate locked..."></textarea><div class="mbtns"><button class="mbtn-c" onclick="closeM('m-note')">Cancel</button><button class="mbtn-ok" style="background:var(--lime);color:#001e2e" onclick="saveNote()">Save</button></div></div></div>
-<div id="m-cf" class="modal"><div class="msheet"><h3 style="color:var(--danger)">? Cannot Find</h3><div class="m-sub" id="m-cf-sub"></div><div class="cf-reasons"><button class="cf-chip" onclick="toggleCFChip(this)">Bin not out</button><button class="cf-chip" onclick="toggleCFChip(this)">Wrong address</button><button class="cf-chip" onclick="toggleCFChip(this)">Gated / no access</button><button class="cf-chip" onclick="toggleCFChip(this)">Already swapped</button><button class="cf-chip" onclick="toggleCFChip(this)">No bin visible</button><button class="cf-chip" onclick="toggleCFChip(this)">Dog / unsafe</button></div><textarea class="mta" id="m-cf-ta" placeholder="Additional notes (optional)..."></textarea><div class="mbtns"><button class="mbtn-c" onclick="closeM('m-cf')">Cancel</button><button class="mbtn-ok" style="background:var(--danger);color:#fff" onclick="saveCF()">Mark + Continue</button></div></div></div>
+
+
 <div id="m-load" class="modal"><div class="msheet"><h3>&#128722; Bin Load</h3><div class="m-sub" id="m-load-sub"></div><div id="m-load-rows"></div><button class="full-btn" style="background:var(--lime);color:#001e2e" onclick="closeM('m-load')">Got It</button></div></div>
 <div id="m-rpt" class="modal"><div class="msheet"><h3>&#128196; Run Report</h3><div id="m-rpt-body"></div><div style="display:flex;gap:8px;margin-top:4px"><button class="full-btn" style="background:var(--lime);color:#001e2e;flex:1" onclick="copyReport()">&#128203; Copy</button><button class="full-btn" style="background:#00A3E0;color:#fff;flex:1" onclick="shareReport()">&#8679; Share</button></div><button class="full-btn" style="background:#1D6F42;color:#fff;border:none;margin-top:7px" onclick="exportReportExcel()">&#128202; Export to Excel</button><button class="full-btn" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border);margin-top:7px" onclick="closeM('m-rpt')">Close</button></div></div>
 
@@ -1748,7 +1891,8 @@ function render(){
   if(done_all){
     var cf=Object.keys(cfSet).filter(function(k){ return k.startsWith(d+"|"+z+"|"+wk+"|"+c+"|"); }).length;
     var swappedBins=0; stops.forEach(function(s,i){ if(!isDepot(s)&&doneSet[sk(d,z,wk,c,i)]) swappedBins+=s.bins; });
-    document.getElementById("comp-p").textContent=done+" stops completed, "+cf+" not found.";
+    var cfIssues=cf>0?(cf+" issue"+(cf>1?"s":"")):"";
+    document.getElementById("comp-p").textContent=done+" stops completed"+(cfIssues?", "+cfIssues+" logged.":".");
     document.getElementById("comp-bin-count").textContent=swappedBins;
     // Record finish time (only first time)
     var _rtKey2=sk(d,z,wk,c,"").replace(/\|$/,"");
@@ -1976,36 +2120,166 @@ function saveNote(){
   if(v) notes[k]=v; else delete notes[k];
   closeM("m-note"); render();
 }
-function openCF(){
-  var s=cStops[cIdx];
-  document.getElementById("m-cf-sub").textContent=s.address+", "+s.suburb;
-  document.getElementById("m-cf-ta").value="";
-  // Reset chips
-  document.querySelectorAll(".cf-chip").forEach(function(c){ c.classList.remove("sel"); });
-  openM("m-cf");
+/* ── Outcome buttons on run page ──────────────────────────────────────────── */
+function _stopAddr(){
+  var s = cStops[cIdx];
+  return s ? s.address + ', ' + s.suburb : '';
 }
-function saveCF(){
+
+function openDoneConfirm(){
+  /* If multi-lid, go through existing multi-lid flow first */
+  var curStop = cStops[cIdx];
+  if(!isDepot(curStop) && curStop.bins > 1){
+    var msg = document.getElementById('m-multi-lid-msg');
+    if(msg) msg.textContent = 'This address has ' + curStop.bins + ' lids to swap.';
+    document.getElementById('m-multi-lid').style.display = 'flex';
+    return;
+  }
+  document.getElementById('m-done-addr').textContent = _stopAddr();
+  document.getElementById('m-done-confirm').style.display = 'flex';
+}
+
+function markDoneAddrOk(){
+  document.getElementById('m-done-confirm').style.display = 'none';
+  markDone();
+}
+
+function openDoneAddrNote(){
+  document.getElementById('m-done-confirm').style.display = 'none';
+  document.getElementById('m-done-addr-ta').value = '';
+  document.getElementById('m-done-addr-note').style.display = 'flex';
+}
+
+function markDoneAddrNote(){
+  var note = document.getElementById('m-done-addr-ta').value.trim();
+  document.getElementById('m-done-addr-note').style.display = 'none';
+  /* Mark done then attach address note */
+  markDone();
+  if(note){
+    var k = sk(cDay, cZone, cWeek, cCrew, cIdx - 1);
+    notes[k] = '[Address updated] ' + note;
+    sv();
+  }
+}
+
+function markAlreadySwapped(){
+  hap(HAP_TAP);
+  document.getElementById('m-already-addr').textContent = _stopAddr();
+  document.getElementById('m-already-ta').value = '';
+  document.getElementById('m-already').style.display = 'flex';
+}
+
+function saveAlreadySwapped(){
   hap(HAP_CF);
+  var note = document.getElementById('m-already-ta').value.trim();
+  document.getElementById('m-already').style.display = 'none';
+  if(_admCtx){
+    var ac=_admCtx; _admCtx=null;
+    var k=sk(ac.d,ac.z,ac.wk,ac.c,ac.i);
+    cfSet[k]=true; delete doneSet[k];
+    notes[k]='[Already swapped]'+(note?' '+note:'');
+    sv(); buildAdmin();
+    return;
+  }
+  _creditStop();
+  var k = sk(cDay, cZone, cWeek, cCrew, cIdx);
+  cfSet[k] = true; delete doneSet[k];
+  notes[k] = '[Already swapped]' + (note ? ' ' + note : '');
+  undoStack.push(cIdx); sv();
+  advance();
+}
+
+function markNoAccess(){
+  hap(HAP_TAP);
+  document.getElementById('m-noaccess2-addr').textContent = _stopAddr();
+  document.getElementById('m-noaccess2-ta').value = '';
+  document.querySelectorAll('#m-noaccess2 .cf-chip').forEach(function(c){ c.classList.remove('sel'); });
+  document.getElementById('m-noaccess2').style.display = 'flex';
+}
+
+function saveNoAccess2(){
+  hap(HAP_CF);
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#m-noaccess2 .cf-chip.sel')).map(function(c){ return c.textContent; });
+  var note = document.getElementById('m-noaccess2-ta').value.trim();
+  var detail = chips.join(', ') + (chips.length && note ? ' — ' + note : note);
+  document.getElementById('m-noaccess2').style.display = 'none';
+  if(_admCtx){
+    var ac=_admCtx; _admCtx=null;
+    var k=sk(ac.d,ac.z,ac.wk,ac.c,ac.i);
+    cfSet[k]=true; delete doneSet[k];
+    notes[k]='[No access]'+(detail?' '+detail:'');
+    sv(); buildAdmin();
+    return;
+  }
+  _creditStop();
+  var k = sk(cDay, cZone, cWeek, cCrew, cIdx);
+  cfSet[k] = true; delete doneSet[k];
+  notes[k] = '[No access]' + (detail ? ' ' + detail : '');
+  undoStack.push(cIdx); sv();
+  advance();
+}
+
+function csClearChips(){
+  document.getElementById('cs-chip-pins').classList.remove('sel');
+  document.getElementById('cs-chip-bolt').classList.remove('sel');
+}
+function markCantSwap(){
+  hap(HAP_TAP);
+  document.getElementById('m-cantswap-addr').textContent = _stopAddr();
+  document.getElementById('m-cantswap-ta').value = '';
+  csClearChips();
+  document.getElementById('m-cantswap').style.display = 'flex';
+}
+
+function saveCantSwap(){
+  hap(HAP_CF);
+  var pinsChip = document.getElementById('cs-chip-pins');
+  var boltChip = document.getElementById('cs-chip-bolt');
+  var reason = pinsChip.classList.contains('sel') ? 'Pins won\'t come out'
+             : boltChip.classList.contains('sel')  ? 'Lid bolted on'
+             : '';
+  var note = document.getElementById('m-cantswap-ta').value.trim();
+  var detail = reason + (reason && note ? ' — ' + note : note);
+  document.getElementById('m-cantswap').style.display = 'none';
+  if(_admCtx){
+    var ac=_admCtx; _admCtx=null;
+    var k=sk(ac.d,ac.z,ac.wk,ac.c,ac.i);
+    cfSet[k]=true; delete doneSet[k];
+    notes[k]='[Unable to swap]'+(detail?' '+detail:'');
+    sv(); buildAdmin();
+    return;
+  }
+  _creditStop();
+  var k = sk(cDay, cZone, cWeek, cCrew, cIdx);
+  cfSet[k] = true; delete doneSet[k];
+  notes[k] = '[Unable to swap]' + (detail ? ' ' + detail : '');
+  undoStack.push(cIdx); sv();
+  advance();
+}
+
+/* Keep these as no-ops / aliases in case anything references them */
+function openCF(){ markCantSwap(); }
+function openCantSwap(){ markCantSwap(); }
+function openNoAccess(){ markNoAccess(); }
+function toggleCFChip(el){ el.classList.toggle('sel'); }
+function openOutcomeFlow(){}
+function closeOutcomeFlow(){}
+
+
+function _creditStop(){
   var curStop=cStops[cIdx];
   if(!isDepot(curStop)){
     var from=cStops[0];
     for(var pi=cIdx-1;pi>=0;pi--){ if(isDepot(cStops[pi])||doneSet[sk(cDay,cZone,cWeek,cCrew,pi)]||cfSet[sk(cDay,cZone,cWeek,cCrew,pi)]){ from=cStops[pi]; break; } }
     var dist=hav([from.lat,from.lng],[curStop.lat,curStop.lng]);
-    // Credit driver
-    if(cPersonId){
-      var st=driverStats[cPersonId]||(driverStats[cPersonId]={bins:0,distance:0,stops:0});
-      st.distance+=dist; st.stops+=1;
-    }
-    // Credit passenger equally
-    if(cPassengerId){
-      var stp=driverStats[cPassengerId]||(driverStats[cPassengerId]={bins:0,distance:0,stops:0});
-      stp.distance+=dist; stp.stops+=1;
-    }
+    if(cPersonId){ var st=driverStats[cPersonId]||(driverStats[cPersonId]={bins:0,distance:0,stops:0}); st.distance+=dist; st.stops+=1; }
+    if(cPassengerId){ var stp=driverStats[cPassengerId]||(driverStats[cPassengerId]={bins:0,distance:0,stops:0}); stp.distance+=dist; stp.stops+=1; }
   }
-  var v=document.getElementById("m-cf-ta").value.trim(), k=sk(cDay,cZone,cWeek,cCrew,cIdx);
-  cfSet[k]=true; notes[k]="[Cannot find]"+(v?" "+v:"");
-  closeM("m-cf"); undoStack.push(cIdx); advance();
 }
+/* Legacy aliases */
+function openCF(){ openOutcomeFlow(); }
+function openCantSwap(){ openOutcomeFlow(); }
+function toggleCFChip(el){ el.classList.toggle('sel'); }
 
 function openM(id){ document.getElementById(id).classList.add("on"); }
 function closeM(id){ document.getElementById(id).classList.remove("on"); }
@@ -2064,22 +2338,30 @@ function buildRptTxt(){
     if(_dur) lines.push("Duration: "+_dur);
   }
   lines.push("");
-  var dc=0,cf=0,sk2=0,bDone=0,bTotal=0,suburbBins={},donedStops=[];
+  function _issuePrefix(n){ if(n.indexOf("[Already swapped]")===0) return "[Already swapped]"; if(n.indexOf("[Swapped nearby]")===0) return "[Swapped nearby]"; if(n.indexOf("[Unable to swap]")===0) return "[Unable to swap]"; if(n.indexOf("[No access]")===0) return "[No access]"; if(n.indexOf("[Wrong bin]")===0) return "[Wrong bin]"; if(n.indexOf("[Not found]")===0) return "[Not found]"; return "[Issue]"; }
+  var dc=0,alreadySwapped=0,tooDifficult=0,noAccess=0,cfOther=0,sk2=0,bDone=0,bTotal=0,suburbBins={},donedStops=[];
+  var issuesList={"[Already swapped]":[],"[Swapped nearby]":[],"[Unable to swap]":[],"[No access]":[],"[Wrong bin]":[],"[Not found]":[],"[Issue]":[]};
   stops.forEach(function(s,i){
     if(isDepot(s))return;
     var k=sk(d,z,wk,c,i), n=notes[k]||"";
     bTotal+=s.bins||1;
     if(doneSet[k]){ dc++; bDone+=(s.bins||1); suburbBins[s.suburb]=(suburbBins[s.suburb]||0)+(s.bins||1); donedStops.push({s:s,n:n}); }
-    else if(cfSet[k]) cf++;
+    else if(cfSet[k]){ var pf=_issuePrefix(n); if(issuesList[pf]) issuesList[pf].push(s.address+", "+s.suburb+(n?" - "+n.replace(/^\[[^\]]+\]\s*/,""):"")); else issuesList["[Issue]"].push(s.address+", "+s.suburb); }
     else sk2++;
   });
+  var cf=Object.values(issuesList).reduce(function(a,b){return a+b.length;},0);
   var total=dc+cf+sk2;
   var pct=total>0?Math.round(dc/total*100):0;
   lines.push("SUMMARY");
   lines.push("-------");
   lines.push("Stops completed:  "+dc+" / "+total+" ("+pct+"%)");
   lines.push("Lids swapped:     "+bDone+" / "+bTotal);
-  lines.push("Cannot find:      "+cf);
+  if(issuesList["[Already swapped]"].length) lines.push("Lid already swapped: "+issuesList["[Already swapped]"].length);
+  if(issuesList["[Swapped nearby]"].length)  lines.push("Swapped nearby:      "+issuesList["[Swapped nearby]"].length);
+  if(issuesList["[Unable to swap]"].length)  lines.push("Unable to swap:      "+issuesList["[Unable to swap]"].length);
+  if(issuesList["[No access]"].length)       lines.push("No access:           "+issuesList["[No access]"].length);
+  if(issuesList["[Wrong bin]"].length)       lines.push("Wrong bin (audit):   "+issuesList["[Wrong bin]"].length);
+  if(issuesList["[Not found]"].length)       lines.push("Bin not found:       "+issuesList["[Not found]"].length);
   lines.push("Skipped:          "+sk2);
   // Bins by suburb
   var subKeys=Object.keys(suburbBins).sort();
@@ -2089,27 +2371,31 @@ function buildRptTxt(){
     lines.push("----------------------");
     subKeys.forEach(function(sb){ lines.push("  "+sb+": "+suburbBins[sb]); });
   }
-  var cfs=[],sks=[],nts=[];
-  stops.forEach(function(s,i){ if(isDepot(s))return; var k=sk(d,z,wk,c,i),n=notes[k]||""; if(cfSet[k])cfs.push(s.address+", "+s.suburb+(n?" - "+n:"")); else if(!doneSet[k])sks.push(s.address+", "+s.suburb); });
+  var sks=[],nts=[];
+  stops.forEach(function(s,i){ if(isDepot(s))return; var k=sk(d,z,wk,c,i); if(!doneSet[k]&&!cfSet[k]) sks.push(s.address+", "+s.suburb); });
   donedStops.forEach(function(r){ if(r.n)nts.push(r.s.address+", "+r.s.suburb+" - "+r.n); });
-  if(cfs.length){ lines.push(""); lines.push("CANNOT FIND ("+cfs.length+")"); lines.push("-------------------"); cfs.forEach(function(l){ lines.push("  - "+l); }); }
+  var ISSUE_LABELS={"[Already swapped]":"LID ALREADY SWAPPED","[Swapped nearby]":"SWAPPED NEARBY (ADDRESS FLAGGED)","[Unable to swap]":"UNABLE TO SWAP","[No access]":"BIN NOT ACCESSIBLE","[Wrong bin]":"WRONG BIN / AUDIT FLAG","[Not found]":"BIN NOT FOUND","[Issue]":"OTHER ISSUES"};
+  Object.keys(ISSUE_LABELS).forEach(function(bk){ var lst=issuesList[bk]; if(lst.length){ lines.push(""); lines.push(ISSUE_LABELS[bk]+" ("+lst.length+")"); lines.push(Array(ISSUE_LABELS[bk].length+5).join("-")); lst.forEach(function(l){ lines.push("  - "+l); }); } });
   if(sks.length){ lines.push(""); lines.push("SKIPPED ("+sks.length+")"); lines.push("----------"); sks.forEach(function(l){ lines.push("  - "+l); }); }
   if(nts.length){ lines.push(""); lines.push("NOTES"); lines.push("-----"); nts.forEach(function(l){ lines.push("  - "+l); }); }
   lines.push(""); lines.push("--- ALL COMPLETED STOPS ("+dc+") ---");
   donedStops.forEach(function(r,i){ lines.push("  "+(i+1)+". "+r.s.address+", "+r.s.suburb+(r.s.bins>1?" ("+r.s.bins+" bins)":"")+(r.n?" - "+r.n:"")); });
   return lines.join("\n");
 }
+function _issuePrefix(n){ if(n.indexOf("[Already swapped]")===0) return "[Already swapped]"; if(n.indexOf("[Swapped nearby]")===0) return "[Swapped nearby]"; if(n.indexOf("[Unable to swap]")===0) return "[Unable to swap]"; if(n.indexOf("[No access]")===0) return "[No access]"; if(n.indexOf("[Wrong bin]")===0) return "[Wrong bin]"; if(n.indexOf("[Not found]")===0) return "[Not found]"; return "[Issue]"; }
 function showReport(){
   var d=cDay,z=cZone,wk=cWeek,c=cCrew,stops=cStops;
-  var dc=0,cf=0,sk2=0,bDone=0,bTotal=0,suburbBins={},donedStops=[];
+  var dc=0,sk2=0,bDone=0,bTotal=0,suburbBins={},donedStops=[];
+  var issueBuckets={"[Already swapped]":[],"[Swapped nearby]":[],"[Unable to swap]":[],"[No access]":[],"[Wrong bin]":[],"[Not found]":[],"[Issue]":[]};
   stops.forEach(function(s,i){
     if(isDepot(s))return;
     var k=sk(d,z,wk,c,i),n=notes[k]||"";
     bTotal+=(s.bins||1);
     if(doneSet[k]){ dc++; bDone+=(s.bins||1); suburbBins[s.suburb]=(suburbBins[s.suburb]||0)+(s.bins||1); donedStops.push({s:s,n:n}); }
-    else if(cfSet[k]) cf++;
+    else if(cfSet[k]){ var pf=_issuePrefix(n); if(issueBuckets[pf]) issueBuckets[pf].push({s:s,n:n}); }
     else sk2++;
   });
+  var cf=Object.values(issueBuckets).reduce(function(a,b){return a+b.length;},0);
   var total=dc+cf+sk2;
   var pct=total>0?Math.round(dc/total*100):0;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
@@ -2149,7 +2435,9 @@ function showReport(){
   // Summary KV rows
   html+='<div class="rpt-kv"><span>Stops completed</span><b>'+dc+' / '+total+'</b></div>';
   html+='<div class="rpt-kv"><span>Lids swapped</span><b>'+bDone+' / '+bTotal+'</b></div>';
-  html+='<div class="rpt-kv"><span>Cannot find</span><b style="color:var(--danger)">'+cf+'</b></div>';
+  if(issueBuckets["[Already swapped]"].length) html+='<div class="rpt-kv"><span>&#10003;&#10003; Lid already swapped</span><b style="color:var(--green)">'+issueBuckets["[Already swapped]"].length+'</b></div>';
+  if(issueBuckets["[Unable to swap]"].length)  html+='<div class="rpt-kv"><span>&#9888;&#65039; Unable to swap</span><b style="color:var(--warn)">'+issueBuckets["[Unable to swap]"].length+'</b></div>';if(issueBuckets["[Wrong bin]"].length)       html+='<div class="rpt-kv"><span>&#8635; Wrong bin / audit</span><b style="color:var(--blue)">'+issueBuckets["[Wrong bin]"].length+'</b></div>';if(issueBuckets["[Not found]"].length)       html+='<div class="rpt-kv"><span>&#63; Bin not found</span><b style="color:var(--danger)">'+issueBuckets["[Not found]"].length+'</b></div>';if(issueBuckets["[Swapped nearby]"].length)  html+='<div class="rpt-kv"><span>&#10003; Swapped nearby</span><b style="color:var(--green)">'+issueBuckets["[Swapped nearby]"].length+'</b></div>';
+  if(issueBuckets["[No access]"].length)       html+='<div class="rpt-kv"><span>&#128683; Bin not accessible</span><b style="color:var(--danger)">'+issueBuckets["[No access]"].length+'</b></div>';
   html+='<div class="rpt-kv" style="border-bottom:none;margin-bottom:10px"><span>Skipped</span><b style="color:var(--warn)">'+sk2+'</b></div>';
   // Bins by suburb
   var subKeys=Object.keys(suburbBins).sort();
@@ -2159,11 +2447,12 @@ function showReport(){
       html+='<div class="rpt-kv" style="padding:4px 8px"><span style="color:var(--text)">'+esc(sb)+'</span><b>'+suburbBins[sb]+'</b></div>';
     });
   }
-  // Cannot find
-  var cfs=[],sks=[],nts=[];
-  stops.forEach(function(s,i){ if(isDepot(s))return; var k=sk(d,z,wk,c,i),n=notes[k]||""; if(cfSet[k])cfs.push({s:s,n:n}); else if(!doneSet[k])sks.push(s); });
+  // Issue buckets
+  var ISSUE_UI={"[Already swapped]":{label:"Lid already swapped",cls:"rpt-cf",color:"var(--green)"},"[Swapped nearby]":{label:"Swapped nearby (address flagged)",cls:"rpt-cf",color:"var(--green)"},"[Unable to swap]":{label:"Unable to swap",cls:"rpt-sk",color:"var(--warn)"},"[No access]":{label:"Bin not accessible",cls:"rpt-cf",color:"var(--danger)"},"[Wrong bin]":{label:"Wrong bin (audit flag)",cls:"rpt-cf",color:"var(--blue)"},"[Not found]":{label:"Bin not found",cls:"rpt-cf",color:"var(--danger)"},"[Issue]":{label:"Other issue",cls:"rpt-cf",color:"var(--muted)"}};
+  Object.keys(ISSUE_UI).forEach(function(bk){ var lst=issueBuckets[bk]; if(!lst||!lst.length) return; var m=ISSUE_UI[bk]; html+='<div class="rpt-shdr" style="color:'+m.color+'">'+esc(m.label)+' ('+lst.length+')</div>'; lst.forEach(function(r){ html+='<div class="rpt-e '+m.cls+'"><b>'+esc(r.s.address)+'</b>, '+esc(r.s.suburb)+(r.n&&r.n.replace(/^\[[^\]]+\]\s*/,"")?'<br><span style="opacity:.7">'+esc(r.n.replace(/^\[[^\]]+\]\s*/,""))+'</span>':"")+'</div>'; }); });
+  var sks=[],nts=[];
+  stops.forEach(function(s,i){ if(isDepot(s))return; var k=sk(d,z,wk,c,i); if(!doneSet[k]&&!cfSet[k]) sks.push(s); });
   donedStops.forEach(function(r){ if(r.n)nts.push(r); });
-  if(cfs.length){ html+='<div class="rpt-shdr">Cannot Find ('+cfs.length+')</div>'; cfs.forEach(function(r){ html+='<div class="rpt-e rpt-cf"><b>'+esc(r.s.address)+'</b>, '+esc(r.s.suburb)+(r.n?'<br><span style="opacity:.7">'+esc(r.n)+'</span>':"")+'</div>'; }); }
   if(sks.length){ html+='<div class="rpt-shdr">Skipped ('+sks.length+')</div>'; sks.forEach(function(s){ html+='<div class="rpt-e rpt-sk">'+esc(s.address)+', '+esc(s.suburb)+'</div>'; }); }
   if(nts.length){ html+='<div class="rpt-shdr">Notes ('+nts.length+')</div>'; nts.forEach(function(r){ html+='<div class="rpt-e rpt-nt"><b>'+esc(r.s.address)+'</b><br>'+esc(r.n)+'</div>'; }); }
   // All completed stops collapsible
@@ -2215,9 +2504,16 @@ function exportReportExcel(){
     bTotal+=(s.bins||1);
     var status;
     if(doneSet[k]){dc++;bDone+=(s.bins||1);status="Completed";}
-    else if(cfSet[k]){cf++;status="Cannot Find";}
+    else if(cfSet[k]){
+      cf++;
+      var pf=_issuePrefix(n);
+      if(pf==="[Already swapped]") status="Lid Already Swapped";
+      else if(pf==="[Unable to swap]") status="Unable to Swap"; else if(pf==="[Wrong bin]") status="Wrong Bin"; else if(pf==="[Not found]") status="Not Found"; else if(pf==="[Swapped nearby]") status="Completed (Nearby)";
+      else if(pf==="[No access]") status="No Access";
+      else status="Cannot Find";
+    }
     else{sk2++;status="Not Done";}
-    stopRows.push({num:i,addr:s.address,suburb:s.suburb,bins:s.bins||1,status:status,note:n});
+    stopRows.push({num:i,addr:s.address,suburb:s.suburb,bins:s.bins||1,status:status,note:n.replace(/^\[[^\]]+\]\s*/,"")});
   });
   var total=dc+cf+sk2,pct=total>0?Math.round(dc/total*100):0;
   var _rt=getRunTimes(),_dur=fmtDuration(_rt.depart,_rt.finish);
@@ -2367,9 +2663,6 @@ function exportReportExcel(){
     ["Run",d+" Zone "+z+" — Route "+(c==="1"?"A":"B")],
     ["Scheduled Date",runDateStr||"—"],
     ["Crew",dName],
-    ["Departed",fmtTime(_rt.depart)||"—"],
-    ["Finished",fmtTime(_rt.finish)||"—"],
-    ["Duration",_dur||"—"],
     ["Exported",reportedAt]
   ];
   infoRows.forEach(function(ir){
@@ -2386,12 +2679,25 @@ function exportReportExcel(){
   shRows+='<row r="'+r+'" ht="22" customHeight="1">'+iStr('A'+r,'SUMMARY',4)+'</row>';
   merges.push('A'+r+':F'+r);
 
+  var alreadyCnt=stopRows.filter(function(r){return r.status==="Lid Already Swapped";}).length;
+  var difficultCnt=stopRows.filter(function(r){return r.status==="Unable to Swap";}).length;
+  var noaccessCnt=stopRows.filter(function(r){return r.status==="No Access";}).length;
+  var wrongBinCnt=stopRows.filter(function(r){return r.status==="Wrong Bin";}).length;
+  var notFoundCnt=stopRows.filter(function(r){return r.status==="Not Found";}).length;
+  var nearbyDoneCnt=stopRows.filter(function(r){return r.status==="Completed (Nearby)";}).length;
+  var cfOtherCnt=0;
   var summaryRows=[
     ["Stops Completed",dc+" of "+total+" ("+pct+"%)"],
     ["Lids Swapped",bDone+" of "+bTotal],
-    ["Cannot Find",String(cf)],
+    ["Lid Already Swapped",String(alreadyCnt)],
+    ["Unable to Swap",String(difficultCnt)],
+    ["Wrong Bin (audit flag)",String(wrongBinCnt)],
+    ["Not Found",String(notFoundCnt)],
+    ["Swapped Nearby",String(nearbyDoneCnt)],
+    ["Bin Not Accessible",String(noaccessCnt)],
+    ["Cannot Find",String(cfOtherCnt)],
     ["Skipped / Not Done",String(sk2)]
-  ];
+  ].filter(function(r){ return r[0]==="Stops Completed"||r[0]==="Lids Swapped"||r[0]==="Skipped / Not Done"||parseInt(r[1])>0; });
   summaryRows.forEach(function(sr,idx){
     var alt=idx%2;r=nr();
     shRows+='<row r="'+r+'" ht="18" customHeight="1">'+iStr('A'+r,sr[0],5+alt)+iStr('C'+r,sr[1],7+alt)+'</row>';
@@ -2416,7 +2722,7 @@ function exportReportExcel(){
   /* data rows */
   stopRows.forEach(function(sr,idx){
     var alt=idx%2;
-    var stS=sr.status==="Completed"?14:(sr.status==="Cannot Find"?15:16);
+    var _doneStatuses=["Completed","Completed (Nearby)","Lid Already Swapped"]; var _warnStatuses=["Unable to Swap","No Access","Wrong Bin","Not Found"]; var stS=_doneStatuses.indexOf(sr.status)>=0?14:(_warnStatuses.indexOf(sr.status)>=0?15:16);
     r=nr();
     shRows+='<row r="'+r+'" ht="18" customHeight="1">'
       +iNum('A'+r,sr.num,12+alt)
@@ -2513,7 +2819,8 @@ function updateOverviewMap(){
     var isCF   = !!cfSet[sk(cDay,cZone,cWeek,cCrew,i)];
     var isCur  = (i===cIdx);
     var icon   = isCur?_iconCur:(isCF?_iconCF:(isDone?_iconDone:_iconPend));
-    var label  = isDone?'Done':isCF?'Cannot Find':isCur?'<b>Current</b>':'Pending';
+    var cfLabel='Issue'; if(isCF){var _n=(notes[sk(cDay,cZone,cWeek,cCrew,i)]||""); if(_n.indexOf("[Already swapped]")===0)cfLabel="Already Swapped"; else if(_n.indexOf("[Swapped nearby]")===0)cfLabel="Swapped Nearby"; else if(_n.indexOf("[Unable to swap]")===0)cfLabel="Unable to Swap"; else if(_n.indexOf("[No access]")===0)cfLabel="No Access"; else if(_n.indexOf("[Wrong bin]")===0)cfLabel="Wrong Bin"; else if(_n.indexOf("[Not found]")===0)cfLabel="Not Found";}
+    var label  = isDone?'Done':isCF?cfLabel:isCur?'<b>Current</b>':'Pending';
     var m = L.marker([s.lat,s.lng],{icon:icon,zIndexOffset:isCur?1000:0})
       .addTo(_ovMap)
       .bindPopup('<b>'+s.address+'</b><br>'+s.suburb+'<br>'+label+(s.bins?' &mdash; '+s.bins+' bin'+(s.bins>1?'s':''):''));
@@ -2665,13 +2972,21 @@ function applyFixPin(clientX,clientY,canvas){
 /* ── CF reason chips ── */
 function toggleCFChip(el){
   el.classList.toggle("sel");
-  // Append selected reasons to the textarea
-  var chips=Array.from(document.querySelectorAll(".cf-chip.sel")).map(function(c){ return c.textContent; });
-  document.getElementById("m-cf-ta").value=chips.join(", ");
+  // Append selected reasons to the nearest textarea within the same modal sheet
+  var sheet=el.closest(".msheet");
+  if(sheet){
+    var ta=sheet.querySelector(".mta");
+    var chips=Array.from(sheet.querySelectorAll(".cf-chip.sel")).map(function(c){ return c.textContent; });
+    if(ta) ta.value=chips.join(", ");
+  }
 }
 
 /* ── Admin / Supervisor screen ── */
 function buildAdmin(){
+  /* Remember which drill panels are currently open so we can restore them after rebuild */
+  var _openDrills = [];
+  document.querySelectorAll('.adm-drill-panel.open').forEach(function(p){ _openDrills.push(p.id); });
+
   var showComplete=document.getElementById("adm-toggle-showcomplete");
   var showComplete=showComplete?showComplete.checked:true;
   var pendingOnly=document.getElementById("adm-toggle-pendingonly");
@@ -2704,7 +3019,7 @@ function buildAdmin(){
     +'<div class="adm-summary-stat"><div class="adm-summary-val">'+grandPct+'%</div><div class="adm-summary-lbl">Overall</div></div>'
     +'<div class="adm-summary-stat"><div class="adm-summary-val">'+grandDone+'<span style="font-size:17px;color:var(--muted)">/'+grandTotal+'</span></div><div class="adm-summary-lbl">Stops</div></div>'
     +'<div class="adm-summary-stat"><div class="adm-summary-val">'+grandBins+'</div><div class="adm-summary-lbl">Lids</div></div>'
-    +(grandCF?'<div class="adm-summary-stat"><div class="adm-summary-val" style="color:var(--danger)">'+grandCF+'</div><div class="adm-summary-lbl">Not Found</div></div>':'')
+    +(grandCF?'<div class="adm-summary-stat"><div class="adm-summary-val" style="color:var(--danger)">'+grandCF+'</div><div class="adm-summary-lbl">Issues</div></div>':'')
     +'</div>';
 
   // ── Runs tab ──
@@ -2750,7 +3065,7 @@ function buildAdmin(){
         +'<div class="adm-run-stats">'
         +'<span class="adm-run-stat"><b>'+done+'/'+total+'</b> stops</span>'
         +'<span class="adm-run-stat"><b>'+bins+'</b> lids</span>'
-        +(cf?'<span class="adm-run-stat" style="color:var(--danger)"><b>'+cf+'</b> not found</span>':'')
+        +(cf?'<span class="adm-run-stat" style="color:var(--danger)"><b>'+cf+'</b> issue'+(cf>1?'s':'')+'</span>':'')
         +'</div>'
         +timeLine
         +'<button class="adm-drill-btn" onclick="admToggleDrill(\''+runId+'\',\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\')">&#9660; Show stops</button>'
@@ -2778,8 +3093,8 @@ function buildAdmin(){
   }).join("");
   document.getElementById("adm-crew").innerHTML=crewHtml||'<div class="adm-empty">No crew activity yet.</div>';
 
-  // ── Not Found tab ──
-  var cfHtml="";
+  // ── Issues tab ──
+  var buckets={"[Already swapped]":[],"[Swapped nearby]":[],"[Unable to swap]":[],"[No access]":[],"[Wrong bin]":[],"[Not found]":[],"other":[]};
   SCHEDULE.forEach(function(e){
     var d=e.day,z=e.zone,wk=e.week;
     var crews=ROUTES[d]&&ROUTES[d][z]&&ROUTES[d][z][wk]?Object.keys(ROUTES[d][z][wk]):[];
@@ -2790,17 +3105,62 @@ function buildAdmin(){
         var k=sk(d,z,wk,c,i);
         if(!cfSet[k]) return;
         var note=notes[k]||"";
-        cfHtml+='<div class="adm-cf-item">'
-          +'<div class="adm-cf-info">'
-          +'<div class="adm-cf-addr">'+esc(s.address)+', '+esc(s.suburb)+'</div>'
-          +'<div class="adm-cf-meta">'+esc(e.label)+' &mdash; Z'+z+' Crew '+(c==="1"?"A":"B")+(note?' &mdash; '+esc(note):'')+'</div>'
-          +'</div>'
-          +'<button class="adm-cf-clear" onclick="admClearCF(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+')">Clear</button>'
-          +'</div>';
+        var bucket="other";
+        if(note.indexOf("[Already swapped]")===0) bucket="[Already swapped]";
+        else if(note.indexOf("[Unable to swap]")===0) bucket="[Unable to swap]";
+        else if(note.indexOf("[No access]")===0) bucket="[No access]";
+        else if(note.indexOf("[Wrong bin]")===0) bucket="[Wrong bin]";
+        else if(note.indexOf("[Not found]")===0) bucket="[Not found]";
+        else if(note.indexOf("[Swapped nearby]")===0) bucket="[Swapped nearby]";
+        /* [Cannot find] legacy prefix — falls through to 'other' */
+        buckets[bucket].push({s:s,note:note,d:d,z:z,wk:wk,c:c,i:i,label:e.label});
       });
     });
   });
-  document.getElementById("adm-cf-list").innerHTML=cfHtml||'<div class="adm-empty">✅ No cannot-find stops.</div>';
+  var BUCKET_META={
+    "[Already swapped]":{icon:"&#10003;&#10003;",label:"Lid Already Swapped",color:"var(--green)"},
+    "[Swapped nearby]":{icon:"&#10003;",label:"Swapped Nearby (Address Flagged)",color:"var(--green)"},
+    "[Unable to swap]":{icon:"&#9888;&#65039;",label:"Unable to Swap",color:"var(--warn)"},
+    "[No access]":{icon:"&#128683;",label:"Bin Not Accessible",color:"var(--danger)"},
+    "[Wrong bin]":{icon:"&#8635;",label:"Wrong Bin / Audit Flag",color:"var(--blue)"},
+    "[Not found]":{icon:"?",label:"Bin Not Found",color:"var(--danger)"},
+    "other":{icon:"&#9888;",label:"Other Issues",color:"var(--muted)"}
+  };
+  var cfHtml="";
+  ["[Already swapped]","[Swapped nearby]","[Unable to swap]","[No access]","[Wrong bin]","[Not found]","other"].forEach(function(bk){
+    var items=buckets[bk];
+    if(!items.length) return;
+    var m=BUCKET_META[bk];
+    cfHtml+='<div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:'+m.color+';margin:14px 0 7px;display:flex;align-items:center;gap:7px">'+m.icon+' '+esc(m.label)+' ('+items.length+')</div>';
+    items.forEach(function(it){
+      var detail=it.note.replace(/^\[[^\]]+\]\s*/,"");
+      cfHtml+='<div class="adm-cf-item" style="border-left-color:'+m.color+'">'
+        +'<div class="adm-cf-info">'
+        +'<div class="adm-cf-addr">'+esc(it.s.address)+', '+esc(it.s.suburb)+'</div>'
+        +'<div class="adm-cf-meta">'+esc(it.label)+' &mdash; Z'+it.z+' Crew '+(it.c==="1"?"A":"B")+(detail?' &mdash; '+esc(detail):'')+'</div>'
+        +'</div>'
+        +'<button class="adm-cf-clear" onclick="admClearCF(\''+it.d+'\',\''+it.z+'\',\''+it.wk+'\',\''+it.c+'\','+it.i+')">Clear</button>'
+        +'</div>';
+    });
+  });
+  document.getElementById("adm-cf-list").innerHTML=cfHtml||'<div class="adm-empty">&#10003; No issues recorded yet.</div>';
+
+  /* Restore drill panels that were open before the rebuild */
+  _openDrills.forEach(function(id){
+    var panel = document.getElementById(id);
+    if(!panel) return;
+    panel.classList.add('open');
+    var btn = panel.previousElementSibling;
+    if(btn) btn.innerHTML = '&#9650; Hide stops';
+    /* Re-populate the drill content — id format: adm-run-{day}-{zone}-{week}-{crew}-drill */
+    var core = id.replace(/^adm-run-/,'').replace(/-drill$/,'');
+    /* day name may contain no hyphens; zone/week/crew are last 3 segments */
+    var segs = core.split('-');
+    if(segs.length >= 4){
+      var crew = segs.pop(), wk2 = segs.pop(), zone2 = segs.pop(), day2 = segs.join('-');
+      admBuildDrill(panel, day2, zone2, wk2, crew);
+    }
+  });
 
   syncPopulateRunSel();}
 
@@ -2841,9 +3201,11 @@ function admBuildDrill(panel,d,z,wk,c){
         +(s.bins&&s.bins>1?'<div class="adm-stop-meta">'+s.bins+' lids</div>':'')
       +'</div>'
       +'<div class="adm-stop-actions">'
-        +(!isDone&&!isCF?'<button class="adm-stop-act ok" onclick="admMarkDone(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+',\''+panel.parentElement.id+'\')">Done</button>':'')
-        +(!isDone&&!isCF?'<button class="adm-stop-act danger" onclick="admMarkCF(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+',\''+panel.parentElement.id+'\')">CF</button>':'')
-        +(isCF?'<button class="adm-stop-act" onclick="admClearCF(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+')">Clear CF</button>':'')
+        +(!isDone&&!isCF?'<button class="adm-stop-act ok"      onclick="admMarkDone(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+',\''+panel.parentElement.id+'\')">&#10003; Done</button>':'')
+        +(!isDone&&!isCF?'<button class="adm-stop-act blue"    onclick="admOpenAlready(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+',\''+panel.parentElement.id+'\')">&#10003;&#10003;</button>':'')
+        +(!isDone&&!isCF?'<button class="adm-stop-act danger"  onclick="admOpenNoAccess(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+',\''+panel.parentElement.id+'\')">&#128683;</button>':'')
+        +(!isDone&&!isCF?'<button class="adm-stop-act amber"   onclick="admOpenCantSwap(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+',\''+panel.parentElement.id+'\')">&#9888;</button>':'')
+        +(isCF?'<button class="adm-stop-act" onclick="admClearCF(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+')">Clear</button>':'')
         +(isDone?'<button class="adm-stop-act" onclick="admUnmark(\''+d+'\',\''+z+'\',\''+wk+'\',\''+c+'\','+i+',\''+panel.parentElement.id+'\')">Undo</button>':'')
       +'</div>'
       +'</div>';
@@ -2860,9 +3222,37 @@ function admMarkDone(d,z,wk,c,i,runId){
 }
 function admMarkCF(d,z,wk,c,i,runId){
   var k=sk(d,z,wk,c,i);
-  cfSet[k]=true; delete doneSet[k]; if(!notes[k]) notes[k]="[Cannot find]"; sv();
+  cfSet[k]=true; delete doneSet[k]; if(!notes[k]) notes[k]="[Issue]"; sv();
   buildAdmin();
   if(runId){ var p=document.getElementById(runId+"-drill"); if(p&&p.classList.contains("open")) admBuildDrill(p,d,z,wk,c); }
+}
+
+/* Admin outcome modals — store context then open the shared run-page modals */
+var _admCtx = null;
+function _admSetCtx(d,z,wk,c,i,runId){ _admCtx = {d:d,z:z,wk:wk,c:c,i:i,runId:runId}; }
+
+function admOpenAlready(d,z,wk,c,i,runId){
+  _admSetCtx(d,z,wk,c,i,runId);
+  var s=ROUTES[d][z][wk][c][i];
+  document.getElementById('m-already-addr').textContent = s.address+', '+s.suburb;
+  document.getElementById('m-already-ta').value = '';
+  document.getElementById('m-already').style.display = 'flex';
+}
+function admOpenNoAccess(d,z,wk,c,i,runId){
+  _admSetCtx(d,z,wk,c,i,runId);
+  var s=ROUTES[d][z][wk][c][i];
+  document.getElementById('m-noaccess2-addr').textContent = s.address+', '+s.suburb;
+  document.getElementById('m-noaccess2-ta').value = '';
+  document.querySelectorAll('#m-noaccess2 .cf-chip').forEach(function(ch){ ch.classList.remove('sel'); });
+  document.getElementById('m-noaccess2').style.display = 'flex';
+}
+function admOpenCantSwap(d,z,wk,c,i,runId){
+  _admSetCtx(d,z,wk,c,i,runId);
+  var s=ROUTES[d][z][wk][c][i];
+  document.getElementById('m-cantswap-addr').textContent = s.address+', '+s.suburb;
+  document.getElementById('m-cantswap-ta').value = '';
+  csClearChips();
+  document.getElementById('m-cantswap').style.display = 'flex';
 }
 function admClearCF(d,z,wk,c,i){
   var k=sk(d,z,wk,c,i);
@@ -2933,7 +3323,8 @@ function admExportCSV(){
         if(s.isDepot) return;
         sn++;
         var k=sk(d,z,wk,c,i);
-        var status=doneSet[k]?"Done":cfSet[k]?"Cannot find":"Pending";
+        var _cfn=notes[k]||""; var _cfpf=cfSet[k]?(_issuePrefix(_cfn).replace(/^\[|\]$/g,"").replace(/\b\w/g,function(c){return c.toUpperCase();})):"";
+        var status=doneSet[k]?"Done":cfSet[k]?_cfpf:"Pending";
         var note=(notes[k]||"").replace(/"/g,'""');
         rows.push([e.date,d,z,wk,(c==="1"?"A":"B"),sn,s.address,s.suburb,s.bins||1,status,'"'+note+'"',dep,fin]);
       });
@@ -2961,7 +3352,7 @@ function admCopyReport(){
         if(doneSet[k]) bins+=s.bins||1;
       });
       var pct=real.length?Math.round(done/real.length*100):0;
-      lines.push(e.label+" Zone "+z+" Crew "+(c==="1"?"A":"B")+": "+done+"/"+real.length+" stops ("+pct+"%), "+bins+" lids"+(cf?" | "+cf+" not found":""));
+      lines.push(e.label+" Zone "+z+" Crew "+(c==="1"?"A":"B")+": "+done+"/"+real.length+" stops ("+pct+"%), "+bins+" lids"+(cf?" | "+cf+" issue"+(cf>1?"s":""):""));
     });
   });
   var txt=lines.join("\n");
