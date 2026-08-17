@@ -191,24 +191,6 @@ input,textarea,select{font-size:18px!important}
 .next-sub{font-size:15px;color:var(--muted)}
 .next-dist{font-size:15px;color:var(--muted);flex-shrink:0}
 .next-dist.nearby{font-size:15px;font-weight:900;color:var(--lime);background:rgba(192,223,22,.15);padding:3px 8px;border-radius:20px}
-/* Leaderboard popup */
-#lb-modal{position:fixed;inset:0;z-index:9000;background:rgba(0,10,18,.78);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);padding:20px}
-#lb-sheet{background:var(--surface);border-radius:20px;width:100%;max-width:420px;max-height:80vh;overflow-y:auto;animation:lbPop .22s cubic-bezier(.34,1.56,.64,1)}
-@keyframes lbPop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
-#lb-sheet-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 18px 0}
-#lb-sheet-title{font-size:20px;font-weight:900;letter-spacing:-.5px}
-#lb-close{background:var(--surface2);border:none;border-radius:50%;width:30px;height:30px;font-size:18px;cursor:pointer;color:var(--muted);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-#lb-body{padding:14px 18px 20px}
-.lb-taunt{font-size:17px;color:var(--muted);margin-bottom:14px;font-style:italic;min-height:20px}
-.lb-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.lb-row:last-child{margin-bottom:0}
-.lb-rank{font-size:20px;width:28px;text-align:center;flex-shrink:0}
-.lb-name{font-size:18px;font-weight:800;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.lb-bar-wrap{flex:2;min-width:0}
-.lb-bar{height:8px;background:var(--surface2);border-radius:4px;overflow:hidden}
-.lb-fill{height:100%;background:var(--lime);border-radius:4px;transition:width .5s .1s}
-.lb-bins{font-size:17px;font-weight:900;color:var(--text);flex-shrink:0;min-width:44px;text-align:right}
-.lb-bins span{font-size:14px;font-weight:700;color:var(--muted);margin-left:2px}
 .btn-expand{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:7px 11px;font-size:15px;font-weight:800;color:var(--text);cursor:pointer;flex-shrink:0;display:flex;align-items:center;gap:5px}
 .btn-expand .btn-icon{font-size:18px}
 .btn-expand .btn-lbl{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
@@ -509,25 +491,10 @@ input,textarea,select{font-size:18px!important}
       <div class="op-sub" id="op-sub"></div>
     </div>
     <div id="action-btns" style="display:none;gap:10px;margin-top:12px">
-      <button id="lb-btn" onclick="openLeaderboard()" style="display:none;padding:13px 16px;background:var(--surface);border:1px solid rgba(192,223,22,.4);border-radius:14px;color:var(--lime);font-size:17px;font-weight:800;cursor:pointer;flex-shrink:0;flex:1">&#127942; Leaderboard</button>
       <button id="reset-btn" onclick="resetAll()" style="display:none;padding:13px 16px;background:var(--surface);border:1px solid var(--danger);border-radius:14px;color:var(--danger);font-size:17px;font-weight:800;cursor:pointer;flex-shrink:0">&#128465; Reset All</button>
     </div>
     <div id="home-body"></div>
     <div id="dev-footer">Created by Tim Devlin using Numa AI &mdash; Moira Shire Council &copy; 2026</div>
-  </div>
-</div>
-
-<!-- LEADERBOARD MODAL -->
-<div id="lb-modal" style="display:none" onclick="if(event.target===this)closeLeaderboard()">
-  <div id="lb-sheet">
-    <div id="lb-sheet-hdr">
-      <div id="lb-sheet-title">&#127942; Leaderboard</div>
-      <button id="lb-close" onclick="closeLeaderboard()">&#10005;</button>
-    </div>
-    <div id="lb-body">
-      <div class="lb-taunt" id="lb-taunt"></div>
-      <div id="lb-rows"></div>
-    </div>
   </div>
 </div>
 
@@ -596,8 +563,9 @@ input,textarea,select{font-size:18px!important}
     <h3 style="color:var(--warn)">&#9888;&nbsp; Lid Can&#39;t Be Swapped</h3>
     <div class="m-sub" id="m-cantswap-addr"></div>
     <div class="cf-reasons" style="margin:12px 0 10px">
-      <button class="cf-chip" id="cs-chip-pins" onclick="csClearChips();this.classList.toggle('sel')">Pins won&#39;t come out</button>
-      <button class="cf-chip" id="cs-chip-bolt" onclick="csClearChips();this.classList.toggle('sel')">Lid bolted on</button>
+      <button class="cf-chip" id="cs-chip-pins" onclick="this.classList.toggle('sel')">Pins won&#39;t come out</button>
+      <button class="cf-chip" id="cs-chip-bolt" onclick="this.classList.toggle('sel')">Lid bolted on</button>
+      <button class="cf-chip" id="cs-chip-bin"  onclick="this.classList.toggle('sel')">Replacement bin needed</button>
     </div>
     <textarea class="mta" id="m-cantswap-ta" placeholder="Optional — any extra detail"></textarea>
     <div class="mbtns">
@@ -645,7 +613,7 @@ input,textarea,select{font-size:18px!important}
     <div class="adm-sync-section">
       <div class="adm-sync-hdr">&#128257; Sync run data</div>
       <div style="font-size:16px;color:var(--muted);margin-bottom:12px;line-height:1.6">
-        Export a run snapshot from this device and share it with another driver, or import one they sent you to merge their progress and leaderboard onto this device.
+        Export a run snapshot from this device and share it with another driver, or import one they sent you to merge their progress onto this device.
       </div>
 
       <div style="font-size:16px;font-weight:600;color:var(--muted);margin-bottom:6px">Export — pick a run to share</div>
@@ -847,7 +815,6 @@ input,textarea,select{font-size:18px!important}
       </div>
     </div>
     <div class="sum-btns" style="margin-bottom:10px">
-      <button class="sum-btn sum-btn-sec" onclick="openLeaderboard()">&#127942; Leaderboard</button>
       <button class="sum-btn sum-btn-lime" onclick="showReport()">&#128196; View Report</button>
     </div>
     <button class="sum-btn sum-btn-sec" style="width:100%;margin-top:0" onclick="goHome()">&#8592; Done</button>
@@ -978,6 +945,20 @@ function cnt(d,z,wk,c) {
   st.forEach(function(s,i){ if(!isDepot(s) && (doneSet[sk(d,z,wk,c,i)] || cfSet[sk(d,z,wk,c,i)])) n++; });
   return n;
 }
+function totalBins(d,z,wk,c) {
+  var st = ROUTES[d] && ROUTES[d][z] && ROUTES[d][z][wk] && ROUTES[d][z][wk][c];
+  if (!st) return 0;
+  var n=0;
+  st.forEach(function(s){ if(!isDepot(s)) n += (s.bins||1); });
+  return n;
+}
+function cntBins(d,z,wk,c) {
+  var st = ROUTES[d] && ROUTES[d][z] && ROUTES[d][z][wk] && ROUTES[d][z][wk][c];
+  if (!st) return 0;
+  var n=0;
+  st.forEach(function(s,i){ if(!isDepot(s) && (doneSet[sk(d,z,wk,c,i)] || cfSet[sk(d,z,wk,c,i)])) n += (s.bins||1); });
+  return n;
+}
 function hav(a,b) {
   var R=6371, dl=(b[0]-a[0])*Math.PI/180, dn=(b[1]-a[1])*Math.PI/180;
   var h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dn/2)*Math.sin(dn/2);
@@ -1017,8 +998,8 @@ function updateOverallProgress() {
     ["1","2"].forEach(function(cr){
       var cs = SUMMARY[sc.day] && SUMMARY[sc.day][sc.zone] && SUMMARY[sc.day][sc.zone][sc.week] && SUMMARY[sc.day][sc.zone][sc.week][cr];
       if (!cs) return;
-      total += cs.stops;
-      done  += cnt(sc.day, sc.zone, sc.week, cr);
+      total += totalBins(sc.day, sc.zone, sc.week, cr) || cs.bins || cs.stops;
+      done  += cntBins(sc.day, sc.zone, sc.week, cr);
     });
   });
   var pct = total ? Math.round(done/total*100) : 0;
@@ -1039,10 +1020,6 @@ function maybeShowScoreboardBtn() {
   var rstBtn = document.getElementById("reset-btn");
   if (wrap)   wrap.style.display   = anyProgress ? "flex"         : "none";
   if (rstBtn) rstBtn.style.display = anyProgress ? "inline-block" : "none";
-  // Leaderboard button: visible when any driver has bins credited
-  var lbBtn = document.getElementById("lb-btn");
-  var anyStats = CREW.some(function(p){ var ds=driverStats[p.id]; return ds&&(ds.bins>0||ds.stops>0); });
-  if (lbBtn) lbBtn.style.display = anyStats ? "inline-block" : "none";
 }
 
 /* ── Home ── */
@@ -1061,18 +1038,18 @@ function buildHome() {
       ["1","2"].forEach(function(cr){
         var cs = SUMMARY[day] && SUMMARY[day][z] && SUMMARY[day][z][week] && SUMMARY[day][z][week][cr];
         if (!cs) return;
-        var stops=cs.stops, done=cnt(day,z,week,cr), pct=stops?Math.round(done/stops*100):0, allDone=(pct===100);
+        var stops=cs.stops, tBins=totalBins(day,z,week,cr)||cs.bins||cs.stops, doneBins=cntBins(day,z,week,cr), pct=tBins?Math.round(doneBins/tBins*100):0, allDone=(pct===100);
         var cardClasses = "run-card" + (isToday?" today":"") + (allDone?" done":"");
         html += '<div class="'+cardClasses+'"'
               + ' data-day="'+day+'" data-zone="'+z+'" data-week="'+week+'" data-crew="'+cr+'"'
               + ' onclick="pickRun(this)">';
         html += '<div class="rc-date">'+sched.label+'</div>';
         html += '<div class="rc-zone" style="color:'+col+'">Zone '+z+'</div>';
-        html += '<div class="rc-crew">Route '+(cr==="1"?"A":"B")+'&bull;'+stops+' stops</div>';
+        html += '<div class="rc-crew">Route '+(cr==="1"?"A":"B")+'&bull;'+tBins+' lids</div>';
         html += '<div class="rc-bar"><div class="rc-fill" style="width:'+pct+'%;background:'+col+'"></div>'
               + '<span class="rc-pct">'+pct+'%</span></div>';
         html += '<div class="rc-done'+(allDone?" done-all":"")+'">'+
-                (allDone?"&#10003; Complete":done>0?done+"/"+stops+" done":"Not started")+'</div>';
+                (allDone?"&#10003; Complete":doneBins>0?doneBins+"/"+tBins+" lids":"Not started")+'</div>';
         html += '</div>';
       });
     });
@@ -1081,123 +1058,8 @@ function buildHome() {
   document.getElementById("home-body").innerHTML = html;
   updateOverallProgress();
   maybeShowScoreboardBtn();
-  buildLeaderboard();
 }
 
-/* ── Leaderboard popup ── */
-// Taunt templates — use {me}, {leader}, {last}, {second} as placeholders
-var _LB_TAUNTS_MID = [
-  // used when a driver is selected and they're in the middle
-  "{leader} is lapping {me}. Just saying.",
-  "Solid effort, {me}. {leader} did more. A lot more.",
-  "{me}'s ahead of {last} at least. So there's that.",
-  "Not last. Not first. Classic {me}.",
-  "Someone tell {leader} to slow down. Or {me} could just do more bins.",
-  "{me}'s got some catching up to do. {leader}'s not waiting.",
-];
-var _LB_TAUNTS_TIED = [
-  // {me} is tied with someone — neutral, no implication of winning or losing
-  "Dead heat. Someone needs to break the deadlock.",
-  "All square. Someone needs to blink first.",
-  "Tied up. Next stop decides it.",
-  "Level pegging. Not for long.",
-];
-var _LB_TAUNTS_OBSERVER = [
-  // used when no driver is selected — no {me} reference
-  "{leader} out front. {last} not so much.",
-  "These numbers don't lie.",
-  "{leader} is making everyone look ordinary.",
-  "Someone needs to have a word with {last}.",
-  "Cold hard data. Some people should look away.",
-];
-var _LB_TAUNTS_LEADER = [
-  "Top of the pile, {me}. Don't let {second} catch up.",
-  "{me}'s leading the pack. {second} is right behind though.",
-  "Number one. Stay that way, {me}.",
-  "{me}'s out front. The rest of them — embarrassing.",
-  "Hard to argue with those numbers, {me}. Back to work.",
-];
-var _LB_TAUNTS_LAST = [
-  "Last place, {me}. {leader} is carrying the whole team.",
-  "{leader} has done {leaderbins} lids. {me} has done {mybins}. Mate.",
-  "The bins aren't going to swap themselves, {me}.",
-  "{leader}'s making {me} look bad out there.",
-  "Last place. At least {me} showed up. Small wins.",
-];
-var _LB_TAUNTS_SOLO = [
-  "{me} out here doing all the work. Anyone else coming?",
-  "Lone ranger. {me} holding it down solo.",
-  "Just {me} on the board so far. Step it up, everyone.",
-];
-
-function openLeaderboard() {
-  var ranked = CREW.map(function(p){
-    var ds = driverStats[p.id] || {bins:0,stops:0};
-    return {id:p.id, name:p.name, bins:ds.bins||0, stops:ds.stops||0};
-  }).filter(function(p){ return p.bins > 0 || p.stops > 0; });
-  if (ranked.length === 0) return; // shouldn't happen since FAB hidden when empty
-  ranked.sort(function(a,b){ return b.bins - a.bins; });
-  var maxBins = Math.max(1, ranked[0].bins);
-
-  // Pick a personalised taunt
-  function pickTaunt(pool) { return pool[Math.floor(Math.random()*pool.length)]; }
-  function fillTaunt(tpl, vars) {
-    return tpl.replace(/\{(\w+)\}/g, function(_,k){ return vars[k]||k; });
-  }
-  var leader = ranked[0], last = ranked[ranked.length-1];
-  var second = ranked.length > 1 ? ranked[1] : null;
-  var me = cPersonId ? ranked.find(function(p){ return p.id===cPersonId; }) : null;
-  var myRank = me ? ranked.indexOf(me) : -1;
-  var vars = {
-    me:         me ? me.name.split(' ')[0] : "mate",
-    leader:     leader.name.split(' ')[0],
-    leaderbins: leader.bins,
-    mybins:     me ? me.bins : 0,
-    last:       last.name.split(' ')[0],
-    second:     second ? second.name.split(' ')[0] : "everyone",
-  };
-  var isTied = me && ranked.filter(function(p){ return p.bins === me.bins; }).length > 1;
-  var pool;
-  if (ranked.length === 1) {
-    pool = _LB_TAUNTS_SOLO;
-  } else if (!me) {
-    pool = _LB_TAUNTS_OBSERVER;
-  } else if (isTied) {
-    pool = _LB_TAUNTS_TIED;
-  } else if (myRank === 0) {
-    pool = _LB_TAUNTS_LEADER;
-  } else if (myRank === ranked.length - 1) {
-    pool = _LB_TAUNTS_LAST;
-  } else {
-    pool = _LB_TAUNTS_MID;
-  }
-  var taunt = fillTaunt(pickTaunt(pool), vars);
-  document.getElementById("lb-taunt").textContent = taunt;
-
-  var rankEmoji = ["&#129351;","&#129352;","&#129353;"];
-  var rows = ranked.map(function(p, i){
-    var pct = Math.round(p.bins / maxBins * 100);
-    var isMe = (p.id === cPersonId);
-    var nameStr = esc(p.name);
-    return '<div class="lb-row">'
-      + '<div class="lb-rank">'+(rankEmoji[i]||(i+1))+'</div>'
-      + '<div class="lb-name">'+nameStr+'</div>'
-      + '<div class="lb-bar-wrap"><div class="lb-bar"><div class="lb-fill" style="width:'+pct+'%"></div></div></div>'
-      + '<div class="lb-bins">'+p.bins+'<span>lids</span></div>'
-      + '</div>';
-  }).join("");
-  document.getElementById("lb-rows").innerHTML = rows;
-  document.getElementById("lb-modal").style.display = "flex";
-  hap && hap(HAP_TAP);
-}
-
-function closeLeaderboard() {
-  document.getElementById("lb-modal").style.display = "none";
-}
-
-function buildLeaderboard() {
-  // Button visibility is handled by maybeShowScoreboardBtn — nothing else needed here
-}
 
 /* ── Run picker &#8212; uses data attributes, no inline onclick quoting issues ── */
 function pickRun(el) {
@@ -1578,7 +1440,7 @@ function syncImport(input) {
 
       sv();
       buildAdmin();
-      syncToast("Imported — " + added + " stop" + (added===1?"":"s") + " merged. Leaderboard updated.", true);
+      syncToast("Imported — " + added + " stop" + (added===1?"":"s") + " merged.", true);
     } catch(ex) {
       syncToast("Could not read file: " + ex.message, false);
     }
@@ -1878,7 +1740,10 @@ function advance(){
 
 function render(){
   var d=cDay, z=cZone, wk=cWeek, c=cCrew, col=DAY_COL[d], stops=cStops;
-  var realTotal=realStops(stops).length, done=cnt(d,z,wk,c), pct=realTotal?Math.round(done/realTotal*100):0;
+  var realStopList=realStops(stops), realTotal=realStopList.length, done=cnt(d,z,wk,c);
+  var totalBinsRun=realStopList.reduce(function(s,st){return s+(st.bins||1);},0);
+  var doneBinsRun=cntBins(d,z,wk,c);
+  var pct=totalBinsRun?Math.round(doneBinsRun/totalBinsRun*100):0;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
   var passenger=cPassengerId?getPersonById(cPassengerId):null;
   var runName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
@@ -2222,6 +2087,7 @@ function saveNoAccess2(){
 function csClearChips(){
   document.getElementById('cs-chip-pins').classList.remove('sel');
   document.getElementById('cs-chip-bolt').classList.remove('sel');
+  document.getElementById('cs-chip-bin').classList.remove('sel');
 }
 function markCantSwap(){
   hap(HAP_TAP);
@@ -2233,11 +2099,11 @@ function markCantSwap(){
 
 function saveCantSwap(){
   hap(HAP_CF);
-  var pinsChip = document.getElementById('cs-chip-pins');
-  var boltChip = document.getElementById('cs-chip-bolt');
-  var reason = pinsChip.classList.contains('sel') ? 'Pins won\'t come out'
-             : boltChip.classList.contains('sel')  ? 'Lid bolted on'
-             : '';
+  var csLabels = [];
+  if(document.getElementById('cs-chip-pins').classList.contains('sel')) csLabels.push('Pins won\'t come out');
+  if(document.getElementById('cs-chip-bolt').classList.contains('sel')) csLabels.push('Lid bolted on');
+  if(document.getElementById('cs-chip-bin').classList.contains('sel'))  csLabels.push('Replacement bin needed');
+  var reason = csLabels.join(', ');
   var note = document.getElementById('m-cantswap-ta').value.trim();
   var detail = reason + (reason && note ? ' — ' + note : note);
   document.getElementById('m-cantswap').style.display = 'none';
@@ -2330,13 +2196,7 @@ function buildRptTxt(){
   lines.push("Run:    "+d+" Zone "+z+" — Route "+(c==="1"?"A":"B")+(runDateStr?" - "+runDateStr:""));
   lines.push("Crew:   "+dName);
   lines.push("Reported: "+reportedAt);
-  var _rt=getRunTimes();
-  if(_rt.depart||_rt.finish){
-    lines.push("Departed: "+fmtTime(_rt.depart));
-    lines.push("Finished: "+fmtTime(_rt.finish));
-    var _dur=fmtDuration(_rt.depart,_rt.finish);
-    if(_dur) lines.push("Duration: "+_dur);
-  }
+
   lines.push("");
   function _issuePrefix(n){ if(n.indexOf("[Already swapped]")===0) return "[Already swapped]"; if(n.indexOf("[Swapped nearby]")===0) return "[Swapped nearby]"; if(n.indexOf("[Unable to swap]")===0) return "[Unable to swap]"; if(n.indexOf("[No access]")===0) return "[No access]"; if(n.indexOf("[Wrong bin]")===0) return "[Wrong bin]"; if(n.indexOf("[Not found]")===0) return "[Not found]"; return "[Issue]"; }
   var dc=0,alreadySwapped=0,tooDifficult=0,noAccess=0,cfOther=0,sk2=0,bDone=0,bTotal=0,suburbBins={},donedStops=[];
@@ -2411,15 +2271,7 @@ function showReport(){
   html+='<div style="color:#fff;font-size:18px;font-weight:900">'+esc(d)+' Zone '+esc(z)+' — Route '+(c==="1"?"A":"B")+'</div>';
   if(runDateStr) html+='<div style="color:#00A3E0;font-size:15px;margin-top:2px">'+esc(runDateStr)+'</div>';
   html+='<div style="color:rgba(255,255,255,.6);font-size:15px;margin-top:2px">'+esc(dName)+'</div>';
-  var _rt=getRunTimes();
-  if(_rt.depart||_rt.finish){
-    html+='<div style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap">';
-    html+='<div style="color:rgba(255,255,255,.85);font-size:15px">&#128663; Departed: <b>'+fmtTime(_rt.depart)+'</b></div>';
-    html+='<div style="color:rgba(255,255,255,.85);font-size:15px">&#9989; Finished: <b>'+fmtTime(_rt.finish)+'</b></div>';
-    var _dur=fmtDuration(_rt.depart,_rt.finish);
-    if(_dur) html+='<div style="color:var(--lime);font-size:15px;font-weight:800">&#9201; '+_dur+'</div>';
-    html+='</div>';
-  }
+
   html+='</div>';
   // Big stat row
   html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">';
@@ -2516,7 +2368,7 @@ function exportReportExcel(){
     stopRows.push({num:i,addr:s.address,suburb:s.suburb,bins:s.bins||1,status:status,note:n.replace(/^\[[^\]]+\]\s*/,"")});
   });
   var total=dc+cf+sk2,pct=total>0?Math.round(dc/total*100):0;
-  var _rt=getRunTimes(),_dur=fmtDuration(_rt.depart,_rt.finish);
+
 
   /* helpers */
   function xe(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
@@ -3047,17 +2899,6 @@ function buildAdmin(){
       var rtKey=sk(d,z,wk,c,"").replace(/\|$/,"");
       var rt=runTimes[rtKey]||{};
       var timeLine="";
-      if(rt.depart||rt.finish){
-        timeLine='<div class="adm-run-time">';
-        if(rt.depart) timeLine+='⏰ Departed: <b>'+fmtTime(rt.depart)+'</b>';
-        if(rt.depart&&rt.finish) timeLine+=' &bull; ';
-        if(rt.finish) timeLine+='✅ Finished: <b>'+fmtTime(rt.finish)+'</b>';
-        if(rt.depart&&rt.finish){
-          var ms=new Date(rt.finish)-new Date(rt.depart);
-          timeLine+=' &bull; '+Math.floor(ms/3600000)+'h '+Math.floor((ms%3600000)/60000)+'m';
-        }
-        timeLine+='</div>';
-      }
       var runId="adm-run-"+d+"-"+z+"-"+wk+"-"+c;
       runHtml+='<div class="adm-run-row" id="'+runId+'">'
         +'<div class="adm-run-top"><span class="adm-run-name" style="color:'+col+'">'+esc(e.label)+' — Z'+z+' '+crewLbl+'</span><span class="adm-run-date">'+pct+'%</span></div>'
@@ -3308,7 +3149,7 @@ function admChangePin(){
   setTimeout(function(){ document.getElementById("adm-pin-msg").textContent=""; },3000);
 }
 function admExportCSV(){
-  var rows=[["Date","Day","Zone","Week","Crew","Stop#","Address","Suburb","Bins","Status","Note","Departed","Finished"]];
+  var rows=[["Date","Day","Zone","Week","Crew","Stop#","Address","Suburb","Bins","Status","Note"]];
   SCHEDULE.forEach(function(e){
     var d=e.day,z=e.zone,wk=e.week;
     var crews=ROUTES[d]&&ROUTES[d][z]&&ROUTES[d][z][wk]?Object.keys(ROUTES[d][z][wk]):[];
@@ -3316,8 +3157,6 @@ function admExportCSV(){
       var stops=ROUTES[d][z][wk][c];
       var rtKey=sk(d,z,wk,c,"").replace(/\|$/,"");
       var rt=runTimes[rtKey]||{};
-      var dep=rt.depart?fmtTime(rt.depart):"";
-      var fin=rt.finish?fmtTime(rt.finish):"";
       var sn=0;
       stops.forEach(function(s,i){
         if(s.isDepot) return;
@@ -3326,7 +3165,7 @@ function admExportCSV(){
         var _cfn=notes[k]||""; var _cfpf=cfSet[k]?(_issuePrefix(_cfn).replace(/^\[|\]$/g,"").replace(/\b\w/g,function(c){return c.toUpperCase();})):"";
         var status=doneSet[k]?"Done":cfSet[k]?_cfpf:"Pending";
         var note=(notes[k]||"").replace(/"/g,'""');
-        rows.push([e.date,d,z,wk,(c==="1"?"A":"B"),sn,s.address,s.suburb,s.bins||1,status,'"'+note+'"',dep,fin]);
+        rows.push([e.date,d,z,wk,(c==="1"?"A":"B"),sn,s.address,s.suburb,s.bins||1,status,'"'+note+'"']);
       });
     });
   });
