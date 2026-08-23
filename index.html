@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LidSwap">
 <meta name="theme-color" content="#003349">
 <link rel="manifest" href="data:application/manifest+json,%7B%22name%22:%20%22Bin%20Swap%20%7C%20Moira%20Shire%22,%20%22short_name%22:%20%22Bin%20Swap%22,%20%22start_url%22:%20%22.%22,%20%22display%22:%20%22standalone%22,%20%22background_color%22:%20%22#001e2e%22,%20%22theme_color%22:%20%22#003349%22,%20%22icons%22:%20[%7B%22src%22:%20%22data:image/png;base64,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%22,%20%22sizes%22:%20%22192x192%22,%20%22type%22:%20%22image/png%22%7D]%7D">
-<title>LidSwap v7.6 | Moira Shire</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<title>LidSwap v8.8 Balanced Field | Moira Shire</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
@@ -84,6 +82,7 @@ input,textarea,select{font-size:18px!important}
 .picker-back:active{opacity:.7}
 .picker-h{font-size:24px;font-weight:900;letter-spacing:-1px;margin-bottom:2px}
 .picker-sub{font-size:16px;color:var(--muted);margin-bottom:14px}
+.setup-section-label{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.9px;color:var(--muted);margin:14px 0 8px}
 
 /* 7-person grid — compact on small screens */
 .person-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:14px}
@@ -144,8 +143,10 @@ input,textarea,select{font-size:18px!important}
 #btn-back .btn-icon{font-size:18px;line-height:1}
 #btn-back .btn-lbl{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;line-height:1}
 #run-badge{flex:1;background:var(--map-overlay);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:12px;padding:7px 11px;min-width:0}
-#run-badge-title{font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#run-badge-sub{font-size:14px;color:var(--muted);margin-top:1px}
+#run-badge-title{font-size:13px;font-weight:800;letter-spacing:.45px;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#run-badge-team{font-size:16px;font-weight:900;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;line-height:1.25}
+#run-badge-vehicle{font-size:13px;font-weight:700;color:var(--blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;line-height:1.25}
+#run-badge-sub{font-size:13px;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #btn-load{background:var(--map-overlay);backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--lime);border-radius:12px;padding:7px 11px;font-size:16px;font-weight:800;cursor:pointer;flex-shrink:0}
 #btn-mode-route{min-width:44px;height:44px;border-radius:12px;background:var(--map-overlay);backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--muted);font-size:17px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;gap:1px;padding:0 8px}
 #btn-mode-route .btn-icon{font-size:15px;line-height:1}
@@ -222,22 +223,43 @@ input,textarea,select{font-size:18px!important}
 .comp-bins-lbl{font-size:16px;color:var(--muted);margin-bottom:26px}
 .comp-btn{width:100%;max-width:340px;padding:15px;border-radius:14px;border:none;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:9px;display:block}
 
-#dev-footer{text-align:center;padding:14px 0 6px;font-size:14px;color:var(--border);letter-spacing:.5px}
+#dev-footer,.dev-footer{text-align:center;padding:14px 0 6px;font-size:14px;color:var(--border);letter-spacing:.5px}
 
-/* SCOREBOARD */
+/* HOME PROGRESS ACTIONS */
 
+/* ACCESSIBILITY + FIELD CLARITY */
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+button,.tab-btn,.picker-back,.run-card,.sl-row{min-height:48px}
+button{font-family:inherit}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.action-help{display:block;font-size:13px;font-weight:650;line-height:1.25;margin-top:3px;opacity:.75;text-transform:none;letter-spacing:0}
+.btn-outcome{min-height:76px;padding:10px 7px}
+.btn-outcome span{font-size:13px;line-height:1.2}
+.btn-outcome .action-help{font-size:11px;max-width:110px}
+.field-done{min-height:60px}
+.btn-google-nav{min-height:64px}
+.tab-btn{border:0;background:transparent;font-family:inherit}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+  #confetti-canvas{display:none!important}
+}
+@media(prefers-contrast:more){
+  :root{--border:#73c8e8;--muted:#c2e8f5}
+  body.light{--border:#315f73;--muted:#315f73}
+  button,.run-card,.job-card,.msheet{border-width:2px!important}
+}
 /* MODALS */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:900;align-items:flex-end;justify-content:center}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:900;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom))}
 .modal.on{display:flex}
 @media(min-width:768px){.modal{align-items:center}.msheet{border-radius:18px;max-width:480px;margin:auto}}
-.msheet{background:var(--surface);border-radius:20px 20px 0 0;padding:24px 20px 40px;width:100%;max-height:88vh;overflow-y:auto;border:1px solid var(--border)}
+.msheet{background:var(--surface);border-radius:20px;padding:24px 20px;width:100%;max-width:480px;max-height:min(82vh,680px);overflow-y:auto;border:1px solid var(--border);box-shadow:0 18px 60px rgba(0,0,0,.35)}
 .msheet h3{font-size:21px;font-weight:900;margin-bottom:6px}
 .m-sub{font-size:16px;color:var(--muted);margin-bottom:14px}
 .mta{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px;font-size:18px;min-height:85px;resize:none;outline:none;color:var(--text);font-family:inherit}
 .mta:focus{border-color:var(--lime)}
 .mbtns{display:flex;gap:9px;margin-top:12px}
-.mbtn-c{padding:12px 16px;background:var(--surface2);color:var(--muted);border:1px solid var(--border);border-radius:12px;font-size:18px;cursor:pointer}
-.mbtn-ok{flex:1;padding:12px;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer}
+.mbtn-c{min-height:50px;padding:12px 16px;background:var(--surface2);color:var(--muted);border:1px solid var(--border);border-radius:12px;font-size:18px;cursor:pointer}
+.mbtn-ok{flex:1;min-height:50px;padding:12px;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer}
 .bl-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
 .bl-n{font-size:17px;color:var(--muted)}
 .bl-v{font-size:18px;font-weight:800;color:var(--lime)}
@@ -251,6 +273,15 @@ input,textarea,select{font-size:18px!important}
 .rpt-sk{background:rgba(255,179,71,.1);border-left:3px solid var(--warn)}
 .rpt-nt{background:rgba(74,158,255,.1);border-left:3px solid var(--blue)}
 
+
+/* Passive location status — GPS is automatic, not a primary control */
+.location-status{grid-column:1 / -1;display:flex;align-items:center;gap:7px;min-height:24px;color:var(--muted);font-size:13px;font-weight:700;padding:0 2px}
+.location-dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:0 0 auto}
+.location-status.live .location-dot{background:#2fbf71;box-shadow:0 0 0 3px rgba(47,191,113,.14)}
+.location-status.warn .location-dot{background:#e4a11b}
+.location-status.error .location-dot{background:#d94b4b}
+#location-retry{margin-left:auto;min-height:36px;padding:6px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font:inherit;font-weight:800;cursor:pointer}
+
 /* GPS dot */
 #gps-dot-wrap{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:10}
 .gps-pulsering{position:absolute;border-radius:50%;background:rgba(0,163,224,.22);animation:gps-ring 2s ease-out infinite}
@@ -258,10 +289,6 @@ input,textarea,select{font-size:18px!important}
 @keyframes gps-ring{0%{opacity:.8;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(3.5)}}
 
 /* GPS locate button */
-#btn-locate{min-width:44px;height:44px;border-radius:12px;background:var(--map-overlay);backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--muted);font-size:17px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;gap:1px;padding:0 8px;transition:color .2s,border-color .2s}
-#btn-locate .btn-icon{font-size:18px;line-height:1}
-#btn-locate .btn-lbl{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;line-height:1}
-#btn-locate.active{color:var(--blue);border-color:var(--blue)}
 #btn-findme{min-width:44px;height:44px;border-radius:12px;background:var(--map-overlay);backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--muted);font-size:17px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;gap:1px;padding:0 8px;transition:color .2s,border-color .2s}
 #btn-findme .btn-icon{font-size:18px;line-height:1}
 #btn-findme .btn-lbl{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;line-height:1}
@@ -367,13 +394,6 @@ input,textarea,select{font-size:18px!important}
 .adm-tab{flex:1;padding:8px 4px;border:none;border-radius:9px;background:transparent;color:var(--muted);font-size:16px;font-weight:700;cursor:pointer;transition:background .15s,color .15s}
 .adm-tab.active{background:var(--lime);color:#001e2e}
 .adm-tabpanel{}
-.adm-crew-row{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.adm-crew-rank{font-size:18px;font-weight:900;color:var(--lime);width:22px;text-align:center;flex-shrink:0}
-.adm-crew-name{font-size:18px;font-weight:800;flex:1}
-.adm-crew-bar-wrap{width:64px;flex-shrink:0}
-.adm-crew-bar{height:6px;background:var(--surface2);border-radius:4px;overflow:hidden;border:1px solid var(--border)}
-.adm-crew-fill{height:100%;background:var(--lime);border-radius:4px}
-.adm-crew-stats{font-size:15px;color:var(--muted);text-align:right;line-height:1.5;white-space:nowrap}
 .adm-run-time{font-size:15px;color:var(--muted);margin-top:5px;line-height:1.7}
 .adm-drill-btn{margin-top:9px;width:100%;padding:7px;background:transparent;border:1px solid var(--border);border-radius:9px;font-size:16px;font-weight:700;color:var(--muted);cursor:pointer;text-align:center}
 .adm-drill-btn:active{opacity:.7}
@@ -432,20 +452,24 @@ input,textarea,select{font-size:18px!important}
 .sum-val{font-size:26px;font-weight:700;color:var(--text);line-height:1.1}
 .sum-val .u{font-size:17px;font-weight:500;color:var(--muted);margin-left:2px}
 .sum-val.lime{color:var(--lime)}
-.sum-pb{display:inline-flex;align-items:center;gap:4px;background:rgba(192,223,22,.12);border:0.5px solid rgba(192,223,22,.3);border-radius:99px;padding:3px 10px;font-size:15px;font-weight:700;color:var(--lime);margin-top:6px}
-.sum-pace-wrap{margin-top:7px;background:rgba(255,255,255,.07);border-radius:99px;height:5px;overflow:hidden}
-.sum-pace-fill{height:100%;border-radius:99px;background:var(--lime);transition:width .6s ease}
-.sum-pace-lbl{font-size:15px;color:var(--muted);margin-top:4px}
-.sum-best{background:var(--surface);border:0.5px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px}
-.sum-best-hdr{font-size:15px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
-.sum-best-row{display:flex;align-items:center;gap:10px}
-.sum-best-badge{background:rgba(0,163,224,.15);border:0.5px solid rgba(0,163,224,.35);color:var(--sky);font-size:15px;font-weight:700;border-radius:8px;padding:4px 9px;white-space:nowrap}
-.sum-best-addr{font-size:18px;font-weight:600;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sum-best-time{font-size:17px;color:var(--sky);font-weight:700;white-space:nowrap}
 .sum-btns{display:flex;gap:10px}
 .sum-btn{flex:1;height:48px;border-radius:14px;border:none;font-size:18px;font-weight:700;cursor:pointer}
 .sum-btn-lime{background:var(--lime);color:#001e2e}
 .sum-btn-sec{background:var(--surface);border:0.5px solid var(--border);color:var(--muted)}
+
+
+/* Perfect-run celebration — team achievement only */
+.perfect-run-banner{display:none;position:relative;overflow:hidden;margin:0 0 14px;border:1px solid rgba(192,223,22,.55);border-radius:18px;padding:20px 16px;text-align:center;background:linear-gradient(135deg,rgba(192,223,22,.18),rgba(0,163,224,.10));box-shadow:0 0 0 1px rgba(192,223,22,.12),0 12px 35px rgba(0,0,0,.22)}
+.perfect-run-banner.on{display:block;animation:perfect-pop .72s cubic-bezier(.2,.9,.3,1.2)}
+.perfect-run-ring{width:76px;height:76px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:38px;background:var(--lime);color:#001e2e;box-shadow:0 0 0 8px rgba(192,223,22,.12),0 0 36px rgba(192,223,22,.35);animation:perfect-ring 1.6s ease-in-out infinite}
+.perfect-run-kicker{font-size:13px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase;color:var(--lime);margin-bottom:4px}
+.perfect-run-title{font-size:28px;font-weight:950;letter-spacing:-.7px;color:var(--text);line-height:1.05}
+.perfect-run-sub{font-size:16px;color:var(--muted);margin-top:7px;line-height:1.45}
+.perfect-spark{position:absolute;font-size:18px;opacity:.9;animation:perfect-float 2.4s ease-in-out infinite}
+.perfect-spark.s1{left:8%;top:14%;animation-delay:.1s}.perfect-spark.s2{right:9%;top:18%;animation-delay:.45s}.perfect-spark.s3{left:15%;bottom:12%;animation-delay:.8s}.perfect-spark.s4{right:14%;bottom:10%;animation-delay:1.15s}
+@keyframes perfect-pop{0%{transform:scale(.82);opacity:0}70%{transform:scale(1.03);opacity:1}100%{transform:scale(1)}}
+@keyframes perfect-ring{50%{transform:scale(1.07);box-shadow:0 0 0 13px rgba(192,223,22,.08),0 0 48px rgba(192,223,22,.45)}}
+@keyframes perfect-float{50%{transform:translateY(-8px) rotate(10deg);opacity:1}}
 
 /* ── Snapshot Sync ── */
 .adm-sync-section{margin:20px 0 10px}
@@ -458,9 +482,307 @@ input,textarea,select{font-size:18px!important}
 .adm-sync-toast.ok{background:rgba(192,223,22,.12);border:0.5px solid rgba(192,223,22,.3);color:var(--lime)}
 .adm-sync-toast.err{background:rgba(220,60,60,.1);border:0.5px solid rgba(220,60,60,.3);color:#e07070}
 .adm-sync-run-sel{width:100%;padding:10px 12px;border-radius:10px;border:0.5px solid var(--border);background:var(--surface);color:var(--text);font-size:17px;margin-bottom:10px;appearance:none}
+
+/* ===== LidSwap v8 Elite upgrades ===== */
+#btn-smart-route{min-width:44px;height:44px;border-radius:12px;background:var(--map-overlay);backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--muted);font-size:17px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;gap:1px;padding:0 8px;transition:all .18s}
+#btn-smart-route .btn-icon{font-size:18px;line-height:1}.btn-lbl{line-height:1}
+#btn-smart-route.active{color:var(--lime);border-color:var(--lime);background:rgba(192,223,22,.12)}
+#route-intel{position:absolute;top:114px;left:13px;z-index:502;background:var(--map-overlay);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:11px;padding:7px 10px;color:var(--text);font-size:14px;font-weight:800;display:none;box-shadow:0 5px 18px rgba(0,0,0,.18)}
+#arrival-banner{display:none;position:absolute;left:13px;right:13px;bottom:12px;z-index:503;background:linear-gradient(135deg,var(--lime),#d8f34a);color:#001e2e;border-radius:16px;padding:10px 13px;box-shadow:0 8px 25px rgba(0,0,0,.25);font-weight:900;align-items:center;gap:10px}
+#arrival-banner .ab-main{font-size:16px;flex:1}.ab-sub{font-size:13px;font-weight:700;opacity:.7}
+#map-attribution{position:absolute;right:5px;bottom:5px;z-index:401;background:rgba(255,255,255,.82);color:#333;font-size:10px;padding:2px 5px;border-radius:3px;pointer-events:auto}
+#map-attribution a{color:#333;text-decoration:none}
+#offline-pill{position:fixed;left:50%;top:calc(8px + env(safe-area-inset-top));transform:translateX(-50%);z-index:2000;background:#7d1d1d;color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:900;display:none;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+#data-health{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.4}
+.smart-pulse{animation:smartpulse 1.2s ease-in-out infinite}@keyframes smartpulse{50%{box-shadow:0 0 0 5px rgba(192,223,22,.08)}}
+@media(max-width:420px){#btn-load{display:none}#btn-change-crew{display:none!important}#btn-smart-route{min-width:42px;padding:0 6px}.btn-lbl{font-size:11px!important}}
+
+/* v8.1 field-first layout — Google Maps handles navigation */
+#s-route{background:var(--bg)}
+.route-workspace{flex:1;min-height:0;display:flex;flex-direction:column;position:relative}
+.route-workspace.hidden{display:none}
+.field-topbar{position:relative!important;top:auto!important;padding:10px 12px!important;background:var(--surface);border-bottom:1px solid var(--border);flex-wrap:nowrap}
+.field-icon-btn{min-width:44px;height:44px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:17px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;gap:1px;padding:0 8px}
+.field-icon-btn .btn-lbl{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;line-height:1}
+#run-badge{background:var(--surface2)!important;backdrop-filter:none!important}
+#btn-back,#btn-load,#btn-mode-route,#btn-smart-route{background:var(--surface2)!important;backdrop-filter:none!important}
+.field-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px max(30px,env(safe-area-inset-bottom))}
+.job-card{position:relative!important;inset:auto!important;max-height:none!important;border-radius:18px!important;border:1px solid var(--border)!important;background:var(--surface)!important;overflow:visible!important;display:block!important}
+#panel-peek{padding:18px!important}
+#panel-handle{display:none!important}
+#panel-expanded{display:block!important}
+#route-intel.route-intel-card{position:relative!important;top:auto!important;left:auto!important;z-index:auto!important;margin:0 0 10px;background:var(--surface);backdrop-filter:none;box-shadow:none;border:1px solid var(--border);border-radius:12px;padding:9px 11px}
+#arrival-banner{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;z-index:auto!important;margin:0 0 10px;box-shadow:none}
+#eta-badge{position:relative!important;top:auto!important;right:auto!important;z-index:auto!important;margin:0 0 10px;width:max-content}
+.btn-google-nav{width:100%;min-height:64px;border-radius:14px;border:1px solid rgba(0,163,224,.45);background:rgba(0,163,224,.09);color:var(--text);display:flex;align-items:center;gap:12px;padding:10px 14px;text-align:left;cursor:pointer;margin-bottom:9px}
+.btn-google-nav .nav-glyph{font-size:28px;color:var(--blue);line-height:1}
+.btn-google-nav b{display:block;font-size:18px}.btn-google-nav small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.field-done{width:100%;height:60px;margin-bottom:9px;font-size:19px}
+.field-secondary-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.field-secondary-actions .btn-expand{justify-content:center;padding:11px}
+.stops-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 14px;border-bottom:1px solid var(--border);background:var(--surface)}
+.stops-title{font-size:21px;font-weight:900}.stops-sub{font-size:14px;color:var(--muted);margin-top:2px}.stops-current-btn{border:1px solid var(--border);background:var(--surface2);color:var(--text);border-radius:11px;padding:9px 11px;font-weight:800;cursor:pointer;white-space:nowrap}
+.stops-list-wrap{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 10px max(24px,env(safe-area-inset-bottom))!important}
+#tab-bar{padding-top:env(safe-area-inset-top)}
+#prog-strip{position:relative!important;height:4px;z-index:auto!important}
+@media(max-width:520px){#btn-load{display:none}.field-topbar{gap:6px!important}#run-badge{padding:7px 8px!important}.field-scroll{padding:10px}.stop-addr{font-size:25px}.stops-head{align-items:flex-start;flex-direction:column}.stops-current-btn{width:100%}}
+
+/* ===== v8.4 responsive field header + readable next-stop layout ===== */
+.field-topbar{
+  display:grid!important;
+  grid-template-columns:84px minmax(0,1fr)!important;
+  align-items:stretch!important;
+  gap:8px!important;
+  padding:10px 12px 9px!important;
+}
+#btn-back{width:84px!important;min-width:84px!important;height:auto!important;min-height:76px!important}
+#run-badge{min-height:76px!important;padding:10px 12px!important;display:flex;flex-direction:column;justify-content:center}
+#run-badge-title{font-size:12px!important;letter-spacing:.35px!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.25!important}
+#run-badge-team{font-size:17px!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.25!important}
+#run-badge-vehicle{font-size:14px!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+#run-badge-sub{font-size:14px!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+.field-toolbar-actions{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.field-toolbar-actions>button{width:100%!important;min-width:0!important;min-height:54px!important;height:54px!important;padding:0 6px!important}
+.field-toolbar-actions .btn-lbl{font-size:12px!important;text-transform:none!important;letter-spacing:.1px!important;white-space:nowrap}
+.field-toolbar-actions .btn-icon{font-size:18px!important}
+#btn-load{display:none!important}
+.next-row{display:block!important;padding:14px 0 2px!important;margin-top:14px!important}
+.next-row-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:5px}
+.next-lbl{display:block!important;font-size:13px!important}
+.next-body{width:100%!important;min-width:0!important}
+.next-addr{font-size:19px!important;line-height:1.25!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+.next-sub{font-size:15px!important;margin-top:2px}
+.next-dist{font-size:14px!important;white-space:nowrap!important}
+.next-row.nearby{padding:12px 13px!important}
+.field-secondary-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.field-secondary-actions .btn-expand{min-width:0!important;min-height:54px!important;padding:8px 5px!important;flex-direction:column!important;gap:3px!important}
+.field-secondary-actions .btn-lbl{font-size:12px!important;text-transform:none!important;letter-spacing:0!important;white-space:normal!important;line-height:1.15!important}
+@media(max-width:390px){
+  .field-topbar{grid-template-columns:72px minmax(0,1fr)!important;padding-left:9px!important;padding-right:9px!important}
+  #btn-back{width:72px!important;min-width:72px!important}
+  #run-badge{padding:9px 10px!important}
+  #run-badge-team{font-size:16px!important}
+  .field-toolbar-actions{gap:6px!important}
+  .field-toolbar-actions>button{min-height:52px!important;height:52px!important}
+  .field-toolbar-actions .btn-lbl{font-size:11px!important}
+  .field-scroll{padding-left:9px!important;padding-right:9px!important}
+  #panel-peek{padding:16px!important}
+  .stop-addr{font-size:24px!important}
+}
+@media(min-width:768px){
+  .field-topbar{grid-template-columns:84px minmax(280px,1fr) auto!important;align-items:center!important}
+  .field-toolbar-actions{grid-column:auto;display:flex;gap:8px}
+  .field-toolbar-actions>button{width:auto!important;min-width:62px!important}
+  #btn-back{min-height:68px!important}
+  #run-badge{min-height:68px!important}
+}
+
+/* v8.6 — compact mobile run setup */
+@media(max-width:600px){
+  #s-driver{overflow-y:auto}
+  .picker-wrap{
+    padding:max(22px,calc(8px + env(safe-area-inset-top))) 14px 110px;
+    max-width:520px;
+  }
+  .picker-back{margin-bottom:10px;padding:8px 12px;min-height:44px}
+  .picker-h{font-size:26px;margin-bottom:0}
+  .picker-sub{font-size:16px;margin-bottom:12px;line-height:1.3}
+  .person-grid,.passenger-grid{gap:6px;margin-bottom:10px}
+  .driver-card,.passenger-card{
+    min-height:66px;
+    padding:6px 3px;
+    border-radius:12px;
+    justify-content:center;
+  }
+  .dc-avatar{
+    width:42px;height:42px;
+    font-size:15px;
+    border-width:2px;
+  }
+  .dc-avatar-name{font-size:15px;line-height:1.05;padding:1px}
+  #vehicle-pick-wrap{margin-top:2px}
+  .vehicle-who,.passenger-hdr{
+    font-size:15px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    color:var(--muted);
+    margin:10px 0 7px;
+    font-weight:900;
+  }
+  .vehicle-grid{gap:7px;margin-bottom:8px}
+  .vehicle-card{
+    min-height:92px;
+    padding:7px 6px 6px;
+    border-radius:13px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .vc-img{max-height:44px;margin-bottom:4px}
+  .vc-name{font-size:15px;line-height:1.15}
+  #passenger-pick-wrap{margin-top:2px}
+  #start-run-btn{
+    position:fixed;
+    z-index:850;
+    left:14px;
+    right:14px;
+    bottom:max(14px,calc(8px + env(safe-area-inset-bottom)));
+    width:auto;
+    max-width:492px;
+    margin:0 auto;
+    min-height:58px;
+    padding:14px 18px;
+    border-radius:16px;
+    box-shadow:0 8px 28px rgba(0,30,46,.28);
+    font-size:18px;
+  }
+}
+
+/* ===== v8.7 one-screen current-stop workflow ===== */
+@media(max-width:767px){
+  #tab-bar{min-height:48px}
+  .tab-btn{padding:9px 8px 8px!important;font-size:15px!important;min-height:48px!important}
+  .field-topbar{grid-template-columns:58px minmax(0,1fr) 58px!important;gap:7px!important;padding:7px 9px 6px!important;align-items:stretch!important}
+  #btn-back,#btn-run-settings{width:58px!important;min-width:58px!important;min-height:68px!important;height:auto!important;padding:4px!important}
+  #btn-back .btn-lbl,#btn-run-settings .btn-lbl{font-size:10px!important;text-transform:none!important;letter-spacing:0!important}
+  #btn-run-settings .btn-icon{font-size:18px}
+  #run-badge{min-height:68px!important;padding:7px 10px!important}
+  #run-badge-title{font-size:10px!important;line-height:1.15!important;letter-spacing:.45px!important}
+  #run-badge-team{font-size:16px!important;line-height:1.15!important;margin-top:2px}
+  #run-badge-vehicle{font-size:12px!important;line-height:1.15!important;margin-top:2px}
+  #run-badge-sub{font-size:12px!important;line-height:1.15!important;margin-top:2px}
+  .location-status{grid-column:1 / -1!important;min-height:22px!important;padding:0 2px!important;font-size:11px!important;gap:5px!important}
+  .location-status #location-retry{margin-left:auto;min-height:32px!important;padding:4px 10px!important;font-size:11px!important;border-radius:10px}
+  .field-scroll{padding:7px 8px max(8px,env(safe-area-inset-bottom))!important}
+  #route-intel.route-intel-card,#arrival-banner,#eta-badge{margin-bottom:6px!important}
+  .job-card{border-radius:16px!important}
+  #panel-peek{padding:11px 12px 10px!important}
+  .stop-num{font-size:11px!important;margin-bottom:2px!important}
+  .stop-addr{font-size:23px!important;line-height:1.08!important;margin-bottom:1px!important}
+  .stop-suburb{font-size:15px!important;margin-bottom:6px!important}
+  .stop-alert{font-size:13px!important;padding:5px 8px!important;margin-bottom:6px!important}
+  .bins-pill{font-size:14px!important;padding:3px 9px!important;margin-bottom:7px!important}
+  .btn-google-nav{min-height:52px!important;height:52px!important;padding:6px 11px!important;margin-bottom:6px!important;gap:9px!important}
+  .btn-google-nav .nav-glyph{font-size:23px!important}
+  .btn-google-nav b{font-size:16px!important;line-height:1.05!important}
+  .btn-google-nav small{font-size:11px!important;margin-top:1px!important}
+  .field-done{height:52px!important;min-height:52px!important;margin-bottom:6px!important;font-size:17px!important;border-radius:13px!important}
+  .field-done .action-help{font-size:10px!important;margin-top:1px!important}
+  .outcome-row{gap:5px!important;margin-top:5px!important}
+  .btn-outcome{min-height:64px!important;padding:6px 4px!important;gap:2px!important;border-radius:12px!important;font-size:17px!important}
+  .btn-outcome span{font-size:10px!important;line-height:1.05!important;letter-spacing:.1px!important}
+  .btn-outcome .action-help{font-size:9px!important;line-height:1.08!important;margin-top:2px!important;max-width:96px!important}
+  .sub-row{gap:5px!important;margin-top:5px!important}
+  .sub-row .btn-sub{min-height:44px!important;padding:7px 8px!important;font-size:12px!important}
+  .next-row{margin-top:7px!important;padding:7px 8px 6px!important;border-radius:12px!important;background:rgba(192,223,22,.055)}
+  .next-row-head{margin-bottom:1px!important}
+  .next-lbl{font-size:10px!important;letter-spacing:.5px!important}
+  .next-addr{font-size:16px!important;line-height:1.12!important}
+  .next-sub{font-size:12px!important;margin-top:1px!important}
+  .next-dist{font-size:11px!important;padding:2px 6px!important}
+  .field-secondary-actions{margin-top:5px!important;display:block!important}
+  .one-screen-utilities .btn-expand{width:100%!important;min-height:44px!important;height:44px!important;padding:5px 9px!important;flex-direction:row!important;justify-content:center!important;gap:6px!important}
+  .one-screen-utilities .btn-icon{font-size:16px!important}
+  .one-screen-utilities .btn-lbl{font-size:12px!important;white-space:nowrap!important}
+}
+@media(max-width:767px) and (max-height:650px){
+  .field-topbar{padding-top:5px!important;padding-bottom:4px!important}
+  #btn-back,#btn-run-settings,#run-badge{min-height:60px!important}
+  .location-status{min-height:18px!important;font-size:10px!important}
+  .field-scroll{padding-top:5px!important}
+  #panel-peek{padding:9px 10px 8px!important}
+  .stop-addr{font-size:21px!important}
+  .btn-google-nav,.field-done{height:48px!important;min-height:48px!important}
+  .btn-outcome{min-height:58px!important}
+  .next-row{padding-top:5px!important;padding-bottom:5px!important}
+}
+.run-settings-grid{display:grid;gap:8px;margin:12px 0}
+.run-setting-btn{width:100%;min-height:64px;border-radius:13px;border:1px solid var(--border);background:var(--surface2);color:var(--text);display:flex;align-items:center;gap:12px;text-align:left;padding:10px 12px;font-size:22px}
+.run-setting-btn>span:last-child{display:flex;flex-direction:column;min-width:0}
+.run-setting-btn b{font-size:16px;line-height:1.2}.run-setting-btn small{font-size:12px;color:var(--muted);line-height:1.3;margin-top:2px}
+.run-setting-btn.danger-setting{border-color:rgba(255,90,90,.35)}.run-setting-btn.danger-setting b{color:var(--danger)}
+
+
+
+/* ===== v8.8 balanced mobile controls — readable, direct, no settings drawer ===== */
+@media(max-width:767px){
+  .field-topbar{
+    grid-template-columns:76px minmax(0,1fr)!important;
+    gap:8px!important;
+    padding:9px 10px 8px!important;
+  }
+  #btn-back{
+    width:76px!important;min-width:76px!important;min-height:78px!important;height:auto!important;
+    padding:6px!important;border-radius:14px!important;
+  }
+  #btn-back .btn-icon{font-size:20px!important}
+  #btn-back .btn-lbl{font-size:12px!important;text-transform:none!important;letter-spacing:0!important}
+  #run-badge{min-height:78px!important;padding:9px 12px!important;border-radius:14px!important}
+  #run-badge-title{font-size:11px!important;line-height:1.2!important}
+  #run-badge-team{font-size:18px!important;line-height:1.2!important;margin-top:2px!important}
+  #run-badge-vehicle{font-size:14px!important;line-height:1.2!important;margin-top:2px!important}
+  #run-badge-sub{font-size:13px!important;line-height:1.2!important;margin-top:2px!important}
+  .field-toolbar-actions{
+    grid-column:1 / -1!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  .field-tool-btn{
+    width:100%!important;min-width:0!important;min-height:58px!important;height:58px!important;
+    border-radius:14px!important;border:1px solid var(--border)!important;background:var(--surface2)!important;
+    color:var(--text)!important;display:flex!important;flex-direction:column!important;align-items:center!important;
+    justify-content:center!important;gap:2px!important;padding:5px 7px!important;font-family:inherit!important;cursor:pointer!important;
+  }
+  .field-tool-btn .btn-icon{font-size:20px!important;line-height:1!important}
+  .field-tool-btn .btn-lbl{font-size:13px!important;font-weight:800!important;line-height:1.1!important;text-transform:none!important;letter-spacing:0!important;white-space:normal!important}
+  #btn-smart-route.active{border-color:var(--lime)!important;background:rgba(192,223,22,.10)!important;color:var(--lime)!important}
+  .location-status{grid-column:1 / -1!important;min-height:30px!important;padding:1px 3px!important;font-size:13px!important;gap:7px!important}
+  .location-status #location-retry{margin-left:auto!important;min-height:42px!important;padding:7px 12px!important;font-size:13px!important;border-radius:11px!important}
+
+  .field-scroll{padding:8px 9px max(10px,env(safe-area-inset-bottom))!important}
+  #panel-peek{padding:13px 14px 12px!important}
+  .stop-num{font-size:13px!important;margin-bottom:3px!important}
+  .stop-addr{font-size:27px!important;line-height:1.08!important;margin-bottom:2px!important}
+  .stop-suburb{font-size:17px!important;margin-bottom:8px!important}
+  .stop-alert{font-size:14px!important;padding:7px 9px!important;margin-bottom:7px!important}
+  .bins-pill{font-size:15px!important;padding:4px 10px!important;margin-bottom:9px!important}
+
+  .btn-google-nav{min-height:60px!important;height:60px!important;padding:8px 13px!important;margin-bottom:8px!important;gap:10px!important;border-radius:14px!important}
+  .btn-google-nav .nav-glyph{font-size:27px!important}
+  .btn-google-nav b{font-size:18px!important;line-height:1.08!important}
+  .btn-google-nav small{font-size:12px!important;margin-top:2px!important}
+  .field-done{height:60px!important;min-height:60px!important;margin-bottom:8px!important;font-size:19px!important;border-radius:14px!important}
+  .field-done .action-help{font-size:11px!important;margin-top:2px!important}
+  .outcome-row{gap:7px!important;margin-top:7px!important}
+  .btn-outcome{min-height:78px!important;padding:8px 5px!important;gap:3px!important;border-radius:14px!important;font-size:20px!important}
+  .btn-outcome span{font-size:12px!important;line-height:1.08!important;letter-spacing:0!important}
+  .btn-outcome .action-help{font-size:10px!important;line-height:1.12!important;margin-top:3px!important;max-width:110px!important}
+  .sub-row{gap:7px!important;margin-top:7px!important}
+  .sub-row .btn-sub{min-height:48px!important;padding:8px 10px!important;font-size:13px!important}
+  .next-row{margin-top:9px!important;padding:10px 11px 9px!important;border-radius:13px!important}
+  .next-row-head{margin-bottom:2px!important}
+  .next-lbl{font-size:11px!important}
+  .next-addr{font-size:18px!important;line-height:1.16!important}
+  .next-sub{font-size:13px!important}
+  .next-dist{font-size:12px!important;padding:3px 7px!important}
+  .field-secondary-actions.one-screen-utilities{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:8px!important}
+  .one-screen-utilities .btn-expand{width:100%!important;min-height:50px!important;height:50px!important;padding:6px 10px!important;flex-direction:row!important;justify-content:center!important;gap:7px!important}
+  .one-screen-utilities .btn-icon{font-size:18px!important}
+  .one-screen-utilities .btn-lbl{font-size:13px!important;white-space:nowrap!important}
+}
+@media(max-width:767px) and (max-height:690px){
+  .field-topbar{padding-top:6px!important;padding-bottom:5px!important}
+  #btn-back,#run-badge{min-height:70px!important}
+  .field-tool-btn{min-height:52px!important;height:52px!important}
+  .location-status{min-height:24px!important;font-size:12px!important}
+  #panel-peek{padding:11px 12px 10px!important}
+  .stop-addr{font-size:24px!important}
+  .btn-google-nav,.field-done{height:56px!important;min-height:56px!important}
+  .btn-outcome{min-height:70px!important}
+}
 </style>
 </head>
-<body>
+<body><div id="offline-pill">OFFLINE — Local data is safe</div>
 
 <!-- HOME -->
 <div id="s-home" class="screen on">
@@ -499,22 +821,22 @@ input,textarea,select{font-size:18px!important}
 </div>
 
 <!-- DONE CONFIRM MODAL -->
-<div id="m-done-confirm" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+<div id="m-done-confirm" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-done-confirm-title" style="display:none" onclick="if(event.target===this)this.style.display='none'">
   <div class="msheet">
-    <h3>&#10003;&nbsp; Lid Swapped</h3>
+    <h3 id="m-done-confirm-title">&#10003;&nbsp; Confirm Lid Replacement</h3>
     <div class="m-sub" id="m-done-addr"></div>
-    <div style="font-size:16px;font-weight:800;color:var(--text);margin:14px 0 10px">Was this the correct address?</div>
+    <div style="font-size:16px;font-weight:800;color:var(--text);margin:14px 0 10px">Confirm this is the property where the lid was replaced:</div>
     <div class="mbtns" style="flex-direction:column;gap:8px">
-      <button class="mbtn-ok" style="background:var(--lime);color:#001e2e" onclick="markDoneAddrOk()">&#10003;&nbsp; Yes, correct address</button>
-      <button class="mbtn-c" style="color:var(--warn);border-color:rgba(255,179,71,.4)" onclick="openDoneAddrNote()">Address was different — add note</button>
+      <button class="mbtn-ok" style="background:var(--lime);color:#001e2e" onclick="markDoneAddrOk()">&#10003;&nbsp; Confirm This Property</button>
+      <button class="mbtn-c" style="color:var(--warn);border-color:rgba(255,179,71,.4)" onclick="openDoneAddrNote()">Different property — add note</button>
     </div>
   </div>
 </div>
 
 <!-- DONE ADDR NOTE MODAL -->
-<div id="m-done-addr-note" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+<div id="m-done-addr-note" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-done-note-title" style="display:none" onclick="if(event.target===this)this.style.display='none'">
   <div class="msheet">
-    <h3>&#10003;&nbsp; Lid Swapped — Address Note</h3>
+    <h3 id="m-done-note-title">&#10003;&nbsp; Lid Replaced — Address Note</h3>
     <div class="m-sub">Note the actual address where the bin was found</div>
     <textarea class="mta" id="m-done-addr-ta" placeholder="e.g. Bin was at No. 16, not No. 14"></textarea>
     <div class="mbtns">
@@ -525,65 +847,65 @@ input,textarea,select{font-size:18px!important}
 </div>
 
 <!-- ALREADY SWAPPED MODAL -->
-<div id="m-already" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+<div id="m-already" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-already-title" style="display:none" onclick="if(event.target===this)this.style.display='none'">
   <div class="msheet">
-    <h3 style="color:var(--blue)">&#10003;&#10003;&nbsp; Lid Already Swapped</h3>
+    <h3 id="m-already-title" style="color:var(--blue)">&#10003;&#10003;&nbsp; Already Replaced</h3>
     <div class="m-sub" id="m-already-addr"></div>
     <textarea class="mta" id="m-already-ta" placeholder="Optional note…"></textarea>
     <div class="mbtns">
       <button class="mbtn-c" onclick="this.closest('.modal').style.display='none'">Cancel</button>
-      <button class="mbtn-ok" style="background:var(--blue);color:#fff" onclick="saveAlreadySwapped()">Mark &amp; Continue</button>
+      <button class="mbtn-ok" style="background:var(--blue);color:#fff" onclick="saveAlreadySwapped()">Save Result &amp; Continue</button>
     </div>
   </div>
 </div>
 
 <!-- NO ACCESS MODAL -->
-<div id="m-noaccess2" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+<div id="m-noaccess2" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-noaccess-title" style="display:none" onclick="if(event.target===this)this.style.display='none'">
   <div class="msheet">
-    <h3 style="color:var(--danger)">&#128683;&nbsp; Bin Not Accessible</h3>
+    <h3 id="m-noaccess-title" style="color:var(--danger)">&#128683;&nbsp; Bin Not Accessible</h3>
     <div class="m-sub" id="m-noaccess2-addr"></div>
     <div class="cf-reasons" style="margin:12px 0 10px">
-      <button class="cf-chip" onclick="this.classList.toggle('sel')">No bin on kerb</button>
-      <button class="cf-chip" onclick="this.classList.toggle('sel')">Gated / locked</button>
-      <button class="cf-chip" onclick="this.classList.toggle('sel')">Dog</button>
-      <button class="cf-chip" onclick="this.classList.toggle('sel')">Blocked by vehicle</button>
-      <button class="cf-chip" onclick="this.classList.toggle('sel')">Private road</button>
+      <button class="cf-chip" onclick="toggleCFChip(this)" aria-pressed="false">No bin on kerb</button>
+      <button class="cf-chip" onclick="toggleCFChip(this)" aria-pressed="false">Gated / locked</button>
+      <button class="cf-chip" onclick="toggleCFChip(this)" aria-pressed="false">Dog</button>
+      <button class="cf-chip" onclick="toggleCFChip(this)" aria-pressed="false">Blocked by vehicle</button>
+      <button class="cf-chip" onclick="toggleCFChip(this)" aria-pressed="false">Private road</button>
     </div>
     <textarea class="mta" id="m-noaccess2-ta" placeholder="Optional — any extra detail"></textarea>
     <div class="mbtns">
       <button class="mbtn-c" onclick="this.closest('.modal').style.display='none'">Cancel</button>
-      <button class="mbtn-ok" style="background:var(--danger);color:#fff" onclick="saveNoAccess2()">Mark &amp; Continue</button>
+      <button class="mbtn-ok" style="background:var(--danger);color:#fff" onclick="saveNoAccess2()">Save Result &amp; Continue</button>
     </div>
   </div>
 </div>
 
 <!-- CANT SWAP MODAL -->
-<div id="m-cantswap" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+<div id="m-cantswap" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-cantswap-title" style="display:none" onclick="if(event.target===this)this.style.display='none'">
   <div class="msheet">
-    <h3 style="color:var(--warn)">&#9888;&nbsp; Lid Can&#39;t Be Swapped</h3>
+    <h3 id="m-cantswap-title" style="color:var(--warn)">&#9888;&nbsp; Lid Can&#39;t Be Swapped</h3>
     <div class="m-sub" id="m-cantswap-addr"></div>
     <div class="cf-reasons" style="margin:12px 0 10px">
-      <button class="cf-chip" id="cs-chip-pins" onclick="this.classList.toggle('sel')">Pins won&#39;t come out</button>
-      <button class="cf-chip" id="cs-chip-bolt" onclick="this.classList.toggle('sel')">Lid bolted on</button>
-      <button class="cf-chip" id="cs-chip-bin"  onclick="this.classList.toggle('sel')">Replacement bin needed</button>
+      <button class="cf-chip" id="cs-chip-pins" onclick="toggleCFChip(this)" aria-pressed="false">Pins won&#39;t come out</button>
+      <button class="cf-chip" id="cs-chip-bolt" onclick="toggleCFChip(this)" aria-pressed="false">Lid bolted on</button>
+      <button class="cf-chip" id="cs-chip-bin"  onclick="toggleCFChip(this)" aria-pressed="false">Replacement bin needed</button>
     </div>
     <textarea class="mta" id="m-cantswap-ta" placeholder="Optional — any extra detail"></textarea>
     <div class="mbtns">
       <button class="mbtn-c" onclick="this.closest('.modal').style.display='none'">Cancel</button>
-      <button class="mbtn-ok" style="background:var(--warn);color:#001e2e" onclick="saveCantSwap()">Mark &amp; Continue</button>
+      <button class="mbtn-ok" style="background:var(--warn);color:#001e2e" onclick="saveCantSwap()">Save Result &amp; Continue</button>
     </div>
   </div>
 </div>
 
 <!-- MULTI-LID CONFIRM MODAL -->
-<div id="m-multi-lid" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+<div id="m-multi-lid" class="modal" role="dialog" aria-modal="true" aria-labelledby="m-multi-title" style="display:none" onclick="if(event.target===this)this.style.display='none'">
   <div class="msheet">
-    <h3>&#9888;&#65039; Multiple Lids</h3>
+    <h3 id="m-multi-title">&#9888;&#65039; Confirm All Lids</h3>
     <div class="m-sub" id="m-multi-lid-msg">This address has 2 lids to swap.</div>
     <div style="font-size:18px;color:var(--muted);margin-top:8px;line-height:1.5">Make sure <b>all lids</b> have been swapped before marking done.</div>
     <div class="mbtns" style="margin-top:20px">
       <button class="mbtn-c" style="flex:1" onclick="document.getElementById('m-multi-lid').style.display='none'">Cancel</button>
-      <button class="mbtn-p" style="flex:2" onclick="document.getElementById('m-multi-lid').style.display='none';markDoneConfirmed()">&#10003;&nbsp;&nbsp;Done &mdash; all lids swapped</button>
+      <button class="mbtn-p" style="flex:2" onclick="document.getElementById('m-multi-lid').style.display='none';markDoneConfirmed()">&#10003;&nbsp;&nbsp;Confirm All Lids Replaced</button>
     </div>
   </div>
 </div>
@@ -638,7 +960,6 @@ input,textarea,select{font-size:18px!important}
 
     <div class="adm-tabs">
       <button class="adm-tab active" onclick="admTab(this,'adm-tab-runs')">Runs</button>
-      <button class="adm-tab" onclick="admTab(this,'adm-tab-crew')">Crew</button>
       <button class="adm-tab" onclick="admTab(this,'adm-tab-cf')">Issues</button>
       <button class="adm-tab" onclick="admTab(this,'adm-tab-tools')">Tools</button>
     </div>
@@ -647,9 +968,6 @@ input,textarea,select{font-size:18px!important}
       <div id="adm-runs"></div>
     </div>
 
-    <div id="adm-tab-crew" class="adm-tabpanel" style="display:none">
-      <div id="adm-crew"></div>
-    </div>
 
     <div id="adm-tab-cf" class="adm-tabpanel" style="display:none">
       <div id="adm-cf-list"></div>
@@ -660,7 +978,6 @@ input,textarea,select{font-size:18px!important}
         <button class="adm-tool-btn" onclick="admExportCSV()">&#128202;<br><span>Export CSV</span></button>
         <button class="adm-tool-btn" onclick="admCopyReport()">&#128203;<br><span>Copy Report</span></button>
         <button class="adm-tool-btn danger" onclick="admResetAll()">&#128465;<br><span>Reset All</span></button>
-        <button class="adm-tool-btn" onclick="admClearCoordFixes()" id="adm-btn-clearfixes" style="display:none">&#128204;<br><span>Clear Pin Fixes</span></button>
       </div>
       <div class="adm-section" style="margin-top:20px">&#9881; Settings</div>
       <div class="adm-toggle-row">
@@ -691,7 +1008,7 @@ input,textarea,select{font-size:18px!important}
       <div id="adm-pin-msg" style="font-size:16px;color:var(--lime);min-height:18px"></div>
     </div>
 
-    <div id="dev-footer" style="margin-top:24px">Created by Tim Devlin using Numa AI &mdash; Moira Shire Council &copy; 2026</div>
+    <div class="dev-footer" style="margin-top:24px">Created by Tim Devlin using Numa AI &mdash; Moira Shire Council &copy; 2026</div>
   </div>
 </div>
 
@@ -699,15 +1016,16 @@ input,textarea,select{font-size:18px!important}
 <div id="s-driver" class="screen">
   <div class="picker-wrap">
     <div class="picker-back" onclick="driverPickerBack()">&#8592; Back</div>
-    <div class="picker-h">Who&rsquo;s Driving?</div>
+    <div class="picker-h">Run Setup</div>
     <div class="picker-sub" id="driver-run-lbl">Select run</div>
+    <div class="setup-section-label">Team member</div>
     <div class="person-grid" id="person-list"></div>
     <div id="vehicle-pick-wrap">
       <div class="vehicle-who" id="vehicle-who"></div>
       <div class="vehicle-grid" id="vehicle-list"></div>
     </div>
     <div id="passenger-pick-wrap">
-      <div class="passenger-hdr">Any passengers today?</div>
+      <div class="passenger-hdr">Second team member</div>
       <div class="passenger-grid" id="passenger-list"></div>
       <button id="start-run-btn" onclick="confirmAndStart()">Start &rarr;</button>
     </div>
@@ -716,76 +1034,76 @@ input,textarea,select{font-size:18px!important}
 
 <!-- ROUTE -->
 <div id="s-route" class="screen">
-  <!-- Tab bar -->
-  <div id="tab-bar">
-    <div class="tab-btn active" id="tb-navigate" onclick="switchTab('navigate')">&#9650; Navigate</div>
-    <div class="tab-btn" id="tb-overview" onclick="switchTab('overview')">&#128506; Overview</div>
+  <div id="a11y-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <div id="tab-bar" role="tablist" aria-label="Run view">
+    <button type="button" class="tab-btn active" id="tb-current" role="tab" aria-selected="true" aria-controls="tab-current" onclick="switchTab('current')">Current Stop</button>
+    <button type="button" class="tab-btn" id="tb-stops" role="tab" aria-selected="false" aria-controls="tab-stops" onclick="switchTab('stops')">All Stops</button>
   </div>
 
-  <!-- Navigate tab -->
-  <div id="tab-navigate">
-    <div id="map-full">
-      <div id="leaflet-map"></div>
-      <div id="gps-dot-wrap"></div>
-      <div id="prog-strip"><div id="prog-bar"></div></div>
-      <div id="top-bar">
-        <button id="btn-back" onclick="goHome()"><span class="btn-icon">&#8592;</span><span class="btn-lbl">Home</span></button>
-        <div id="run-badge"><div id="run-badge-title">Route</div><div id="run-badge-sub"></div></div>
-        <button id="btn-load" onclick="showBinLoad()">&#128722; Load</button>
-        <button id="btn-change-crew" onclick="changeCrewMidRun()" title="Change driver / vehicle" style="background:var(--map-overlay);backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--muted);border-radius:12px;padding:0 10px;font-size:17px;font-weight:800;cursor:pointer;flex-shrink:0;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-size:18px;line-height:1">&#128101;</span><span style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;line-height:1">Crew</span></button>
-        <button id="btn-mode-route" onclick="toggleMode()"><span class="btn-icon" id="mode-icon-r">&#9788;</span><span class="btn-lbl" id="mode-lbl-r">Theme</span></button>
-        <button id="btn-locate" onclick="toggleLocate()" title="Toggle GPS tracking"><span class="btn-icon">&#127757;</span><span class="btn-lbl">Track</span></button>
-        <button id="btn-findme" onclick="findMe()" title="Centre map on my location"><span class="btn-icon">&#128205;</span><span class="btn-lbl">Find Me</span></button>
+  <div id="tab-current" class="route-workspace" role="tabpanel" aria-labelledby="tb-current">
+    <div id="prog-strip"><div id="prog-bar"></div></div>
+    <div id="top-bar" class="field-topbar">
+      <button id="btn-back" onclick="goHome()"><span class="btn-icon">&#8592;</span><span class="btn-lbl">Home</span></button>
+      <div id="run-badge"><div id="run-badge-title">Route</div><div id="run-badge-team"></div><div id="run-badge-vehicle"></div><div id="run-badge-sub"></div></div>
+      <div class="field-toolbar-actions" aria-label="Run controls">
+        <button id="btn-change-crew" class="field-tool-btn" onclick="changeCrewMidRun()" aria-label="Change team members or vehicle"><span class="btn-icon" aria-hidden="true">&#128101;</span><span class="btn-lbl">Team</span></button>
+        <button id="btn-mode-route" class="field-tool-btn" onclick="toggleMode()" aria-label="Switch appearance"><span id="mode-icon-r" class="btn-icon" aria-hidden="true">&#9788;</span><span class="btn-lbl">Display</span></button>
+        <button id="btn-smart-route" class="field-tool-btn" onclick="toggleSmartRoute()" aria-label="Switch between planned and smart route order"><span class="btn-icon" aria-hidden="true">&#9889;</span><span class="btn-lbl"><span id="smart-route-lbl">Planned</span> Route</span></button>
       </div>
+      <div id="location-status" class="location-status" role="status" aria-live="polite"><span class="location-dot"></span><span id="location-status-text">Location starting…</span><button type="button" id="location-retry" onclick="startAutoLocation(true)" style="display:none">Enable Location</button></div>
     </div>
-    <div id="eta-badge"></div>
-    <div id="panel">
-      <div id="panel-handle" onclick="togglePanel()"></div>
-      <div id="panel-peek">
-        <div class="stop-num"><span class="stop-num-dot" id="sn-dot"></span><span id="sn-lbl">STOP 1</span></div>
-        <div class="stop-addr" id="cur-addr">Loading...</div>
-        <div class="stop-suburb" id="cur-suburb"></div>
-        <div class="stop-alert" id="stop-alert" style="display:none"><span>&#9888;</span><span id="alert-txt"></span></div>
-        <div class="bins-pill" id="bins-pill"></div>
-        <div id="depot-actions" style="display:none"><button class="btn-depart" onclick="markDone()">Depart &rarr;</button></div>
-        <div id="stop-actions">
-          <div class="action-row">
-            <button class="btn-nav-dark" id="btn-nav" onclick="launchNav()"><span class="btn-icon">&#128205;</span><span class="btn-lbl">Navigate</span></button>
-            <button class="btn-done-lime" onclick="openDoneConfirm()">&#10003;&nbsp;&nbsp;Done</button>
+
+    <div class="field-scroll">
+      <div id="route-intel" class="route-intel-card"></div>
+      <div id="arrival-banner"><div>&#128205;</div><div class="ab-main">ARRIVED<div class="ab-sub">You are within the stop zone</div></div><div>&#10003;</div></div>
+      <div id="eta-badge"></div>
+
+      <section id="panel" class="job-card">
+        <div id="panel-peek">
+          <div class="stop-num"><span class="stop-num-dot" id="sn-dot"></span><span id="sn-lbl">STOP 1</span></div>
+          <div class="stop-addr" id="cur-addr">Loading...</div>
+          <div class="stop-suburb" id="cur-suburb"></div>
+          <div class="stop-alert" id="stop-alert" style="display:none"><span>&#9888;</span><span id="alert-txt"></span></div>
+          <div class="bins-pill" id="bins-pill"></div>
+          <div id="depot-actions" style="display:none"><button class="btn-depart" onclick="markDone()">Depart &rarr;</button></div>
+          <div id="stop-actions">
+            <button class="btn-google-nav" id="btn-nav" onclick="launchNav()" aria-label="Open turn-by-turn directions to this property in Google Maps"><span class="nav-glyph">&#10148;</span><span><b>Navigate in Google Maps</b><small>Turn-by-turn driving directions</small></span></button>
+            <button class="btn-done-lime field-done" onclick="openDoneConfirm()" aria-label="Mark this property as lid replaced">&#10003;&nbsp;&nbsp;Lid Replaced<span class="action-help">Replacement completed at this property</span></button>
+            <div class="outcome-row">
+              <button class="btn-outcome blue" onclick="markAlreadySwapped()" aria-label="Mark lid as already replaced before arrival">&#10003;&#10003;<span>Already Replaced<small class="action-help">Red lid already fitted</small></span></button>
+              <button class="btn-outcome danger" onclick="markNoAccess()" aria-label="Record that the bin was not accessible">&#128683;<span>Not Accessible<small class="action-help">Could not reach the bin</small></span></button>
+              <button class="btn-outcome amber" onclick="markCantSwap()" aria-label="Record that the lid could not be swapped">&#9888;<span>Can't Swap<small class="action-help">Hardware or bin issue</small></span></button>
+            </div>
+            <div class="sub-row" style="margin-top:7px">
+              <button class="btn-sub warn" id="btn-undo" onclick="undoLast()" style="display:none" aria-label="Undo the most recent result">&#8630; Undo Last Result</button>
+              <button class="btn-sub danger" id="btn-undo-run" onclick="undoRun()" style="display:none" aria-label="Reset all recorded results for this run">&#8635; Reset Run</button>
+            </div>
           </div>
-          <div class="outcome-row">
-            <button class="btn-outcome blue"   onclick="markAlreadySwapped()">&#10003;&#10003;<span>Already<br>Swapped</span></button>
-            <button class="btn-outcome danger"  onclick="markNoAccess()">&#128683;<span>Not<br>Accessible</span></button>
-            <button class="btn-outcome amber"   onclick="markCantSwap()">&#9888;<span>Can&#39;t<br>Swap</span></button>
+          <div class="next-row" id="nx-row">
+            <div class="next-row-head"><span class="next-lbl">Up next</span><span class="next-dist" id="nx-dist"></span></div>
+            <div class="next-body"><div class="next-addr" id="nx-addr">&mdash;</div><div class="next-sub" id="nx-sub"></div></div>
           </div>
-          <div class="sub-row" style="margin-top:7px">
-            <button class="btn-sub warn" id="btn-undo" onclick="undoLast()" style="display:none">&#8630; Undo</button>
-            <button class="btn-sub danger" id="btn-undo-run" onclick="undoRun()" style="display:none">&#8630; Undo All</button>
+          <div class="field-secondary-actions one-screen-utilities">
+            <button class="btn-expand" onclick="openNote()" aria-label="Add or edit a note for this stop"><span class="btn-icon" aria-hidden="true">&#128221;</span><span class="btn-lbl">Add Note</span></button>
+            <button id="btn-load" class="btn-expand" onclick="showBinLoad()" aria-label="View the lid load required for this run"><span class="btn-icon" aria-hidden="true">&#128722;</span><span class="btn-lbl">Lid Load</span></button>
           </div>
         </div>
-        <div class="next-row" id="nx-row">
-          <span class="next-lbl">Next</span>
-          <div class="next-body"><div class="next-addr" id="nx-addr">&mdash;</div><div class="next-sub" id="nx-sub"></div></div>
-          <span class="next-dist" id="nx-dist"></span>
-          <button class="btn-expand" onclick="openNote()"><span class="btn-icon">&#128221;</span><span class="btn-lbl">Note</span></button>
-          <button class="btn-expand" onclick="togglePanel()"><span class="btn-icon">&#9776;</span><span class="btn-lbl">All Stops</span></button>
-        </div>
-      </div>
-      <div id="panel-expanded"><div class="exp-hdr">All Stops</div><div id="stop-list"></div></div>
+      </section>
     </div>
   </div>
 
-  <!-- Overview tab -->
-  <div id="tab-overview" class="hidden">
-    <div id="overview-map"></div>
-    <div id="ov-legend">
-      <div class="ov-leg-row"><div class="ov-dot" style="width:14px;height:14px;background:#E91E8C"></div><span class="ov-leg-lbl">Current</span><span class="ov-leg-count" id="ovl-cur">—</span></div>
-      <div class="ov-leg-row"><div class="ov-dot" style="width:10px;height:10px;background:#FF6D00"></div><span class="ov-leg-lbl">Pending</span><span class="ov-leg-count" id="ovl-pend">—</span></div>
-      <div class="ov-leg-row"><div class="ov-dot" style="width:10px;height:10px;background:#3ddc84"></div><span class="ov-leg-lbl">Done</span><span class="ov-leg-count" id="ovl-done">—</span></div>
-      <div class="ov-leg-row" id="ovl-cf-row"><div class="ov-dot" style="width:10px;height:10px;background:#ff5a5a"></div><span class="ov-leg-lbl">Issues</span><span class="ov-leg-count" id="ovl-cf">—</span></div>
-      <div class="ov-leg-row"><div class="ov-dot" style="width:12px;height:12px;background:#c0df16"></div><span class="ov-leg-lbl">Depot</span><span class="ov-leg-count" id="ovl-dep">—</span></div>
+  <div id="tab-stops" class="route-workspace hidden" role="tabpanel" aria-labelledby="tb-stops">
+    <div class="stops-head">
+      <div><div class="stops-title">Run Stops</div><div class="stops-sub">Tap an outstanding property to make it current.</div></div>
+      <button class="stops-current-btn" onclick="switchTab('current')">Back to Current</button>
     </div>
+    <div id="panel-expanded" class="stops-list-wrap"><div id="stop-list"></div></div>
   </div>
+
+  <!-- Hidden compatibility nodes for legacy functions; no map is rendered. -->
+  <div id="leaflet-map" style="display:none"></div>
+  <div id="overview-map" style="display:none"></div>
+  <div id="gps-dot-wrap" style="display:none"></div>
 </div>
 
 <!-- COMPLETE -->
@@ -795,7 +1113,7 @@ input,textarea,select{font-size:18px!important}
     <div class="comp-trophy">&#127942;</div>
     <div class="comp-h">All Done!</div>
     <div class="comp-p" id="comp-p"></div>
-    <div class="comp-bins"><span id="comp-bin-count">0</span> lids swapped!</div>
+    <div class="comp-bins"><span id="comp-bin-count">0</span> lids resolved</div>
     <div class="comp-bins-lbl">That&rsquo;s a great day&rsquo;s work</div>
     <button class="comp-btn" style="background:var(--lime);color:#001e2e" onclick="showReport()">&#128196; View Report</button>
     <button class="comp-btn" style="background:var(--surface);color:var(--muted);border:1px solid var(--border)" onclick="goHome()">&#8592; Home</button>
@@ -808,9 +1126,18 @@ input,textarea,select{font-size:18px!important}
   <div class="sum-wrap">
     <div class="sum-title">Run complete</div>
     <div class="sum-sub" id="sum-run-name"></div>
+    <div class="sum-sub" id="sum-run-team" style="margin-top:5px;color:var(--text);font-weight:800"></div>
+    <div class="sum-sub" id="sum-run-vehicle" style="margin-top:2px;color:var(--blue)"></div>
+    <div id="perfect-run-banner" class="perfect-run-banner" aria-live="polite">
+      <span class="perfect-spark s1">✦</span><span class="perfect-spark s2">★</span><span class="perfect-spark s3">✦</span><span class="perfect-spark s4">★</span>
+      <div class="perfect-run-ring">100%</div>
+      <div class="perfect-run-kicker">Perfect Run</div>
+      <div class="perfect-run-title">Every property resolved</div>
+      <div class="perfect-run-sub">Outstanding result — nothing left unresolved on this run.</div>
+    </div>
     <div class="sum-grid">
       <div class="sum-card lime full" id="sum-card-lids">
-        <div class="sum-lbl">Lids swapped</div>
+        <div class="sum-lbl">Lids resolved</div>
         <div class="sum-val lime" id="sum-lids">0<span class="u">lids</span></div>
       </div>
     </div>
@@ -826,7 +1153,7 @@ input,textarea,select{font-size:18px!important}
 <div id="m-note" class="modal"><div class="msheet"><h3>&#128221; Note</h3><div class="m-sub" id="m-note-sub"></div><textarea class="mta" id="m-note-ta" placeholder="e.g. bin not out, gate locked..."></textarea><div class="mbtns"><button class="mbtn-c" onclick="closeM('m-note')">Cancel</button><button class="mbtn-ok" style="background:var(--lime);color:#001e2e" onclick="saveNote()">Save</button></div></div></div>
 
 
-<div id="m-load" class="modal"><div class="msheet"><h3>&#128722; Bin Load</h3><div class="m-sub" id="m-load-sub"></div><div id="m-load-rows"></div><button class="full-btn" style="background:var(--lime);color:#001e2e" onclick="closeM('m-load')">Got It</button></div></div>
+<div id="m-load" class="modal"><div class="msheet"><h3>&#128722; Bin Load</h3><div class="m-sub" id="m-load-sub"></div><div class="m-sub" id="m-load-vehicle" style="margin-top:-8px;color:var(--blue)"></div><div id="m-load-rows"></div><button class="full-btn" style="background:var(--lime);color:#001e2e" onclick="closeM('m-load')">Got It</button></div></div>
 <div id="m-rpt" class="modal"><div class="msheet"><h3>&#128196; Run Report</h3><div id="m-rpt-body"></div><div style="display:flex;gap:8px;margin-top:4px"><button class="full-btn" style="background:var(--lime);color:#001e2e;flex:1" onclick="copyReport()">&#128203; Copy</button><button class="full-btn" style="background:#00A3E0;color:#fff;flex:1" onclick="shareReport()">&#8679; Share</button></div><button class="full-btn" style="background:#1D6F42;color:#fff;border:none;margin-top:7px" onclick="exportReportExcel()">&#128202; Export to Excel</button><button class="full-btn" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border);margin-top:7px" onclick="closeM('m-rpt')">Close</button></div></div>
 
 
@@ -853,7 +1180,7 @@ function initVehicles() {
   VEHICLES.triton_manual.img = "data:image/png;base64," + RANGER_AMY_B64;
 }
 
-/* ── 7 crew members ── */
+/* ── 7 team members ── */
 var CREW = [
   { id: "tim",    name: "Tim"     },
   { id: "molly",  name: "Molly"   },
@@ -881,7 +1208,7 @@ var SCHEDULE = [
 /* ── State ── */
 var cDay="", cZone="", cWeek="1", cCrew="", cStops=[], cIdx=0;
 var cPersonId=null, cVehicleId=null, cPassengerId=null;
-var undoStack=[], doneSet={}, cfSet={}, notes={}, driverStats={}, runTimes={}, coordFix={};
+var undoStack=[], doneSet={}, cfSet={}, notes={}, runTimes={}, coordFix={};
 var panelOpen=false, isLight=false;
 var _fixPinMode=false;
 var SK="moira_bin_v12";
@@ -896,7 +1223,7 @@ var _navUrl="#", _navFallback=null;
 
 /* ── Persistence ── */
 function sv() {
-  try { localStorage.setItem(SK, JSON.stringify({ doneSet:doneSet, cfSet:cfSet, notes:notes, driverStats:driverStats, runTimes:runTimes, coordFix:coordFix })); } catch(e) {}
+  try { localStorage.setItem(SK, JSON.stringify({ doneSet:doneSet, cfSet:cfSet, notes:notes, runTimes:runTimes, coordFix:coordFix })); } catch(e) {}
 }
 function svCrew() {
   // Save crew keyed per-run so different runs remember their own crew independently
@@ -925,7 +1252,6 @@ function ld() {
     doneSet = d.doneSet || {};
     cfSet   = d.cfSet   || {};
     notes   = d.notes   || {};
-    driverStats = d.driverStats || {};
     runTimes    = d.runTimes    || {};
     coordFix    = d.coordFix    || {};
   } catch(e) {}
@@ -959,6 +1285,39 @@ function cntBins(d,z,wk,c) {
   st.forEach(function(s,i){ if(!isDepot(s) && (doneSet[sk(d,z,wk,c,i)] || cfSet[sk(d,z,wk,c,i)])) n += (s.bins||1); });
   return n;
 }
+function isAlreadySwappedKey(k) {
+  var n=notes[k]||"";
+  return n.indexOf("[Already swapped]")===0;
+}
+function resolvedCnt(d,z,wk,c) {
+  var st = ROUTES[d] && ROUTES[d][z] && ROUTES[d][z][wk] && ROUTES[d][z][wk][c];
+  if (!st) return 0;
+  var n=0;
+  st.forEach(function(s,i){
+    if(!isDepot(s)){ var k=sk(d,z,wk,c,i); if(doneSet[k] || isAlreadySwappedKey(k)) n++; }
+  });
+  return n;
+}
+function resolvedBins(d,z,wk,c) {
+  var st = ROUTES[d] && ROUTES[d][z] && ROUTES[d][z][wk] && ROUTES[d][z][wk][c];
+  if (!st) return 0;
+  var n=0;
+  st.forEach(function(s,i){
+    if(!isDepot(s)){ var k=sk(d,z,wk,c,i); if(doneSet[k] || isAlreadySwappedKey(k)) n += (s.bins||1); }
+  });
+  return n;
+}
+function alreadySwappedCnt(d,z,wk,c) {
+  var st = ROUTES[d] && ROUTES[d][z] && ROUTES[d][z][wk] && ROUTES[d][z][wk][c];
+  if (!st) return 0;
+  var n=0; st.forEach(function(s,i){ if(!isDepot(s)&&isAlreadySwappedKey(sk(d,z,wk,c,i))) n++; }); return n;
+}
+function alreadySwappedBins(d,z,wk,c) {
+  var st = ROUTES[d] && ROUTES[d][z] && ROUTES[d][z][wk] && ROUTES[d][z][wk][c];
+  if (!st) return 0;
+  var n=0; st.forEach(function(s,i){ if(!isDepot(s)&&isAlreadySwappedKey(sk(d,z,wk,c,i))) n+=(s.bins||1); }); return n;
+}
+
 function hav(a,b) {
   var R=6371, dl=(b[0]-a[0])*Math.PI/180, dn=(b[1]-a[1])*Math.PI/180;
   var h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dn/2)*Math.sin(dn/2);
@@ -969,6 +1328,14 @@ function todayISO() {
   return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
 function getPersonById(id) { for(var i=0;i<CREW.length;i++) if(CREW[i].id===id) return CREW[i]; return null; }
+function assignedPeopleText(personId, passengerId) {
+  var names=[];
+  var p=getPersonById(personId);
+  var p2=passengerId?getPersonById(passengerId):null;
+  if(p) names.push(p.name);
+  if(p2) names.push(p2.name);
+  return names.length ? names.join(" · ") : "Not assigned";
+}
 
 /* ── Screen management ── */
 function showScreen(id) {
@@ -985,7 +1352,8 @@ function applyMode(light) {
   var icon = light ? "&#127769;" : "&#9728;&#65039;";
   var lbl  = light ? "Dark" : "Light";
   ["mode-icon","mode-icon-r"].forEach(function(id){ var el=document.getElementById(id); if(el) el.innerHTML=icon; });
-  ["mode-lbl","mode-lbl-r"].forEach(function(id){ var el=document.getElementById(id); if(el) el.textContent=lbl; });
+  var homeLbl=document.getElementById("mode-lbl"); if(homeLbl) homeLbl.textContent=lbl;
+  var routeMode=document.getElementById("btn-mode-route"); if(routeMode){ routeMode.title="Switch to "+lbl.toLowerCase()+" appearance"; routeMode.setAttribute("aria-label",routeMode.title); }
   drawMap();
   try { localStorage.setItem("moira_mode", light?"light":"dark"); } catch(e) {}
 }
@@ -999,7 +1367,7 @@ function updateOverallProgress() {
       var cs = SUMMARY[sc.day] && SUMMARY[sc.day][sc.zone] && SUMMARY[sc.day][sc.zone][sc.week] && SUMMARY[sc.day][sc.zone][sc.week][cr];
       if (!cs) return;
       total += totalBins(sc.day, sc.zone, sc.week, cr) || cs.bins || cs.stops;
-      done  += cntBins(sc.day, sc.zone, sc.week, cr);
+      done  += resolvedBins(sc.day, sc.zone, sc.week, cr);
     });
   });
   var pct = total ? Math.round(done/total*100) : 0;
@@ -1014,7 +1382,7 @@ function updateOverallProgress() {
   }
 }
 
-function maybeShowScoreboardBtn() {
+function maybeShowProgressActions() {
   var anyProgress = Object.keys(doneSet).length>0 || Object.keys(cfSet).length>0;
   var wrap   = document.getElementById("action-btns");
   var rstBtn = document.getElementById("reset-btn");
@@ -1038,7 +1406,7 @@ function buildHome() {
       ["1","2"].forEach(function(cr){
         var cs = SUMMARY[day] && SUMMARY[day][z] && SUMMARY[day][z][week] && SUMMARY[day][z][week][cr];
         if (!cs) return;
-        var stops=cs.stops, tBins=totalBins(day,z,week,cr)||cs.bins||cs.stops, doneBins=cntBins(day,z,week,cr), pct=tBins?Math.round(doneBins/tBins*100):0, allDone=(pct===100);
+        var stops=cs.stops, tBins=totalBins(day,z,week,cr)||cs.bins||cs.stops, doneBins=resolvedBins(day,z,week,cr), pct=tBins?Math.round(doneBins/tBins*100):0, allDone=(pct===100);
         var cardClasses = "run-card" + (isToday?" today":"") + (allDone?" done":"");
         html += '<div class="'+cardClasses+'"'
               + ' data-day="'+day+'" data-zone="'+z+'" data-week="'+week+'" data-crew="'+cr+'"'
@@ -1057,7 +1425,7 @@ function buildHome() {
   });
   document.getElementById("home-body").innerHTML = html;
   updateOverallProgress();
-  maybeShowScoreboardBtn();
+  maybeShowProgressActions();
 }
 
 
@@ -1092,7 +1460,6 @@ function pickRun(el) {
 function buildPersonGrid() {
   var html = "";
   CREW.forEach(function(p){
-    var stats = driverStats[p.id] || { bins:0, distance:0, stops:0 };
     html += '<div class="driver-card" data-pid="'+p.id+'" onclick="selectPerson(this)">'
           + '<div class="dc-avatar dc-avatar-name">'+p.name+'</div>'
 
@@ -1111,7 +1478,7 @@ function selectPerson(el) {
   el.classList.add("selected");
   // Show vehicle picker
   document.getElementById("vehicle-pick-wrap").style.display = "block";
-  document.getElementById("vehicle-who").textContent = person.name + ", which vehicle today?";
+  document.getElementById("vehicle-who").textContent = "Vehicle";
   buildVehicleGrid();
 }
 
@@ -1163,10 +1530,7 @@ function selectPassenger(el) {
   var person = getPersonById(cPersonId);
   var v = VEHICLES[cVehicleId];
   var passenger = cPassengerId ? getPersonById(cPassengerId) : null;
-  var label = "Start - " + (person?person.name:"");
-  if (passenger) label += " + " + passenger.name;
-  label += " in " + (v?v.short:"") + " >";
-  btn.textContent = label;
+  btn.textContent = "Start Run →";
 }
 
 function confirmAndStart() {
@@ -1190,7 +1554,7 @@ function changeCrewMidRun() {
     if (pc) {
       pc.classList.add("selected");
       document.getElementById("vehicle-pick-wrap").style.display = "block";
-      document.getElementById("vehicle-who").textContent = (getPersonById(cPersonId)||{name:""}).name + ", which vehicle today?";
+      document.getElementById("vehicle-who").textContent = "Vehicle";
       buildVehicleGrid();
       if (cVehicleId) {
         var vc = document.querySelector('.vehicle-card[data-vid="'+cVehicleId+'"]');
@@ -1210,10 +1574,7 @@ function changeCrewMidRun() {
           var person = getPersonById(cPersonId);
           var v = VEHICLES[cVehicleId];
           var passenger = cPassengerId ? getPersonById(cPassengerId) : null;
-          var label = "Start - " + (person?person.name:"");
-          if (passenger) label += " + " + passenger.name;
-          label += " in " + (v?v.short:"") + " >";
-          btn.textContent = label;
+          btn.textContent = "Resume Run →";
         }
       }
     }
@@ -1233,6 +1594,7 @@ function startRun(day, zone, week, crew) {
   initMap();
   showScreen("s-route");
   render();
+  startAutoLocation(false);
 }
 
 
@@ -1242,85 +1604,26 @@ function showRunSummary() {
   var stops=cStops;
   var realTotal=stops.filter(function(s){return !isDepot(s);}).length;
 
-  // Lids
-  var swappedBins=0;
-  stops.forEach(function(s,i){ if(!isDepot(s)&&doneSet[sk(d,z,wk,c,i)]) swappedBins+=s.bins; });
+  var swappedBins=0, alreadyBins=0;
+  stops.forEach(function(s,i){
+    if(isDepot(s)) return;
+    var k=sk(d,z,wk,c,i);
+    if(doneSet[k]) swappedBins+=s.bins||1;
+    else if(isAlreadySwappedKey(k)) alreadyBins+=s.bins||1;
+  });
+  var resolvedStops=resolvedCnt(d,z,wk,c);
+  var resolvedBinsRun=swappedBins+alreadyBins;
+  var isPerfect=(realTotal>0 && resolvedStops===realTotal);
 
-  // Time
-  var rtKey=sk(d,z,wk,c,"").replace(/\|$/,"");
-  var rt=runTimes[rtKey]||{};
-  var durMs = (rt.depart&&rt.finish) ? (new Date(rt.finish)-new Date(rt.depart)) : 0;
-  var durMins = durMs/60000;
-
-  // Lids per hour
-  var lph = (durMins>0) ? Math.round(swappedBins/(durMins/60)) : 0;
-
-  // Personal best lph from localStorage
-  var pbKey="moira_pb_lph_"+d+"|"+z;
-  var prevBestLph=0;
-  try { prevBestLph=parseInt(localStorage.getItem(pbKey)||"0")||0; } catch(e){}
-  var isNewPB = (lph>0 && lph>prevBestLph);
-  if(isNewPB) try { localStorage.setItem(pbKey, String(lph)); } catch(e) {}
-  // Also use max of all zones for pace bar reference
-  var allPbKeys=[]; try{ for(var kk=0;kk<localStorage.length;kk++){ var k=localStorage.key(kk); if(k&&k.startsWith("moira_pb_lph_")) allPbKeys.push(k); } }catch(e){}
-  var maxKnownLph=lph;
-  allPbKeys.forEach(function(k){ try{ var v=parseInt(localStorage.getItem(k)||"0")||0; if(v>maxKnownLph) maxKnownLph=v; }catch(e){} });
-
-  // Avg per stop (minutes)
-  var doneCount=0;
-  stops.forEach(function(s,i){ if(!isDepot(s)&&doneSet[sk(d,z,wk,c,i)]) doneCount++; });
-  var avgMinPerStop = (doneCount>0&&durMins>0) ? (durMins/doneCount) : 0;
-
-  // Fastest stop — compare consecutive done stops using stopTimes if available
-  // We track stop time as the minute a stop was ticked (stored in doneSet values or we estimate)
-  // Use a simple index-based approach: find the pair of adjacent done stops with smallest gap
-  // Since we don't have per-stop timestamps, use avgMinPerStop / 2 as the display fallback
-  // But we DO have stopTimes if they exist (some versions track them):
-  var fastestStopIdx=-1, fastestStopTime=null;
-  if(typeof stopTimes!=="undefined" && stopTimes) {
-    var doneTimes=[];
-    stops.forEach(function(s,i){
-      if(!isDepot(s)&&doneSet[sk(d,z,wk,c,i)]&&stopTimes[sk(d,z,wk,c,i)]) {
-        doneTimes.push({idx:i, s:s, t:new Date(stopTimes[sk(d,z,wk,c,i)])});
-      }
-    });
-    doneTimes.sort(function(a,b){return a.t-b.t;});
-    var bestGap=Infinity, bestI=-1;
-    for(var ii=1;ii<doneTimes.length;ii++){
-      var gap=doneTimes[ii].t-doneTimes[ii-1].t;
-      if(gap>0&&gap<bestGap){ bestGap=gap; bestI=ii; }
-    }
-    if(bestI>=0){
-      fastestStopIdx=doneTimes[bestI].idx;
-      fastestStopTime=Math.round(bestGap/60000)+"m "+Math.round((bestGap%60000)/1000)+"s";
-    }
-  }
-
-  // Populate UI
-  var person=getPersonById(cPersonId);
-  var passenger=cPassengerId?getPersonById(cPassengerId):null;
   var v=cVehicleId?VEHICLES[cVehicleId]:null;
-  var runName=(person?person.name:"Crew "+(c==="1"?"A":"B"))
-    +(passenger?" + "+passenger.name:"")
-    +(v?" · "+v.short:"")
-    +" · "+d+" Zone "+z;
-  document.getElementById("sum-run-name").textContent=runName;
+  document.getElementById("sum-run-name").textContent=d+" · Zone "+z+" · Route "+(c==="1"?"A":"B");
+  var sumTeam=document.getElementById("sum-run-team"); if(sumTeam) sumTeam.textContent=assignedPeopleText(cPersonId,cPassengerId);
+  var sumVehicle=document.getElementById("sum-run-vehicle"); if(sumVehicle) sumVehicle.textContent=v?v.short:"Vehicle not selected";
+  document.getElementById("sum-lids").innerHTML=resolvedBinsRun+'<span class="u">lids resolved</span>';
 
-  // Lids card
-  var lidsEl=document.getElementById("sum-lids");
-  lidsEl.innerHTML=swappedBins+'<span class="u">lids</span>';
-  var pbEl=document.getElementById("sum-pb");
-  if(pbEl) pbEl.parentNode.removeChild(pbEl);
-  if(isNewPB){
-    var pb=document.createElement("div");
-    pb.className="sum-pb"; pb.id="sum-pb"; pb.textContent="New personal best";
-    document.getElementById("sum-card-lids").appendChild(pb);
-  }
-
-  // Time card (removed from UI)
-  // LPH card (removed from UI)
-  // Avg card (removed from UI)
-  // Fastest stop (removed from UI)
+  var banner=document.getElementById("perfect-run-banner");
+  if(banner) banner.classList.toggle("on",isPerfect);
+  if(isPerfect) launchPerfectCelebration();
 
   showScreen("s-summary");
 }
@@ -1340,7 +1643,7 @@ function syncPopulateRunSel() {
       var done = 0;
       stops.forEach(function(s,i){ if(!s.isDepot && doneSet[sk(d,z,wk,c,i)]) done++; });
       if(done === 0) return; // skip runs with no progress
-      var label = d + " Zone " + z + " Crew " + c + " — " + done + "/" + realTotal + " stops";
+      var label = d + " Zone " + z + " Team " + c + " — " + done + "/" + realTotal + " stops";
       var opt = document.createElement("option");
       opt.value = d+"|"+z+"|"+wk+"|"+c;
       opt.textContent = label;
@@ -1366,12 +1669,6 @@ function syncExport() {
   var snapRunTimes = {};
   if(runTimes[rtKey]) snapRunTimes[rtKey] = runTimes[rtKey];
 
-  // driverStats for drivers on this run
-  var snapDriverStats = {};
-  Object.keys(driverStats).forEach(function(pid){
-    // include all driver stats — the importing device will merge carefully
-    snapDriverStats[pid] = driverStats[pid];
-  });
 
   var snap = {
     _type: "moira_run_snapshot",
@@ -1381,8 +1678,7 @@ function syncExport() {
     doneSet: snapDoneSet,
     cfSet: snapCfSet,
     notes: snapNotes,
-    runTimes: snapRunTimes,
-    driverStats: snapDriverStats
+    runTimes: snapRunTimes
   };
 
   var blob = new Blob([JSON.stringify(snap, null, 2)], {type:"application/json"});
@@ -1426,16 +1722,6 @@ function syncImport(input) {
         if(!runTimes[k]) runTimes[k]={};
         if(!runTimes[k].depart && snap.runTimes[k].depart) runTimes[k].depart=snap.runTimes[k].depart;
         if(!runTimes[k].finish && snap.runTimes[k].finish) runTimes[k].finish=snap.runTimes[k].finish;
-      });
-      // Merge driverStats (add bins, keep names)
-      Object.keys(snap.driverStats||{}).forEach(function(pid){
-        var sd = snap.driverStats[pid];
-        if(!driverStats[pid]) driverStats[pid]={bins:0, name:sd.name||pid};
-        // Use imported name if we don't have one
-        if(!driverStats[pid].name && sd.name) driverStats[pid].name=sd.name;
-        // For bins: take max (in case partial overlap)
-        var cur=driverStats[pid].bins||0, inc=sd.bins||0;
-        if(inc>cur) driverStats[pid].bins=inc;
       });
 
       sv();
@@ -1488,11 +1774,7 @@ function setZoom(z){ mapZoom=Math.max(10,Math.min(18,z)); drawMap(); }
 
 /* Returns the display coordinate for a stop.
    Uses a manually-fixed pin if the driver has moved it, otherwise the geocoded address coordinate. */
-function stopDisplayLL(stop, idx) {
-  var fk = sk(cDay, cZone, cWeek, cCrew, idx);
-  if (coordFix[fk]) return { lat: coordFix[fk].lat, lng: coordFix[fk].lng };
-  return { lat: stop.lat, lng: stop.lng };
-}
+function stopDisplayLL(stop, idx) { return { lat: stop.lat, lng: stop.lng }; }
 
 var _tileImgs={};
 function getTile(key){
@@ -1736,6 +2018,7 @@ function advance(){
   if(next===-1) for(var i=0;i<cIdx;i++) if(!doneSet[sk(cDay,cZone,cWeek,cCrew,i)]&&!cfSet[sk(cDay,cZone,cWeek,cCrew,i)]){ next=i; break; }
   if(next===-1){ render(); return; }
   cIdx=next; render();
+  if(cStops[cIdx]&&!isDepot(cStops[cIdx])) announce("Next property: "+cStops[cIdx].address+", "+cStops[cIdx].suburb);
 }
 
 function render(){
@@ -1743,11 +2026,12 @@ function render(){
   var realStopList=realStops(stops), realTotal=realStopList.length, done=cnt(d,z,wk,c);
   var totalBinsRun=realStopList.reduce(function(s,st){return s+(st.bins||1);},0);
   var doneBinsRun=cntBins(d,z,wk,c);
-  var pct=totalBinsRun?Math.round(doneBinsRun/totalBinsRun*100):0;
-  var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
-  var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  var runName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
-  document.getElementById("run-badge-title").textContent=d+" Zone "+z+" - "+runName;
+  var resolvedBinsRun=resolvedBins(d,z,wk,c);
+  var pct=totalBinsRun?Math.round(resolvedBinsRun/totalBinsRun*100):0;
+  var v=cVehicleId?VEHICLES[cVehicleId]:null;
+  document.getElementById("run-badge-title").textContent=d+" · Zone "+z+" · Route "+(c==="1"?"A":"B");
+  var teamEl=document.getElementById("run-badge-team"); if(teamEl) teamEl.textContent=assignedPeopleText(cPersonId,cPassengerId);
+  var vehicleEl=document.getElementById("run-badge-vehicle"); if(vehicleEl) vehicleEl.textContent=v?v.short:"Vehicle not selected";
   document.getElementById("run-badge-sub").textContent=(realTotal-done)+" stops remaining";
   document.getElementById("prog-bar").style.width=pct+"%";
   document.getElementById("prog-bar").style.background=col;
@@ -1755,17 +2039,18 @@ function render(){
   var done_all = (done===realTotal);
   if(done_all){
     var cf=Object.keys(cfSet).filter(function(k){ return k.startsWith(d+"|"+z+"|"+wk+"|"+c+"|"); }).length;
-    var swappedBins=0; stops.forEach(function(s,i){ if(!isDepot(s)&&doneSet[sk(d,z,wk,c,i)]) swappedBins+=s.bins; });
+    var swappedBins=0, alreadyBins=0; stops.forEach(function(s,i){ if(!isDepot(s)){ var kk=sk(d,z,wk,c,i); if(doneSet[kk]) swappedBins+=s.bins; else if(isAlreadySwappedKey(kk)) alreadyBins+=s.bins; } });
+    var resolvedStops=resolvedCnt(d,z,wk,c);
+    var resolvedBinsRun=swappedBins+alreadyBins;
     var cfIssues=cf>0?(cf+" issue"+(cf>1?"s":"")):"";
-    document.getElementById("comp-p").textContent=done+" stops completed"+(cfIssues?", "+cfIssues+" logged.":".");
-    document.getElementById("comp-bin-count").textContent=swappedBins;
+    document.getElementById("comp-p").textContent=resolvedStops+" stops resolved"+(alreadyBins?" — "+alreadyBins+" lids already swapped by Cleanaway":"")+(cfIssues?", "+cfIssues+" logged.":".");
+    document.getElementById("comp-bin-count").textContent=resolvedBinsRun;
     // Record finish time (only first time)
     var _rtKey2=sk(d,z,wk,c,"").replace(/\|$/,"");
     if(!runTimes[_rtKey2]) runTimes[_rtKey2]={};
     if(!runTimes[_rtKey2].finish) runTimes[_rtKey2].finish=new Date().toISOString();
     sv();
     hap(HAP_FINISH);
-    launchConfetti();
     showRunSummary(); return;
   }
 
@@ -1804,10 +2089,7 @@ function render(){
   var lastDone=undoStack.length?undoStack[undoStack.length-1]:-1;
   // Destination: use manually-fixed pin coords if the driver moved the pin,
   // otherwise use the text address so Google Maps finds the right street number.
-  var _fk2=sk(d,z,wk,c,cIdx);
-  var _hasPinFix=!!coordFix[_fk2];
-  var _destLL=_hasPinFix?coordFix[_fk2]:null;
-  var destParam=_hasPinFix?(_destLL.lat+","+_destLL.lng):encodeURIComponent(s.fullAddress);
+  var destParam=encodeURIComponent(s.fullAddress);
   var navUrl;
   // Use live GPS as origin if active, otherwise last stop coords
   var originCoord="";
@@ -1826,7 +2108,7 @@ function render(){
   _navUrl=navUrl;
 
   document.getElementById("btn-undo").style.display=undoStack.length>0?"block":"none";
-  document.getElementById("btn-undo").innerHTML=undoStack.length>1?("&#8634; Undo ("+undoStack.length+")"):"&#8634; Undo";
+  document.getElementById("btn-undo").innerHTML="&#8630; Undo Last Result";
   var anyDone=undoStack.length>0;
   document.getElementById("btn-undo-run").style.display=anyDone?"block":"none";
 
@@ -1852,7 +2134,7 @@ function render(){
 
   buildList(); updateMap(); updateRoute(); sv();
   _fixPinMode=false; updateFixPinBar();
-  if(_ovMap && !document.getElementById('tab-overview').classList.contains('hidden')) updateOverviewMap();
+
 }
 
 function buildList(){
@@ -1907,16 +2189,6 @@ function markDoneConfirmed(){
     var from=cStops[0];
     for(var pi=cIdx-1;pi>=0;pi--){ if(isDepot(cStops[pi])||doneSet[sk(cDay,cZone,cWeek,cCrew,pi)]||cfSet[sk(cDay,cZone,cWeek,cCrew,pi)]){ from=cStops[pi]; break; } }
     var dist=hav([from.lat,from.lng],[curStop.lat,curStop.lng]);
-    // Credit driver
-    if(cPersonId){
-      var st=driverStats[cPersonId]||(driverStats[cPersonId]={bins:0,distance:0,stops:0});
-      st.bins+=curStop.bins; st.distance+=dist; st.stops+=1;
-    }
-    // Credit passenger equally
-    if(cPassengerId){
-      var stp=driverStats[cPassengerId]||(driverStats[cPassengerId]={bins:0,distance:0,stops:0});
-      stp.bins+=curStop.bins; stp.distance+=dist; stp.stops+=1;
-    }
   }
   undoStack.push(cIdx);
   doneSet[sk(cDay,cZone,cWeek,cCrew,cIdx)]=true;
@@ -1939,11 +2211,11 @@ function undoLast(){
   var i=undoStack.pop();
   delete doneSet[sk(cDay,cZone,cWeek,cCrew,i)];
   delete cfSet[sk(cDay,cZone,cWeek,cCrew,i)];
-  cIdx=i; _curRouteCoords=null; render();
+  cIdx=i; _curRouteCoords=null; render(); announce("Last result undone. Returned to "+cStops[i].address);
 }
 
 function undoRun(){
-  var runLabel=cDay+" Zone "+cZone+" Crew "+cCrew;
+  var runLabel=cDay+" Zone "+cZone+" Team "+cCrew;
   if(!confirm("Reset all progress for "+runLabel+"?\n\nThis will undo every stop in this run only. Other runs are not affected.")) return;
   var prefix=sk(cDay,cZone,cWeek,cCrew,"").replace(/\|$/,"");
   // Remove all done/CF marks for this run
@@ -2058,7 +2330,7 @@ function markNoAccess(){
   hap(HAP_TAP);
   document.getElementById('m-noaccess2-addr').textContent = _stopAddr();
   document.getElementById('m-noaccess2-ta').value = '';
-  document.querySelectorAll('#m-noaccess2 .cf-chip').forEach(function(c){ c.classList.remove('sel'); });
+  document.querySelectorAll('#m-noaccess2 .cf-chip').forEach(function(c){ c.classList.remove('sel'); c.setAttribute('aria-pressed','false'); });
   document.getElementById('m-noaccess2').style.display = 'flex';
 }
 
@@ -2085,9 +2357,7 @@ function saveNoAccess2(){
 }
 
 function csClearChips(){
-  document.getElementById('cs-chip-pins').classList.remove('sel');
-  document.getElementById('cs-chip-bolt').classList.remove('sel');
-  document.getElementById('cs-chip-bin').classList.remove('sel');
+  ['cs-chip-pins','cs-chip-bolt','cs-chip-bin'].forEach(function(id){var el=document.getElementById(id);el.classList.remove('sel');el.setAttribute('aria-pressed','false');});
 }
 function markCantSwap(){
   hap(HAP_TAP);
@@ -2132,16 +2402,7 @@ function openOutcomeFlow(){}
 function closeOutcomeFlow(){}
 
 
-function _creditStop(){
-  var curStop=cStops[cIdx];
-  if(!isDepot(curStop)){
-    var from=cStops[0];
-    for(var pi=cIdx-1;pi>=0;pi--){ if(isDepot(cStops[pi])||doneSet[sk(cDay,cZone,cWeek,cCrew,pi)]||cfSet[sk(cDay,cZone,cWeek,cCrew,pi)]){ from=cStops[pi]; break; } }
-    var dist=hav([from.lat,from.lng],[curStop.lat,curStop.lng]);
-    if(cPersonId){ var st=driverStats[cPersonId]||(driverStats[cPersonId]={bins:0,distance:0,stops:0}); st.distance+=dist; st.stops+=1; }
-    if(cPassengerId){ var stp=driverStats[cPassengerId]||(driverStats[cPassengerId]={bins:0,distance:0,stops:0}); stp.distance+=dist; stp.stops+=1; }
-  }
-}
+function _creditStop(){ /* Intentionally no individual performance tracking. */ }
 /* Legacy aliases */
 function openCF(){ openOutcomeFlow(); }
 function openCantSwap(){ openOutcomeFlow(); }
@@ -2157,9 +2418,9 @@ function showBinLoad(){
   Object.keys(sb).sort().forEach(function(s){ html+='<div class="bl-row"><span class="bl-n">'+esc(s)+'</span><span class="bl-v">'+sb[s]+'</span></div>'; });
   html+='<div class="bl-tot"><span>Total lids</span><span style="color:var(--lime)">'+cs.bins+'</span></div>';
   document.getElementById("m-load-rows").innerHTML=html;
-  var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
-  var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  document.getElementById("m-load-sub").textContent=cDay+" Zone "+cZone+" Route "+(cCrew==="1"?"A":"B")+(person?" - "+person.name:"")+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
+  var v=cVehicleId?VEHICLES[cVehicleId]:null;
+  document.getElementById("m-load-sub").textContent=cDay+" · Zone "+cZone+" · Route "+(cCrew==="1"?"A":"B")+" — "+assignedPeopleText(cPersonId,cPassengerId);
+  var loadVehicle=document.getElementById("m-load-vehicle"); if(loadVehicle) loadVehicle.textContent=v?v.short:"Vehicle not selected";
   openM("m-load");
 }
 
@@ -2186,7 +2447,8 @@ function buildRptTxt(){
   var d=cDay, z=cZone, wk=cWeek, c=cCrew, stops=cStops, lines=[];
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
   var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
+  var dName=assignedPeopleText(cPersonId,cPassengerId);
+  var vehicleName=v?v.short:"Not selected";
   // Find the scheduled run date from SCHEDULE
   var schedDate="";
   SCHEDULE.forEach(function(e){ if(e.day===d&&e.zone===z&&e.week===wk){ schedDate=e.date; } });
@@ -2194,7 +2456,8 @@ function buildRptTxt(){
   var reportedAt=new Date().toLocaleString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric",hour:"2-digit",minute:"2-digit"});
   lines.push("=== MOIRA LIDSWAP - RUN REPORT ===");
   lines.push("Run:    "+d+" Zone "+z+" — Route "+(c==="1"?"A":"B")+(runDateStr?" - "+runDateStr:""));
-  lines.push("Crew:   "+dName);
+  lines.push("Team:   "+dName);
+  lines.push("Vehicle: "+vehicleName);
   lines.push("Reported: "+reportedAt);
 
   lines.push("");
@@ -2206,6 +2469,7 @@ function buildRptTxt(){
     var k=sk(d,z,wk,c,i), n=notes[k]||"";
     bTotal+=s.bins||1;
     if(doneSet[k]){ dc++; bDone+=(s.bins||1); suburbBins[s.suburb]=(suburbBins[s.suburb]||0)+(s.bins||1); donedStops.push({s:s,n:n}); }
+    else if(cfSet[k] && _issuePrefix(n)==="[Already swapped]"){ dc++; bDone+=(s.bins||1); suburbBins[s.suburb]=(suburbBins[s.suburb]||0)+(s.bins||1); donedStops.push({s:s,n:n}); }
     else if(cfSet[k]){ var pf=_issuePrefix(n); if(issuesList[pf]) issuesList[pf].push(s.address+", "+s.suburb+(n?" - "+n.replace(/^\[[^\]]+\]\s*/,""):"")); else issuesList["[Issue]"].push(s.address+", "+s.suburb); }
     else sk2++;
   });
@@ -2214,8 +2478,8 @@ function buildRptTxt(){
   var pct=total>0?Math.round(dc/total*100):0;
   lines.push("SUMMARY");
   lines.push("-------");
-  lines.push("Stops completed:  "+dc+" / "+total+" ("+pct+"%)");
-  lines.push("Lids swapped:     "+bDone+" / "+bTotal);
+  lines.push("Resolution rate:   "+dc+" / "+total+" ("+pct+"%)");
+  lines.push("Lids resolved:     "+bDone+" / "+bTotal);
   if(issuesList["[Already swapped]"].length) lines.push("Lid already swapped: "+issuesList["[Already swapped]"].length);
   if(issuesList["[Swapped nearby]"].length)  lines.push("Swapped nearby:      "+issuesList["[Swapped nearby]"].length);
   if(issuesList["[Unable to swap]"].length)  lines.push("Unable to swap:      "+issuesList["[Unable to swap]"].length);
@@ -2255,12 +2519,20 @@ function showReport(){
     else if(cfSet[k]){ var pf=_issuePrefix(n); if(issueBuckets[pf]) issueBuckets[pf].push({s:s,n:n}); }
     else sk2++;
   });
-  var cf=Object.values(issueBuckets).reduce(function(a,b){return a+b.length;},0);
+  // "Already swapped" is a positive resolution, not an issue. Keep it in the
+  // report as a separate evidence category, but include it in the completion rate.
+  var alreadyResolved=issueBuckets["[Already swapped]"].length;
+  var alreadyResolvedBins=0;
+  stops.forEach(function(s,i){ if(!isDepot(s)&&isAlreadySwappedKey(sk(d,z,wk,c,i))) alreadyResolvedBins+=(s.bins||1); });
+  dc += alreadyResolved;
+  bDone += alreadyResolvedBins;
+  var cf=Object.keys(issueBuckets).filter(function(k){return k!=="[Already swapped]";}).reduce(function(a,k){return a+issueBuckets[k].length;},0);
   var total=dc+cf+sk2;
   var pct=total>0?Math.round(dc/total*100):0;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
   var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
+  var dName=assignedPeopleText(cPersonId,cPassengerId);
+  var vehicleName=v?v.short:"Not selected";
   // Scheduled run date
   var schedDate="";
   SCHEDULE.forEach(function(e){ if(e.day===d&&e.zone===z&&e.week===wk){ schedDate=e.date; } });
@@ -2270,7 +2542,7 @@ function showReport(){
   html+='<div style="background:linear-gradient(135deg,#003349,#001e2e);border-radius:10px;padding:12px 14px;margin-bottom:12px">';
   html+='<div style="color:#fff;font-size:18px;font-weight:900">'+esc(d)+' Zone '+esc(z)+' — Route '+(c==="1"?"A":"B")+'</div>';
   if(runDateStr) html+='<div style="color:#00A3E0;font-size:15px;margin-top:2px">'+esc(runDateStr)+'</div>';
-  html+='<div style="color:rgba(255,255,255,.6);font-size:15px;margin-top:2px">'+esc(dName)+'</div>';
+  html+='<div style="color:rgba(255,255,255,.72);font-size:15px;margin-top:3px">Team: '+esc(dName)+'</div>'; html+='<div style="color:#00A3E0;font-size:14px;margin-top:2px">Vehicle: '+esc(vehicleName)+'</div>';
 
   html+='</div>';
   // Big stat row
@@ -2285,8 +2557,9 @@ function showReport(){
   html+='</div>';
   html+='</div>';
   // Summary KV rows
-  html+='<div class="rpt-kv"><span>Stops completed</span><b>'+dc+' / '+total+'</b></div>';
-  html+='<div class="rpt-kv"><span>Lids swapped</span><b>'+bDone+' / '+bTotal+'</b></div>';
+  html+='<div style="font-size:12px;color:var(--green);margin:-4px 0 8px">Already-swapped lids are counted as a positive resolution — the Team did not need to repeat the work.</div>';
+  html+='<div class="rpt-kv"><span>Resolution rate</span><b>'+dc+' / '+total+' ('+pct+'%)</b></div>';
+  html+='<div class="rpt-kv"><span>Lids resolved</span><b>'+bDone+' / '+bTotal+'</b></div>';
   if(issueBuckets["[Already swapped]"].length) html+='<div class="rpt-kv"><span>&#10003;&#10003; Lid already swapped</span><b style="color:var(--green)">'+issueBuckets["[Already swapped]"].length+'</b></div>';
   if(issueBuckets["[Unable to swap]"].length)  html+='<div class="rpt-kv"><span>&#9888;&#65039; Unable to swap</span><b style="color:var(--warn)">'+issueBuckets["[Unable to swap]"].length+'</b></div>';if(issueBuckets["[Wrong bin]"].length)       html+='<div class="rpt-kv"><span>&#8635; Wrong bin / audit</span><b style="color:var(--blue)">'+issueBuckets["[Wrong bin]"].length+'</b></div>';if(issueBuckets["[Not found]"].length)       html+='<div class="rpt-kv"><span>&#63; Bin not found</span><b style="color:var(--danger)">'+issueBuckets["[Not found]"].length+'</b></div>';if(issueBuckets["[Swapped nearby]"].length)  html+='<div class="rpt-kv"><span>&#10003; Swapped nearby</span><b style="color:var(--green)">'+issueBuckets["[Swapped nearby]"].length+'</b></div>';
   if(issueBuckets["[No access]"].length)       html+='<div class="rpt-kv"><span>&#128683; Bin not accessible</span><b style="color:var(--danger)">'+issueBuckets["[No access]"].length+'</b></div>';
@@ -2343,7 +2616,8 @@ function exportReportExcel(){
   var d=cDay,z=cZone,wk=cWeek,c=cCrew,stops=cStops;
   var person=getPersonById(cPersonId), v=cVehicleId?VEHICLES[cVehicleId]:null;
   var passenger=cPassengerId?getPersonById(cPassengerId):null;
-  var dName=(person?person.name:"Route "+(c==="1"?"A":"B"))+(passenger?" + "+passenger.name:"")+(v?" "+v.short:"");
+  var dName=assignedPeopleText(cPersonId,cPassengerId);
+  var vehicleName=v?v.short:"Not selected";
   var schedDate="";
   SCHEDULE.forEach(function(e){ if(e.day===d&&e.zone===z&&e.week===wk){ schedDate=e.date; } });
   var runDateStr=schedDate?new Date(schedDate).toLocaleDateString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric"}):"";
@@ -2357,12 +2631,9 @@ function exportReportExcel(){
     var status;
     if(doneSet[k]){dc++;bDone+=(s.bins||1);status="Completed";}
     else if(cfSet[k]){
-      cf++;
       var pf=_issuePrefix(n);
-      if(pf==="[Already swapped]") status="Lid Already Swapped";
-      else if(pf==="[Unable to swap]") status="Unable to Swap"; else if(pf==="[Wrong bin]") status="Wrong Bin"; else if(pf==="[Not found]") status="Not Found"; else if(pf==="[Swapped nearby]") status="Completed (Nearby)";
-      else if(pf==="[No access]") status="No Access";
-      else status="Cannot Find";
+      if(pf==="[Already swapped]"){ dc++; bDone+=(s.bins||1); status="Lid Already Swapped"; }
+      else { cf++; if(pf==="[Unable to swap]") status="Unable to Swap"; else if(pf==="[Wrong bin]") status="Wrong Bin"; else if(pf==="[Not found]") status="Not Found"; else if(pf==="[Swapped nearby]") status="Completed (Nearby)"; else if(pf==="[No access]") status="No Access"; else status="Cannot Find"; }
     }
     else{sk2++;status="Not Done";}
     stopRows.push({num:i,addr:s.address,suburb:s.suburb,bins:s.bins||1,status:status,note:n.replace(/^\[[^\]]+\]\s*/,"")});
@@ -2514,7 +2785,8 @@ function exportReportExcel(){
   var infoRows=[
     ["Run",d+" Zone "+z+" — Route "+(c==="1"?"A":"B")],
     ["Scheduled Date",runDateStr||"—"],
-    ["Crew",dName],
+    ["Team",dName],
+    ["Vehicle",vehicleName],
     ["Exported",reportedAt]
   ];
   infoRows.forEach(function(ir){
@@ -2539,8 +2811,8 @@ function exportReportExcel(){
   var nearbyDoneCnt=stopRows.filter(function(r){return r.status==="Completed (Nearby)";}).length;
   var cfOtherCnt=0;
   var summaryRows=[
-    ["Stops Completed",dc+" of "+total+" ("+pct+"%)"],
-    ["Lids Swapped",bDone+" of "+bTotal],
+    ["Resolution Rate",dc+" of "+total+" ("+pct+"%)"],
+    ["Lids Resolved",bDone+" of "+bTotal],
     ["Lid Already Swapped",String(alreadyCnt)],
     ["Unable to Swap",String(difficultCnt)],
     ["Wrong Bin (audit flag)",String(wrongBinCnt)],
@@ -2549,7 +2821,7 @@ function exportReportExcel(){
     ["Bin Not Accessible",String(noaccessCnt)],
     ["Cannot Find",String(cfOtherCnt)],
     ["Skipped / Not Done",String(sk2)]
-  ].filter(function(r){ return r[0]==="Stops Completed"||r[0]==="Lids Swapped"||r[0]==="Skipped / Not Done"||parseInt(r[1])>0; });
+  ].filter(function(r){ return r[0]==="Resolution Rate"||r[0]==="Lids Resolved"||r[0]==="Skipped / Not Done"||parseInt(r[1])>0; });
   summaryRows.forEach(function(sr,idx){
     var alt=idx%2;r=nr();
     shRows+='<row r="'+r+'" ht="18" customHeight="1">'+iStr('A'+r,sr[0],5+alt)+iStr('C'+r,sr[1],7+alt)+'</row>';
@@ -2627,7 +2899,7 @@ function exportReportExcel(){
 /* ── Reset all progress ── */
 function resetAll() {
   if (!confirm("Reset ALL progress? This cannot be undone.")) return;
-  doneSet={}; cfSet={}; notes={}; undoStack=[]; driverStats={}; runTimes={};
+  doneSet={}; cfSet={}; notes={}; undoStack=[]; runTimes={};
   try { localStorage.removeItem(SK); } catch(e) {}
   buildHome();
   alert("All progress cleared.");
@@ -2708,33 +2980,44 @@ function launchNav(){
 }
 
 /* ── GPS / Locate ── */
-function toggleLocate(){
-  if(_gpsActive){ stopLocate(); return; }
-  if(!navigator.geolocation){ alert("GPS not available on this device."); return; }
-  // Safari/iPad blocks geolocation on file:// URLs &#8212; must be served over https
-  if(location.protocol==="file:"){ alert("GPS requires the app to be opened via a web link (https://), not directly from a file. Ask Tim for the hosted link."); return; }
+function setLocationStatus(state, text, showRetry){
+  var wrap=document.getElementById("location-status"), txt=document.getElementById("location-status-text"), retry=document.getElementById("location-retry");
+  if(!wrap) return;
+  wrap.classList.remove("live","warn","error");
+  if(state) wrap.classList.add(state);
+  if(txt) txt.textContent=text||"";
+  if(retry) retry.style.display=showRetry?"inline-flex":"none";
+}
+function startAutoLocation(userInitiated){
+  if(_gpsActive) return;
+  if(!navigator.geolocation){ setLocationStatus("error","Location unavailable on this device",false); return; }
+  if(location.protocol==="file:"){
+    setLocationStatus("warn","Location available when opened from the hosted LidSwap link",false);
+    return;
+  }
+  setLocationStatus("","Getting location…",false);
   _gpsActive=true;
-  document.getElementById("btn-locate").classList.add("active");
   _gpsWatchId=navigator.geolocation.watchPosition(
     function(pos){
-      _gpsLat=pos.coords.latitude;
-      _gpsLng=pos.coords.longitude;
-      _gpsAccuracy=pos.coords.accuracy;
-      drawMap();
+      _gpsLat=pos.coords.latitude; _gpsLng=pos.coords.longitude; _gpsAccuracy=pos.coords.accuracy;
+      var acc=Math.round(_gpsAccuracy||0);
+      setLocationStatus("live", acc?"Location active · ±"+acc+" m":"Location active",false);
+      if(typeof updateArrivalBanner==="function") updateArrivalBanner();
+      if(typeof render==="function") render();
     },
     function(err){
-      stopLocate();
-      if(err.code===1) alert("Location permission denied. Please allow location access in your browser settings.");
+      stopLocate(false);
+      if(err.code===1) setLocationStatus("error","Location is off",true);
+      else setLocationStatus("warn","Location temporarily unavailable",true);
     },
     { enableHighAccuracy:true, maximumAge:5000, timeout:15000 }
   );
 }
-function stopLocate(){
+function stopLocate(updateStatus){
   _gpsActive=false; _routeETA=null;
   if(_gpsWatchId!==null){ navigator.geolocation.clearWatch(_gpsWatchId); _gpsWatchId=null; }
-  var btn=document.getElementById("btn-locate");
-  if(btn) btn.classList.remove("active");
-  updateETABadge(); drawMap();
+  if(updateStatus!==false) setLocationStatus("warn","Location paused",true);
+  if(typeof updateETABadge==="function") updateETABadge();
 }
 function findMe(){
   var btn=document.getElementById("btn-findme");
@@ -2824,6 +3107,7 @@ function applyFixPin(clientX,clientY,canvas){
 /* ── CF reason chips ── */
 function toggleCFChip(el){
   el.classList.toggle("sel");
+  el.setAttribute("aria-pressed",el.classList.contains("sel")?"true":"false");
   // Append selected reasons to the nearest textarea within the same modal sheet
   var sheet=el.closest(".msheet");
   if(sheet){
@@ -2844,7 +3128,7 @@ function buildAdmin(){
   var pendingOnly=document.getElementById("adm-toggle-pendingonly");
   var pendingOnly=pendingOnly?pendingOnly.checked:false;
 
-  // Show "Clear Pin Fixes" button only if there are fixes
+  // Show "" button only if there are fixes
   var cfixBtn=document.getElementById("adm-btn-clearfixes");
   if(cfixBtn) cfixBtn.style.display=Object.keys(coordFix).length>0?"block":"none";
 
@@ -2858,9 +3142,9 @@ function buildAdmin(){
         if(s.isDepot) return;
         var k=sk(d,z,wk,c,i);
         grandTotal++;
-        if(doneSet[k]||cfSet[k]) grandDone++;
-        if(cfSet[k]) grandCF++;
-        if(doneSet[k]) grandBins+=s.bins||1;
+        if(doneSet[k]||isAlreadySwappedKey(k)) grandDone++;
+        if(cfSet[k] && !isAlreadySwappedKey(k)) grandCF++;
+        if(doneSet[k]||isAlreadySwappedKey(k)) grandBins+=s.bins||1;
       });
     });
   });
@@ -2887,15 +3171,15 @@ function buildAdmin(){
       real.forEach(function(s,ri){
         var fi=stops.indexOf(s);
         var k=sk(d,z,wk,c,fi);
-        if(doneSet[k]||cfSet[k]) done++;
-        if(cfSet[k]) cf++;
-        if(doneSet[k]) bins+=s.bins||1;
+        if(doneSet[k]||isAlreadySwappedKey(k)) done++;
+        if(cfSet[k] && !isAlreadySwappedKey(k)) cf++;
+        if(doneSet[k]||isAlreadySwappedKey(k)) bins+=s.bins||1;
       });
       var pct=total?Math.round(done/total*100):0;
       var complete=(done===total);
       if(pendingOnly&&complete) return;
       if(!showComplete&&complete) return;
-      var crewLbl="Crew "+(c==="1"?"A":"B");
+      var crewLbl="Team "+(c==="1"?"A":"B");
       var rtKey=sk(d,z,wk,c,"").replace(/\|$/,"");
       var rt=runTimes[rtKey]||{};
       var timeLine="";
@@ -2916,23 +3200,6 @@ function buildAdmin(){
   });
   document.getElementById("adm-runs").innerHTML=runHtml||'<div class="adm-empty">No progress recorded yet.</div>';
 
-  // ── Crew tab ──
-  var crewArr=CREW.map(function(p){
-    var ds=driverStats[p.id]||{bins:0,stops:0};
-    return {id:p.id,name:p.name,bins:ds.bins||0,stops:ds.stops||0};
-  });
-  crewArr.sort(function(a,b){ return b.bins-a.bins; });
-  var maxBins=Math.max(1,crewArr[0]?crewArr[0].bins:1);
-  var crewHtml=crewArr.filter(function(p){ return p.bins>0||p.stops>0; }).map(function(p,idx){
-    var pct=Math.round(p.bins/maxBins*100);
-    return '<div class="adm-crew-row">'
-      +'<div class="adm-crew-rank">'+(idx+1)+'</div>'
-      +'<div class="adm-crew-name">'+esc(p.name)+'</div>'
-      +'<div class="adm-crew-bar-wrap"><div class="adm-crew-bar"><div class="adm-crew-fill" style="width:'+pct+'%"></div></div></div>'
-      +'<div class="adm-crew-stats"><b>'+p.bins+'</b> lids<br>'+p.stops+' stops</div>'
-      +'</div>';
-  }).join("");
-  document.getElementById("adm-crew").innerHTML=crewHtml||'<div class="adm-empty">No crew activity yet.</div>';
 
   // ── Issues tab ──
   var buckets={"[Already swapped]":[],"[Swapped nearby]":[],"[Unable to swap]":[],"[No access]":[],"[Wrong bin]":[],"[Not found]":[],"other":[]};
@@ -2978,7 +3245,7 @@ function buildAdmin(){
       cfHtml+='<div class="adm-cf-item" style="border-left-color:'+m.color+'">'
         +'<div class="adm-cf-info">'
         +'<div class="adm-cf-addr">'+esc(it.s.address)+', '+esc(it.s.suburb)+'</div>'
-        +'<div class="adm-cf-meta">'+esc(it.label)+' &mdash; Z'+it.z+' Crew '+(it.c==="1"?"A":"B")+(detail?' &mdash; '+esc(detail):'')+'</div>'
+        +'<div class="adm-cf-meta">'+esc(it.label)+' &mdash; Z'+it.z+' Team '+(it.c==="1"?"A":"B")+(detail?' &mdash; '+esc(detail):'')+'</div>'
         +'</div>'
         +'<button class="adm-cf-clear" onclick="admClearCF(\''+it.d+'\',\''+it.z+'\',\''+it.wk+'\',\''+it.c+'\','+it.i+')">Clear</button>'
         +'</div>';
@@ -3084,7 +3351,7 @@ function admOpenNoAccess(d,z,wk,c,i,runId){
   var s=ROUTES[d][z][wk][c][i];
   document.getElementById('m-noaccess2-addr').textContent = s.address+', '+s.suburb;
   document.getElementById('m-noaccess2-ta').value = '';
-  document.querySelectorAll('#m-noaccess2 .cf-chip').forEach(function(ch){ ch.classList.remove('sel'); });
+  document.querySelectorAll('#m-noaccess2 .cf-chip').forEach(function(ch){ ch.classList.remove('sel'); ch.setAttribute('aria-pressed','false'); });
   document.getElementById('m-noaccess2').style.display = 'flex';
 }
 function admOpenCantSwap(d,z,wk,c,i,runId){
@@ -3129,7 +3396,7 @@ function resetCurrentRun(){
 }
 function admResetAll(){
   if(!confirm("RESET ALL RUNS? All progress, notes and times will be deleted. This cannot be undone.")) return;
-  doneSet={}; cfSet={}; notes={}; driverStats={}; runTimes={}; undoStack=[]; sv(); buildAdmin();
+  doneSet={}; cfSet={}; notes={}; runTimes={}; undoStack=[]; sv(); buildAdmin();
 }
 function admClearCoordFixes(){
   var n=Object.keys(coordFix).length;
@@ -3149,7 +3416,7 @@ function admChangePin(){
   setTimeout(function(){ document.getElementById("adm-pin-msg").textContent=""; },3000);
 }
 function admExportCSV(){
-  var rows=[["Date","Day","Zone","Week","Crew","Stop#","Address","Suburb","Bins","Status","Note"]];
+  var rows=[["Date","Day","Zone","Week","Team","Stop#","Address","Suburb","Bins","Status","Note"]];
   SCHEDULE.forEach(function(e){
     var d=e.day,z=e.zone,wk=e.week;
     var crews=ROUTES[d]&&ROUTES[d][z]&&ROUTES[d][z][wk]?Object.keys(ROUTES[d][z][wk]):[];
@@ -3191,7 +3458,7 @@ function admCopyReport(){
         if(doneSet[k]) bins+=s.bins||1;
       });
       var pct=real.length?Math.round(done/real.length*100):0;
-      lines.push(e.label+" Zone "+z+" Crew "+(c==="1"?"A":"B")+": "+done+"/"+real.length+" stops ("+pct+"%), "+bins+" lids"+(cf?" | "+cf+" issue"+(cf>1?"s":""):""));
+      lines.push(e.label+" Zone "+z+" Team "+(c==="1"?"A":"B")+": "+done+"/"+real.length+" stops ("+pct+"%), "+bins+" lids"+(cf?" | "+cf+" issue"+(cf>1?"s":""):""));
     });
   });
   var txt=lines.join("\n");
@@ -3201,7 +3468,7 @@ function admCopyReport(){
 }
 
 /* ── Admin password gate ── */
-var ADMIN_PIN="3644";
+var ADMIN_PIN_HASH="487e4a2ed2f8e9b2ef2445df65f01cf4012d1dfd759eabcd19ddc70760a5a707"; var _adminSession=false;
 function openAdmin(){
   document.getElementById("adm-pw-input").value="";
   document.getElementById("adm-pw-err").textContent="";
@@ -3335,7 +3602,25 @@ function launchConfetti(){
   });
 }
 
+/* ── Perfect run celebration ── */
+var _perfectTimers=[];
+function launchPerfectCelebration(){
+  _perfectTimers.forEach(function(t){clearTimeout(t);}); _perfectTimers=[];
+  /* A perfect run is a team result: 100% of properties resolved, including already-swapped positives. */
+  hap([80,50,80,50,180,80,240]);
+  launchConfetti();
+  _perfectTimers.push(setTimeout(function(){ launchConfetti(); },900));
+  _perfectTimers.push(setTimeout(function(){ launchConfetti(); },1800));
+}
+
 /* ── Haptics ── */
+function announce(msg){
+  var el=document.getElementById("a11y-status");
+  if(!el)return;
+  el.textContent="";
+  setTimeout(function(){el.textContent=msg;},20);
+}
+
 function hap(pattern) {
   try { if (navigator.vibrate) navigator.vibrate(pattern); } catch(e) {}
 }
@@ -3348,27 +3633,239 @@ var HAP_UNDO   = 25;           // single medium — undo
 var HAP_START  = [40, 30, 80]; // build-up — run started
 var HAP_FINISH = [60,40,60,40,120]; // celebration — run complete
 
+
+/* v8.1 no-map field workflow */
+function initMap(){}
+function resizeMap(){}
+function drawMap(){}
+function updateMap(){}
+function updateRoute(){}
+function updateOverviewMap(){}
+function initOverviewMap(){}
+function updateFixPinBar(){}
+function toggleFixPinMode(){}
+function applyFixPin(){}
+function admClearCoordFixes(){}
+function switchTab(tab){
+  var current=(tab==='current'||tab==='navigate');
+  var a=document.getElementById('tab-current'), b=document.getElementById('tab-stops');
+  if(a)a.classList.toggle('hidden',!current);
+  if(b)b.classList.toggle('hidden',current);
+  var ta=document.getElementById('tb-current'),tb=document.getElementById('tb-stops');
+  if(ta)ta.classList.toggle('active',current);if(tb)tb.classList.toggle('active',!current);
+  panelOpen=!current;
+  if(!current) buildList();
+}
+function togglePanel(){switchTab(panelOpen?'current':'stops');}
+
+
+/* Accessible dialog focus handling */
+(function(){
+  var lastFocus=null;
+  function focusDialog(m){
+    lastFocus=document.activeElement;
+    var target=m.querySelector('button:not([disabled]),textarea:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex="0"]');
+    if(target)setTimeout(function(){target.focus();},40);
+  }
+  document.querySelectorAll('.modal').forEach(function(m){
+    new MutationObserver(function(){
+      if(getComputedStyle(m).display!=='none' && m.getAttribute('role')==='dialog') focusDialog(m);
+    }).observe(m,{attributes:true,attributeFilter:['style','class']});
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    var open=Array.from(document.querySelectorAll('.modal')).reverse().find(function(m){return getComputedStyle(m).display!=='none'});
+    if(open){open.style.display='none';open.classList.remove('on');if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  });
+}());
+
 /* ── Boot ── */
 window.addEventListener("load", function(){
   initVehicles();
   ld();
+  /* v8 policy: remove legacy competitive/personal-best data. */
+  try {
+    var _rm=[];
+    for(var _i=0;_i<localStorage.length;_i++){ var _k=localStorage.key(_i); if(_k&&_k.indexOf("moira_pb_lph_")===0) _rm.push(_k); }
+    _rm.forEach(function(_k){ localStorage.removeItem(_k); });
+  } catch(e) {}
   buildHome();
 });
 
-/* ── iOS: block pinch-zoom and double-tap zoom ── */
+
+
+
+/* ======================================================================
+   LIDSWAP v8 ELITE EXTENSION
+   Purpose: field-first routing intelligence, arrival detection, resilient
+   storage, audit trail, safer admin gate, and graceful offline behaviour.
+   ====================================================================== */
 (function(){
-  document.addEventListener("gesturestart",  function(e){ e.preventDefault(); },{passive:false});
-  document.addEventListener("gesturechange", function(e){ e.preventDefault(); },{passive:false});
-  document.addEventListener("gestureend",    function(e){ e.preventDefault(); },{passive:false});
-  var _lastTap=0;
-  document.addEventListener("touchend", function(e){
-    if(e.target && e.target.tagName==="CANVAS") return;
-    var now=Date.now(); if(now-_lastTap<300){ e.preventDefault(); } _lastTap=now;
-  },{passive:false});
-  document.addEventListener("touchmove", function(e){
-    if(e.touches.length>1){ e.preventDefault(); }
-  },{passive:false});
-}());
+  'use strict';
+  var LS8='lidswap_v8_meta';
+  var smartMode=false, arrivalLatched=null, smartBusy=false, lastGpsTs=0;
+  var SMART_RADIUS_M=140, ARRIVAL_RADIUS_M=85, MAX_ACCURACY_M=65;
+
+  function q(id){return document.getElementById(id)}
+  function toast(msg){
+    var el=q('route-intel'); if(!el)return;
+    el.textContent=msg; el.style.display='block'; clearTimeout(el._t);
+    el._t=setTimeout(function(){el.style.display='none'},3200);
+  }
+  function saveMeta(){try{localStorage.setItem(LS8,JSON.stringify({smartMode:smartMode,updated:new Date().toISOString()}))}catch(e){}}
+  function loadMeta(){try{var x=JSON.parse(localStorage.getItem(LS8)||'{}');smartMode=!!x.smartMode}catch(e){smartMode=false}}
+
+  function pendingIndices(){
+    var out=[];
+    if(!cStops)return out;
+    for(var i=0;i<cStops.length;i++){
+      if(isDepot(cStops[i]))continue;
+      var k=sk(cDay,cZone,cWeek,cCrew,i);
+      if(!doneSet[k]&&!cfSet[k])out.push(i);
+    }
+    return out;
+  }
+  function distM(a,b){return hav([a.lat,a.lng],[b.lat,b.lng])*1000}
+  function currentOrigin(){
+    if(_gpsActive&&_gpsLat!==null)return {lat:_gpsLat,lng:_gpsLng};
+    if(cStops[cIdx])return stopDisplayLL(cStops[cIdx],cIdx);
+    return cStops[0]?{lat:cStops[0].lat,lng:cStops[0].lng}:null;
+  }
+  function nearestPending(origin, candidates){
+    var best=-1,bestD=Infinity;
+    candidates.forEach(function(i){var ll=stopDisplayLL(cStops[i],i),d=distM(origin,ll);if(d<bestD){bestD=d;best=i}});
+    return best;
+  }
+  function smartNextLocal(){
+    var p=pendingIndices(); if(!p.length)return -1;
+    var o=currentOrigin(); if(!o)return p[0];
+    /* Small neighbourhood search: nearest stop, with a look-ahead penalty so
+       we don't choose a tempting outlier that creates a long next leg. */
+    var ranked=p.map(function(i){var ll=stopDisplayLL(cStops[i],i);return {i:i,d:distM(o,ll)}}).sort(function(a,b){return a.d-b.d});
+    var shortlist=ranked.slice(0,Math.min(8,ranked.length));
+    var best=shortlist[0],bestScore=Infinity;
+    shortlist.forEach(function(c){
+      var ll=stopDisplayLL(cStops[c.i],c.i);
+      var remaining=ranked.filter(function(x){return x.i!==c.i}).slice(0,4);
+      var look=remaining.length?Math.min.apply(null,remaining.map(function(x){return distM(ll,stopDisplayLL(cStops[x.i],x.i))})):0;
+      var score=c.d+(look*.22);
+      if(cStops[c.i].bins>=3)score-=35; /* bundle work slightly earlier */
+      if(cStops[c.i].flagged)score+=20; /* keep flagged jobs visible but don't let them dominate */
+      if(score<bestScore){bestScore=score;best=c;}
+    });
+    return best.i;
+  }
+
+  /* Optional road-aware refinement. OSRM Table returns fastest-route durations
+     between candidates; if it fails, we safely retain the local heuristic. */
+  function smartNextRoadAware(cb){
+    var p=pendingIndices();if(!p.length){cb(-1);return}
+    var o=currentOrigin();if(!o){cb(p[0]);return}
+    var ranked=p.map(function(i){var ll=stopDisplayLL(cStops[i],i);return {i:i,d:distM(o,ll)}}).sort(function(a,b){return a.d-b.d}).slice(0,7);
+    var coords=[o].concat(ranked.map(function(x){var ll=stopDisplayLL(cStops[x.i],x.i);return ll}));
+    var coordStr=coords.map(function(ll){return ll.lng.toFixed(6)+','+ll.lat.toFixed(6)}).join(';');
+    var url='https://router.project-osrm.org/table/v1/driving/'+coordStr+'?sources=0&destinations='+ranked.map(function(_,i){return i+1}).join(';')+'&annotations=duration,distance';
+    var ctrl=new AbortController();var timer=setTimeout(function(){try{ctrl.abort()}catch(e){}},6500);
+    fetch(url,{signal:ctrl.signal}).then(function(r){if(!r.ok)throw Error('route service');return r.json()}).then(function(d){
+      clearTimeout(timer);var ds=d&&d.durations&&d.durations[0];if(!ds){cb(smartNextLocal());return}
+      var best=-1,bv=Infinity;ranked.forEach(function(x,j){var v=ds[j];if(typeof v==='number'&&v<bv){bv=v;best=x.i}});
+      cb(best>=0?best:smartNextLocal());
+    }).catch(function(){clearTimeout(timer);cb(smartNextLocal())});
+  }
+
+  window.toggleSmartRoute=function(){
+    smartMode=!smartMode;saveMeta();updateSmartButton();
+    if(smartMode){toast('SMART ROUTE ON — choosing the best next stop'); smartChooseNext(true)}
+    else toast('ORIGINAL ORDER restored');
+    render();
+  };
+  function updateSmartButton(){var b=q('btn-smart-route'),l=q('smart-route-lbl');if(!b)return;b.classList.toggle('active',smartMode);if(l)l.textContent=smartMode?'Smart':'Planned'}
+
+  function smartChooseNext(roadAware){
+    if(smartBusy)return;var p=pendingIndices();if(!p.length)return;
+    smartBusy=true;toast('⚡ Optimising next stop…');
+    (roadAware?smartNextRoadAware:function(cb){cb(smartNextLocal())})(function(i){
+      smartBusy=false;if(i>=0){cIdx=i;_curRouteCoords=null;render();toast('⚡ Smart next: '+cStops[i].address)}
+    });
+  }
+
+  /* Replace the linear next-stop behaviour with an opt-in intelligent next stop. */
+  var _oldNxtIdx=window.nxtIdx;
+  window.nxtIdx=function(){
+    if(smartMode){var si=smartNextLocal();return si>=0?si:-1}
+    return _oldNxtIdx? _oldNxtIdx() : -1;
+  };
+  window.advance=function(){
+    var p=pendingIndices();if(!p.length){render();return}
+    if(smartMode){smartChooseNext(true);return}
+    var next=-1;
+    for(var i=cIdx+1;i<cStops.length;i++){var k=sk(cDay,cZone,cWeek,cCrew,i);if(!doneSet[k]&&!cfSet[k]){next=i;break}}
+    if(next<0)for(var j=0;j<cIdx;j++){var k2=sk(cDay,cZone,cWeek,cCrew,j);if(!doneSet[k2]&&!cfSet[k2]){next=j;break}}
+    if(next<0){render();return}cIdx=next;render();
+  };
+
+  var _oldSkipStop=window.skipStop;
+  window.skipStop=function(){
+    if(!smartMode){return _oldSkipStop()}
+    hap(HAP_SKIP);var p=pendingIndices().filter(function(i){return i!==cIdx});
+    if(!p.length){render();return}
+    smartChooseNext(true);
+  };
+
+  function updateArrival(){
+    var banner=q('arrival-banner');if(!banner||!_gpsActive||_gpsLat===null||!cStops[cIdx]||isDepot(cStops[cIdx])){if(banner)banner.style.display='none';arrivalLatched=null;return}
+    var ll=stopDisplayLL(cStops[cIdx],cIdx),d=distM({lat:_gpsLat,lng:_gpsLng},ll),acc=_gpsAccuracy||999;
+    var arrived=d<=ARRIVAL_RADIUS_M && acc<=MAX_ACCURACY_M;
+    if(arrived){banner.style.display='flex';if(arrivalLatched!==cIdx){arrivalLatched=cIdx;hap([25,40,70]);}}
+    else{banner.style.display='none';arrivalLatched=null}
+  }
+
+  /* Wrap GPS position handling so arrival detection and smart routing stay live. */
+  var _oldDraw=window.drawMap;
+  window.drawMap=function(){if(_oldDraw)_oldDraw();updateArrival()};
+
+  /* Add a GPS-aware status line without changing the existing render contract. */
+  var _oldRender=window.render;
+  window.render=function(){
+    _oldRender();
+    updateSmartButton();updateArrival();
+    var sub=q('run-badge-sub');
+    if(sub&&cStops[cIdx]&&!isDepot(cStops[cIdx])&&_gpsActive&&_gpsLat!==null){
+      var d=Math.round(distM({lat:_gpsLat,lng:_gpsLng},stopDisplayLL(cStops[cIdx],cIdx)));
+      sub.textContent=(smartMode?'SMART · ':'')+(cnt(cDay,cZone,cWeek,cCrew)+' done · '+d+'m away');
+    }
+  };
+
+  /* Fix the address-note indexing bug in the original flow. */
+  window.markDoneAddrNote=function(){
+    var idx=cIdx,n=(q('m-done-addr-ta')||{}).value||'';n=n.trim();q('m-done-addr-note').style.display='none';
+    if(!isDepot(cStops[idx])){markDone();if(n){notes[sk(cDay,cZone,cWeek,cCrew,idx)]='[Address updated] '+n;sv();}}
+  };
+
+  /* Safer CSV generation: quote every field instead of only notes. */
+  window.admExportCSV=function(){
+    function csv(v){return '"'+String(v==null?'':v).replace(/"/g,'""')+'"'}
+    var rows=[['Date','Day','Zone','Week','Team','Stop#','Address','Suburb','Bins','Status','Note']];
+    SCHEDULE.forEach(function(e){var d=e.day,z=e.zone,wk=e.week,crews=ROUTES[d]&&ROUTES[d][z]&&ROUTES[d][z][wk]?Object.keys(ROUTES[d][z][wk]):[];crews.forEach(function(c){var stops=ROUTES[d][z][wk][c],sn=0;stops.forEach(function(s,i){if(s.isDepot)return;sn++;var k=sk(d,z,wk,c,i),n=notes[k]||'',status=doneSet[k]?'Done':cfSet[k]?_issuePrefix(n).replace(/^\[|\]$/g,''):'Pending';rows.push([e.date,d,z,wk,c==='1'?'A':'B',sn,s.address,s.suburb,s.bins||1,status,n.replace(/^\[[^\]]+\]\s*/,'')])})})});
+    var blob=new Blob([rows.map(function(r){return r.map(csv).join(',')}).join('\r\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='LidSwap_progress_'+todayISO()+'.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  };
+
+  /* Client-side admin gate: no plaintext PIN in source. This is a UX gate, not real security. */
+  async function sha256Hex(text){var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('')}
+  window.checkAdminPw=async function(){var inp=q('adm-pw-input'),entered=(inp.value||'').trim();try{var h=await sha256Hex(entered);if(h===ADMIN_PIN_HASH){_adminSession=true;closeM('m-admin-pw');showScreen('s-admin');buildAdmin()}else{q('adm-pw-err').textContent='Incorrect PIN — try again.';inp.value='';inp.focus()}}catch(e){q('adm-pw-err').textContent='Could not verify PIN on this device.'}}
+  window.admChangePin=async function(){var inp=q('adm-new-pin'),v=(inp.value||'').trim();if(!/^\d{4,8}$/.test(v)){q('adm-pin-msg').textContent='Use 4–8 digits.';return}ADMIN_PIN_HASH=await sha256Hex(v);inp.value='';q('adm-pin-msg').textContent='PIN updated for this session.';setTimeout(function(){q('adm-pin-msg').textContent=''},3000)};
+
+  /* Network state indicator. LocalStorage remains the source of truth. */
+  function net(){var p=q('offline-pill');if(!p)return;p.style.display=navigator.onLine?'none':'block'}
+  window.addEventListener('online',net);window.addEventListener('offline',net);
+
+  /* Persist a tiny audit heartbeat so future upgrades can detect stale sessions. */
+  function heartbeat(){try{var x=JSON.parse(localStorage.getItem(LS8)||'{}');x.lastSeen=new Date().toISOString();localStorage.setItem(LS8,JSON.stringify(x))}catch(e){}}
+
+  /* Add a route-mode hint to the home screen. */
+  function boot8(){loadMeta();updateSmartButton();net();heartbeat();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot8);else boot8();
+})();
 
 </script>
 </body>
