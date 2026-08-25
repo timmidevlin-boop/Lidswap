@@ -3513,85 +3513,58 @@ document.addEventListener('visibilitychange', function() {
 });
 
 
-var yellowSvg='%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2080%2088%22%3E%3Crect%20x%3D%2218%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2211%22%20rx%3D%223%22%20fill%3D%22%23B87800%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2211%22%20rx%3D%223%22%20fill%3D%22%23B87800%22%2F%3E%3Crect%20x%3D%2221%22%20y%3D%221%22%20width%3D%227%22%20height%3D%226%22%20rx%3D%221.5%22%20fill%3D%22%23FFD040%22%20opacity%3D%220.5%22%2F%3E%3Crect%20x%3D%2252%22%20y%3D%221%22%20width%3D%227%22%20height%3D%226%22%20rx%3D%221.5%22%20fill%3D%22%23FFD040%22%20opacity%3D%220.5%22%2F%3E%3Crect%20x%3D%224%22%20y%3D%2210%22%20width%3D%2274%22%20height%3D%2276%22%20rx%3D%2210%22%20fill%3D%22%2300000030%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2274%22%20rx%3D%2210%22%20fill%3D%22%23F5C800%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2228%22%20rx%3D%2210%22%20fill%3D%22%23FFE55A%22%20opacity%3D%220.45%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2274%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23C08A00%22%20stroke-width%3D%222.5%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%2218%22%20width%3D%2254%22%20height%3D%2256%22%20rx%3D%227%22%20fill%3D%22%23E8B200%22%20stroke%3D%22%23C08A00%22%20stroke-width%3D%221.5%22%2F%3E%3Crect%20x%3D%2214%22%20y%3D%2220%22%20width%3D%2250%22%20height%3D%2218%22%20rx%3D%226%22%20fill%3D%22%23F5C800%22%20opacity%3D%220.30%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%2232%22%20width%3D%2234%22%20height%3D%2230%22%20rx%3D%225%22%20fill%3D%22%23EDB400%22%20stroke%3D%22%23C08A00%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%2233%22%20width%3D%2228%22%20height%3D%2210%22%20rx%3D%224%22%20fill%3D%22%23F5C800%22%20opacity%3D%220.25%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2274%22%20width%3D%2216%22%20height%3D%2210%22%20rx%3D%222.5%22%20fill%3D%22%23B87800%22%20stroke%3D%22%23906000%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%2275%22%20width%3D%2210%22%20height%3D%225%22%20rx%3D%221%22%20fill%3D%22%23FFD040%22%20opacity%3D%220.35%22%2F%3E%3Crect%20x%3D%2256%22%20y%3D%2274%22%20width%3D%2216%22%20height%3D%2210%22%20rx%3D%222.5%22%20fill%3D%22%23B87800%22%20stroke%3D%22%23906000%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2257%22%20y%3D%2275%22%20width%3D%2210%22%20height%3D%225%22%20rx%3D%221%22%20fill%3D%22%23FFD040%22%20opacity%3D%220.35%22%2F%3E%3C%2Fsvg%3E';
-var redSvg='%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2080%2088%22%3E%3Crect%20x%3D%2218%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2211%22%20rx%3D%223%22%20fill%3D%22%23990000%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2211%22%20rx%3D%223%22%20fill%3D%22%23990000%22%2F%3E%3Crect%20x%3D%2221%22%20y%3D%221%22%20width%3D%227%22%20height%3D%226%22%20rx%3D%221.5%22%20fill%3D%22%23FF6655%22%20opacity%3D%220.5%22%2F%3E%3Crect%20x%3D%2252%22%20y%3D%221%22%20width%3D%227%22%20height%3D%226%22%20rx%3D%221.5%22%20fill%3D%22%23FF6655%22%20opacity%3D%220.5%22%2F%3E%3Crect%20x%3D%224%22%20y%3D%2210%22%20width%3D%2274%22%20height%3D%2276%22%20rx%3D%2210%22%20fill%3D%22%2300000030%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2274%22%20rx%3D%2210%22%20fill%3D%22%23CC2200%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2228%22%20rx%3D%2210%22%20fill%3D%22%23EE5533%22%20opacity%3D%220.45%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2274%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23991100%22%20stroke-width%3D%222.5%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%2218%22%20width%3D%2254%22%20height%3D%2256%22%20rx%3D%227%22%20fill%3D%22%23BB1E00%22%20stroke%3D%22%23991100%22%20stroke-width%3D%221.5%22%2F%3E%3Crect%20x%3D%2214%22%20y%3D%2220%22%20width%3D%2250%22%20height%3D%2218%22%20rx%3D%226%22%20fill%3D%22%23CC2200%22%20opacity%3D%220.30%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%2232%22%20width%3D%2234%22%20height%3D%2230%22%20rx%3D%225%22%20fill%3D%22%23B51C00%22%20stroke%3D%22%23991100%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%2233%22%20width%3D%2228%22%20height%3D%2210%22%20rx%3D%224%22%20fill%3D%22%23CC2200%22%20opacity%3D%220.25%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2274%22%20width%3D%2216%22%20height%3D%2210%22%20rx%3D%222.5%22%20fill%3D%22%23990000%22%20stroke%3D%22%23770000%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%2275%22%20width%3D%2210%22%20height%3D%225%22%20rx%3D%221%22%20fill%3D%22%23FF6655%22%20opacity%3D%220.35%22%2F%3E%3Crect%20x%3D%2256%22%20y%3D%2274%22%20width%3D%2216%22%20height%3D%2210%22%20rx%3D%222.5%22%20fill%3D%22%23990000%22%20stroke%3D%22%23770000%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2257%22%20y%3D%2275%22%20width%3D%2210%22%20height%3D%225%22%20rx%3D%221%22%20fill%3D%22%23FF6655%22%20opacity%3D%220.35%22%2F%3E%3C%2Fsvg%3E';
 var _confettiAF=null;
-/* ── Confetti ── */
-var _logoImgC=null, _binLidImgC=null;
-var _redLidImgC=null;
-function preloadConfetti(cb){
-  if(_logoImgC&&_binLidImgC&&_redLidImgC){ cb(); return; }
-  var loaded=0; function done(){ loaded++; if(loaded===3) cb(); }
-  var yellowSvg='%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2080%2088%22%3E%3Crect%20x%3D%2218%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2211%22%20rx%3D%223%22%20fill%3D%22%23B87800%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2211%22%20rx%3D%223%22%20fill%3D%22%23B87800%22%2F%3E%3Crect%20x%3D%2221%22%20y%3D%221%22%20width%3D%227%22%20height%3D%226%22%20rx%3D%221.5%22%20fill%3D%22%23FFD040%22%20opacity%3D%220.5%22%2F%3E%3Crect%20x%3D%2252%22%20y%3D%221%22%20width%3D%227%22%20height%3D%226%22%20rx%3D%221.5%22%20fill%3D%22%23FFD040%22%20opacity%3D%220.5%22%2F%3E%3Crect%20x%3D%224%22%20y%3D%2210%22%20width%3D%2274%22%20height%3D%2276%22%20rx%3D%2210%22%20fill%3D%22%2300000030%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2274%22%20rx%3D%2210%22%20fill%3D%22%23F5C800%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2228%22%20rx%3D%2210%22%20fill%3D%22%23FFE55A%22%20opacity%3D%220.45%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2274%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23C08A00%22%20stroke-width%3D%222.5%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%2218%22%20width%3D%2254%22%20height%3D%2256%22%20rx%3D%227%22%20fill%3D%22%23E8B200%22%20stroke%3D%22%23C08A00%22%20stroke-width%3D%221.5%22%2F%3E%3Crect%20x%3D%2214%22%20y%3D%2220%22%20width%3D%2250%22%20height%3D%2218%22%20rx%3D%226%22%20fill%3D%22%23F5C800%22%20opacity%3D%220.30%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%2232%22%20width%3D%2234%22%20height%3D%2230%22%20rx%3D%225%22%20fill%3D%22%23EDB400%22%20stroke%3D%22%23C08A00%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%2233%22%20width%3D%2228%22%20height%3D%2210%22%20rx%3D%224%22%20fill%3D%22%23F5C800%22%20opacity%3D%220.25%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2274%22%20width%3D%2216%22%20height%3D%2210%22%20rx%3D%222.5%22%20fill%3D%22%23B87800%22%20stroke%3D%22%23906000%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%2275%22%20width%3D%2210%22%20height%3D%225%22%20rx%3D%221%22%20fill%3D%22%23FFD040%22%20opacity%3D%220.35%22%2F%3E%3Crect%20x%3D%2256%22%20y%3D%2274%22%20width%3D%2216%22%20height%3D%2210%22%20rx%3D%222.5%22%20fill%3D%22%23B87800%22%20stroke%3D%22%23906000%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2257%22%20y%3D%2275%22%20width%3D%2210%22%20height%3D%225%22%20rx%3D%221%22%20fill%3D%22%23FFD040%22%20opacity%3D%220.35%22%2F%3E%3C%2Fsvg%3E';
-  var redSvg='%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2080%2088%22%3E%3Crect%20x%3D%2218%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2211%22%20rx%3D%223%22%20fill%3D%22%23990000%22%2F%3E%3Crect%20x%3D%2249%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2211%22%20rx%3D%223%22%20fill%3D%22%23990000%22%2F%3E%3Crect%20x%3D%2221%22%20y%3D%221%22%20width%3D%227%22%20height%3D%226%22%20rx%3D%221.5%22%20fill%3D%22%23FF6655%22%20opacity%3D%220.5%22%2F%3E%3Crect%20x%3D%2252%22%20y%3D%221%22%20width%3D%227%22%20height%3D%226%22%20rx%3D%221.5%22%20fill%3D%22%23FF6655%22%20opacity%3D%220.5%22%2F%3E%3Crect%20x%3D%224%22%20y%3D%2210%22%20width%3D%2274%22%20height%3D%2276%22%20rx%3D%2210%22%20fill%3D%22%2300000030%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2274%22%20rx%3D%2210%22%20fill%3D%22%23CC2200%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2228%22%20rx%3D%2210%22%20fill%3D%22%23EE5533%22%20opacity%3D%220.45%22%2F%3E%3Crect%20x%3D%222%22%20y%3D%228%22%20width%3D%2274%22%20height%3D%2274%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%23991100%22%20stroke-width%3D%222.5%22%2F%3E%3Crect%20x%3D%2212%22%20y%3D%2218%22%20width%3D%2254%22%20height%3D%2256%22%20rx%3D%227%22%20fill%3D%22%23BB1E00%22%20stroke%3D%22%23991100%22%20stroke-width%3D%221.5%22%2F%3E%3Crect%20x%3D%2214%22%20y%3D%2220%22%20width%3D%2250%22%20height%3D%2218%22%20rx%3D%226%22%20fill%3D%22%23CC2200%22%20opacity%3D%220.30%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%2232%22%20width%3D%2234%22%20height%3D%2230%22%20rx%3D%225%22%20fill%3D%22%23B51C00%22%20stroke%3D%22%23991100%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%2233%22%20width%3D%2228%22%20height%3D%2210%22%20rx%3D%224%22%20fill%3D%22%23CC2200%22%20opacity%3D%220.25%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2274%22%20width%3D%2216%22%20height%3D%2210%22%20rx%3D%222.5%22%20fill%3D%22%23990000%22%20stroke%3D%22%23770000%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%2275%22%20width%3D%2210%22%20height%3D%225%22%20rx%3D%221%22%20fill%3D%22%23FF6655%22%20opacity%3D%220.35%22%2F%3E%3Crect%20x%3D%2256%22%20y%3D%2274%22%20width%3D%2216%22%20height%3D%2210%22%20rx%3D%222.5%22%20fill%3D%22%23990000%22%20stroke%3D%22%23770000%22%20stroke-width%3D%221%22%2F%3E%3Crect%20x%3D%2257%22%20y%3D%2275%22%20width%3D%2210%22%20height%3D%225%22%20rx%3D%221%22%20fill%3D%22%23FF6655%22%20opacity%3D%220.35%22%2F%3E%3C%2Fsvg%3E';
-  _binLidImgC=new Image(); _binLidImgC.onload=done; _binLidImgC.onerror=done;
-  _binLidImgC.src="data:image/svg+xml;charset=utf-8,"+yellowSvg;
-  _redLidImgC=new Image(); _redLidImgC.onload=done; _redLidImgC.onerror=done;
-  _redLidImgC.src="data:image/svg+xml;charset=utf-8,"+redSvg;
-  _logoImgC=new Image(); _logoImgC.onload=done; _logoImgC.onerror=done;
-  _logoImgC.src="data:image/png;base64,"+LOGO_B64;
-}
+/* ── Gold star sparkles ── */
 function launchConfetti(){
   var canvas=document.getElementById("confetti-canvas"); if(!canvas) return;
   canvas.width=window.innerWidth; canvas.height=window.innerHeight;
   var ctx=canvas.getContext("2d");
   if(_confettiAF){ cancelAnimationFrame(_confettiAF); _confettiAF=null; }
-  var pieces=[];
-  preloadConfetti(function(){
-    var cols=["#F5A800","#FFE000","#C0DF16","#00A3E0","#ffffff","#003349"];
-    for(var i=0;i<80;i++){
-      var type=i<15?"logo":i<40?"binlid":i<65?"redlid":"rect";
-      pieces.push({
-        x:Math.random()*canvas.width, y:-20-Math.random()*200,
-        vx:(Math.random()-0.5)*3, vy:1.5+Math.random()*2,
-        rot:Math.random()*360, rotV:(Math.random()-0.5)*6,
-        w:(type==="binlid"||type==="redlid")?70:type==="logo"?90:14+Math.random()*16,
-        h:(type==="binlid"||type==="redlid")?77:type==="logo"?90:14+Math.random()*16,
-        col:cols[Math.floor(Math.random()*cols.length)],
-        type:type, alpha:1
-      });
+  function drawStar(c, r){
+    var inner=r*0.42, spikes=5, step=Math.PI/spikes;
+    c.beginPath();
+    for(var i=0;i<spikes*2;i++){
+      var rad=(i%2===0)?r:inner, angle=i*step-Math.PI/2;
+      if(i===0) c.moveTo(Math.cos(angle)*rad, Math.sin(angle)*rad);
+      else c.lineTo(Math.cos(angle)*rad, Math.sin(angle)*rad);
     }
-    var start=Date.now();
-    function frame(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      var elapsed=(Date.now()-start)/1000, alive=false;
-      pieces.forEach(function(p){
-        if(!p.settled){
-          p.x+=p.vx; p.y+=p.vy; p.rot+=p.rotV;
-          p.vy+=0.05; p.vx*=0.99; p.rotV*=0.97;
-          // Bounce off floor
-          if(p.y>=canvas.height-p.h/2){
-            p.y=canvas.height-p.h/2;
-            p.vy*=-0.3;
-            p.vx*=0.75;
-            p.rotV*=0.4;
-            if(Math.abs(p.vy)<0.6){ p.vy=0; }
-            if(Math.abs(p.vx)<0.15 && Math.abs(p.vy)===0){ p.settled=true; p.settledAt=elapsed; }
-          }
-          // Side walls
-          if(p.x<p.w/2){ p.x=p.w/2; p.vx=Math.abs(p.vx)*0.5; }
-          if(p.x>canvas.width-p.w/2){ p.x=canvas.width-p.w/2; p.vx=-Math.abs(p.vx)*0.5; }
-        }
-        // Fade settled pieces after 1.5s of sitting still, or all pieces after 5s
-        if(p.settled && elapsed-p.settledAt>1.5) p.alpha=Math.max(0, p.alpha-0.022);
-        if(!p.settled && elapsed>5) p.alpha=Math.max(0, p.alpha-0.02);
-        if(p.alpha>0) alive=true;
-        ctx.save();
-        ctx.globalAlpha=p.alpha;
-        ctx.translate(p.x,p.y);
-        ctx.rotate(p.rot*Math.PI/180);
-        if(p.type==="logo"&&_logoImgC)          ctx.drawImage(_logoImgC,-p.w/2,-p.h/2,p.w,p.h);
-        else if(p.type==="binlid"&&_binLidImgC) ctx.drawImage(_binLidImgC,-p.w/2,-p.h/2,p.w,p.h);
-        else if(p.type==="redlid"&&_redLidImgC) ctx.drawImage(_redLidImgC,-p.w/2,-p.h/2,p.w,p.h);
-        else{ ctx.fillStyle=p.col; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); }
-        ctx.restore();
-      });
-      if(alive) _confettiAF=requestAnimationFrame(frame);
-      else{ ctx.clearRect(0,0,canvas.width,canvas.height); _confettiAF=null; }
-    }
-    _confettiAF=requestAnimationFrame(frame);
-  });
+    c.closePath();
+  }
+  var stars=[], goldShades=["#FFD700","#FFC200","#FFE55A","#F5A800","#FFEC80","#FFF0A0"];
+  for(var i=0;i<28;i++){
+    stars.push({
+      x:canvas.width*0.2+Math.random()*canvas.width*0.6,
+      y:canvas.height*0.25+Math.random()*canvas.height*0.35,
+      r:10+Math.random()*22,
+      rot:Math.random()*360, rotV:(Math.random()-0.5)*5,
+      vx:(Math.random()-0.5)*2.5, vy:-1.5-Math.random()*2.5,
+      col:goldShades[Math.floor(Math.random()*goldShades.length)], alpha:1
+    });
+  }
+  var start=Date.now();
+  function frame(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    var elapsed=(Date.now()-start)/1000, alive=false;
+    stars.forEach(function(p){
+      p.x+=p.vx; p.y+=p.vy; p.rot+=p.rotV;
+      p.vy+=0.04; p.vx*=0.98;
+      if(elapsed>0.6) p.alpha=Math.max(0, p.alpha-0.018);
+      if(p.alpha>0) alive=true;
+      ctx.save();
+      ctx.globalAlpha=p.alpha;
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot*Math.PI/180);
+      drawStar(ctx, p.r);
+      ctx.fillStyle=p.col; ctx.fill();
+      ctx.strokeStyle="rgba(180,120,0,0.35)"; ctx.lineWidth=1; ctx.stroke();
+      ctx.restore();
+    });
+    if(alive) _confettiAF=requestAnimationFrame(frame);
+    else{ ctx.clearRect(0,0,canvas.width,canvas.height); _confettiAF=null; }
+  }
+  _confettiAF=requestAnimationFrame(frame);
 }
+
 
 /* ── Perfect run celebration ── */
 var _perfectTimers=[];
