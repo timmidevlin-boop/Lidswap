@@ -1384,6 +1384,7 @@ function ld() {
 
 /* ── Utilities ── */
 function sk(d,z,wk,c,i) { return d+"|"+z+"|"+wk+"|"+c+"|"+i; }
+function zoneLabel(z){ return z==="3"?"Zone 2 Re-visits":"Zone "+z; }
 function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 function isDepot(s) { return !!(s && s.isDepot); }
 function realStops(stops) { return stops.filter(function(s){ return !isDepot(s); }); }
@@ -1534,7 +1535,7 @@ function buildHome() {
               + ' data-day="'+day+'" data-zone="'+z+'" data-week="'+week+'" data-crew="'+cr+'"'
               + ' onclick="pickRun(this)">';
         html += '<div class="rc-date">'+sched.label+'</div>';
-        html += '<div class="rc-zone" style="color:'+col+'">Zone '+z+'</div>';
+        html += '<div class="rc-zone" style="color:'+col+'">'+zoneLabel(z)+'</div>';
         html += '<div class="rc-crew">Route '+(cr==="1"?"A":"B")+'&bull;'+tBins+' lids</div>';
         html += '<div class="rc-bar"><div class="rc-fill" style="width:'+pct+'%;background:'+col+'"></div>'
               + '<span class="rc-pct">'+pct+'%</span></div>';
@@ -1573,7 +1574,7 @@ function pickRun(el) {
   var sched = null;
   SCHEDULE.forEach(function(s){ if(s.day===cDay && s.zone===cZone && s.week===cWeek) sched=s; });
   var routeLbl = "Route " + (cCrew==="1"?"A":"B");
-  document.getElementById("driver-run-lbl").textContent = (sched?sched.label:cDay) + " - Zone "+cZone+" - "+routeLbl;
+  document.getElementById("driver-run-lbl").textContent = (sched?sched.label:cDay) + " - "+zoneLabel(cZone)+" - "+routeLbl;
   buildPersonGrid();
   showScreen("s-driver");
 }
@@ -1667,7 +1668,7 @@ function changeCrewMidRun() {
   var sched = null;
   SCHEDULE.forEach(function(s){ if(s.day===cDay && s.zone===cZone && s.week===cWeek) sched=s; });
   var routeLbl = "Route " + (cCrew==="1"?"A":"B");
-  document.getElementById("driver-run-lbl").textContent = (sched?sched.label:cDay) + " - Zone "+cZone+" - "+routeLbl;
+  document.getElementById("driver-run-lbl").textContent = (sched?sched.label:cDay) + " - "+zoneLabel(cZone)+" - "+routeLbl;
   // Reset selections so picker shows fresh but preserve current as pre-selected
   buildPersonGrid();
   // Pre-highlight existing selections
@@ -1738,7 +1739,7 @@ function showRunSummary() {
   var isPerfect=(realTotal>0 && resolvedStops===realTotal);
 
   var v=cVehicleId?VEHICLES[cVehicleId]:null;
-  document.getElementById("sum-run-name").textContent=d+" · Zone "+z+" · Route "+(c==="1"?"A":"B");
+  document.getElementById("sum-run-name").textContent=d+" · "+zoneLabel(z)+" · Route "+(c==="1"?"A":"B");
   var sumTeam=document.getElementById("sum-run-team"); if(sumTeam) sumTeam.textContent=assignedPeopleText(cPersonId,cPassengerId);
   var sumVehicle=document.getElementById("sum-run-vehicle"); if(sumVehicle) sumVehicle.textContent=v?v.short:"Vehicle not selected";
   document.getElementById("sum-lids").innerHTML=resolvedBinsRun+'<span class="u">lids resolved</span>';
@@ -1765,7 +1766,7 @@ function syncPopulateRunSel() {
       var done = 0;
       stops.forEach(function(s,i){ if(!s.isDepot && doneSet[sk(d,z,wk,c,i)]) done++; });
       if(done === 0) return; // skip runs with no progress
-      var label = d + " Zone " + z + " Team " + c + " — " + done + "/" + realTotal + " stops";
+      var label = d + " "+zoneLabel(z)+" Team " + c + " — " + done + "/" + realTotal + " stops";
       var opt = document.createElement("option");
       opt.value = d+"|"+z+"|"+wk+"|"+c;
       opt.textContent = label;
@@ -2151,7 +2152,7 @@ function render(){
   var resolvedBinsRun=resolvedBins(d,z,wk,c);
   var pct=totalBinsRun?Math.round(resolvedBinsRun/totalBinsRun*100):0;
   var v=cVehicleId?VEHICLES[cVehicleId]:null;
-  document.getElementById("run-badge-title").textContent=d+" · Zone "+z+" · Route "+(c==="1"?"A":"B");
+  document.getElementById("run-badge-title").textContent=d+" · "+zoneLabel(z)+" · Route "+(c==="1"?"A":"B");
   var teamEl=document.getElementById("run-badge-team"); if(teamEl) teamEl.textContent=assignedPeopleText(cPersonId,cPassengerId);
   var vehicleEl=document.getElementById("run-badge-vehicle"); if(vehicleEl) vehicleEl.textContent=v?v.short:"Vehicle not selected";
   document.getElementById("run-badge-sub").textContent=(realTotal-done)+" stops remaining";
@@ -2337,7 +2338,7 @@ function undoLast(){
 }
 
 function undoRun(){
-  var runLabel=cDay+" Zone "+cZone+" Team "+cCrew;
+  var runLabel=cDay+" "+zoneLabel(cZone)+" Team "+cCrew;
   if(!confirm("Reset all progress for "+runLabel+"?\n\nThis will undo every stop in this run only. Other runs are not affected.")) return;
   var prefix=sk(cDay,cZone,cWeek,cCrew,"").replace(/\|$/,"");
   // Remove all done/CF marks for this run
@@ -2541,7 +2542,7 @@ function showBinLoad(){
   html+='<div class="bl-tot"><span>Total lids</span><span style="color:var(--lime)">'+cs.bins+'</span></div>';
   document.getElementById("m-load-rows").innerHTML=html;
   var v=cVehicleId?VEHICLES[cVehicleId]:null;
-  document.getElementById("m-load-sub").textContent=cDay+" · Zone "+cZone+" · Route "+(cCrew==="1"?"A":"B")+" — "+assignedPeopleText(cPersonId,cPassengerId);
+  document.getElementById("m-load-sub").textContent=cDay+" · "+zoneLabel(cZone)+" · Route "+(cCrew==="1"?"A":"B")+" — "+assignedPeopleText(cPersonId,cPassengerId);
   var loadVehicle=document.getElementById("m-load-vehicle"); if(loadVehicle) loadVehicle.textContent=v?v.short:"Vehicle not selected";
   openM("m-load");
 }
@@ -2577,7 +2578,7 @@ function buildRptTxt(){
   var runDateStr=schedDate?new Date(schedDate).toLocaleDateString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric"}):"";
   var reportedAt=new Date().toLocaleString("en-AU",{weekday:"long",year:"numeric",month:"long",day:"numeric",hour:"2-digit",minute:"2-digit"});
   lines.push("=== MOIRA LIDSWAP - RUN REPORT ===");
-  lines.push("Run:    "+d+" Zone "+z+" — Route "+(c==="1"?"A":"B")+(runDateStr?" - "+runDateStr:""));
+  lines.push("Run:    "+d+" "+zoneLabel(z)+" — Route "+(c==="1"?"A":"B")+(runDateStr?" - "+runDateStr:""));
   lines.push("Team:   "+dName);
   lines.push("Vehicle: "+vehicleName);
   lines.push("Reported: "+reportedAt);
@@ -2905,7 +2906,7 @@ function exportReportExcel(){
 
   /* Info rows */
   var infoRows=[
-    ["Run",d+" Zone "+z+" — Route "+(c==="1"?"A":"B")],
+    ["Run",d+" "+zoneLabel(z)+" — Route "+(c==="1"?"A":"B")],
     ["Scheduled Date",runDateStr||"—"],
     ["Team",dName],
     ["Vehicle",vehicleName],
@@ -3580,7 +3581,7 @@ function admCopyReport(){
         if(doneSet[k]) bins+=s.bins||1;
       });
       var pct=real.length?Math.round(done/real.length*100):0;
-      lines.push(e.label+" Zone "+z+" Team "+(c==="1"?"A":"B")+": "+done+"/"+real.length+" stops ("+pct+"%), "+bins+" lids"+(cf?" | "+cf+" issue"+(cf>1?"s":""):""));
+      lines.push(e.label+" "+zoneLabel(z)+" Team "+(c==="1"?"A":"B")+": "+done+"/"+real.length+" stops ("+pct+"%), "+bins+" lids"+(cf?" | "+cf+" issue"+(cf>1?"s":""):""));
     });
   });
   var txt=lines.join("\n");
