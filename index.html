@@ -82,6 +82,11 @@
   footer{margin-top:26px;text-align:center;color:var(--muted);font-size:11px;}
   .export-bar{display:flex;gap:8px;margin-top:18px;}
   .export-bar button{flex:1;border:1px solid var(--border);background:#fff;border-radius:10px;padding:11px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;}
+.tab-bar{display:flex;gap:0;margin:14px 0 10px;border-bottom:2px solid var(--border);}
+.tab-bar button{flex:1;border:0;background:none;padding:11px 8px;font-size:14px;font-weight:700;color:#6b7c88;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;}
+.tab-bar button.active{color:var(--navy);border-bottom-color:#00A3E0;}
+.tab-bar .cnt{display:inline-block;margin-left:6px;background:#e8eef2;color:var(--navy);border-radius:10px;padding:1px 8px;font-size:12px;}
+.tab-bar button.active .cnt{background:#00A3E0;color:#fff;}
 </style>
 </head>
 <body>
@@ -95,6 +100,11 @@
       </div>
       <button class="pill-btn" id="export-btn">&#8595; Export</button>
     </header>
+
+    <div class="tab-bar" id="tab-bar">
+      <button data-tab="revisit" class="active">Revisits<span class="cnt" id="tcnt-revisit">0</span></button>
+      <button data-tab="clean">Cleanaway<span class="cnt" id="tcnt-clean">0</span></button>
+    </div>
 
     <div class="scope-bar" id="scope-bar">
       <button data-scope="today" class="active">Due Today<span class="cnt" id="cnt-today">0</span></button>
@@ -171,7 +181,10 @@ function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')
 
 function loadStatuses(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }catch(e){ return {}; } }
 function saveStatuses(obj){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(obj)); }catch(e){} }
-var statuses = loadStatuses();
+/* Baseline from field-run export 2026-10-07; device-saved updates override it. */
+var BASELINE = {"r0": "done", "r1": "done", "r2": "done", "r13": "done", "r14": "done", "r15": "done", "r16": "done", "r17": "done", "r22": "done", "r23": "done", "r24": "done", "r25": "done", "r26": "done", "r27": "done", "r28": "done", "r29": "done", "r30": "done", "r31": "done", "r32": "done", "r33": "done", "r34": "done", "r35": "done", "r36": "done", "r37": "done", "r38": "done", "r39": "done", "r40": "done", "r41": "done", "r44": "done", "r45": "noaccess", "r46": "done", "r47": "noaccess", "r48": "noaccess", "r49": "done", "r50": "done", "r51": "noaccess", "r52": "done", "r53": "done", "r56": "done"};
+var BASELINE_NOTES = {};
+var statuses = Object.assign({}, BASELINE, loadStatuses());
 function statusOf(id){ return statuses[id] || 'open'; }
 
 var allItems = [];
@@ -199,12 +212,13 @@ function fmtDate(d){
   return days[dt.getDay()]+' '+dt.getDate()+' '+mons[dt.getMonth()];
 }
 
-var state = { scope:'today' };
+var state = { scope:'today', tab:'revisit' };
+function tabItems(){ return allItems.filter(function(i){ return i._type===state.tab; }); }
 var curItem = null;
 var _pendingOutcome = null; // outcome awaiting note confirmation
 
 function openItemsForScope(scope){
-  var open = allItems.filter(function(i){ return statusOf(i.id)==='open'; });
+  var open = tabItems().filter(function(i){ return statusOf(i.id)==='open'; });
   if(scope==='all') return open;
   return open.filter(function(i){
     var c = collectionInfo(i.date);
@@ -216,18 +230,21 @@ function openItemsForScope(scope){
 }
 
 function updateCounts(){
-  var open = allItems.filter(function(i){ return statusOf(i.id)==='open'; });
+  ['revisit','clean'].forEach(function(t){
+    document.getElementById('tcnt-'+t).textContent = allItems.filter(function(i){ return i._type===t && statusOf(i.id)==='open'; }).length;
+  });
+  var open = tabItems().filter(function(i){ return statusOf(i.id)==='open'; });
   var cToday = open.filter(function(i){ var c=collectionInfo(i.date); return c && c.status==='today'; }).length;
   var cSoon  = open.filter(function(i){ var c=collectionInfo(i.date); return c && c.status==='soon'; }).length;
   document.getElementById('cnt-today').textContent = cToday;
   document.getElementById('cnt-soon').textContent = cSoon;
   document.getElementById('cnt-all').textContent = open.length;
 
-  var total = allItems.length;
-  var done = allItems.filter(function(i){ return statusOf(i.id)!=='open'; }).length;
+  var total = tabItems().length;
+  var done = tabItems().filter(function(i){ return statusOf(i.id)!=='open'; }).length;
   var pct = total ? Math.round(done/total*100) : 0;
   document.getElementById('progress-fill').style.width = pct+'%';
-  document.getElementById('progress-lbl').textContent = done+' / '+total+' follow-ups actioned overall';
+  document.getElementById('progress-lbl').textContent = done+' / '+total+' '+(state.tab==='clean'?'Cleanaway':'revisit')+' follow-ups actioned';
 }
 
 function renderHome(){
@@ -273,6 +290,14 @@ function renderHome(){
     });
   });
 }
+
+document.getElementById('tab-bar').addEventListener('click', function(e){
+  var btn = e.target.closest('button'); if(!btn) return;
+  this.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  state.tab = btn.getAttribute('data-tab');
+  renderHome();
+});
 
 document.getElementById('scope-bar').addEventListener('click', function(e){
   var btn = e.target.closest('button'); if(!btn) return;
@@ -390,6 +415,7 @@ function csvEscape(v){
 document.getElementById('export-btn').addEventListener('click', function(){
   var followupNotes = {};
   try{ followupNotes = JSON.parse(localStorage.getItem('lidswap-followup-notes-v1'))||{}; }catch(e){}
+  followupNotes = Object.assign({}, BASELINE_NOTES, followupNotes);
   var header = ['Type','Address','Suburb','Missed On','Missed Crew','Original Note','Status','Field-Run Note'];
   var lines = [header.map(csvEscape).join(',')];
   allItems.forEach(function(i){
